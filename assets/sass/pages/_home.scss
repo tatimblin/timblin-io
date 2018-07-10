@@ -1,0 +1,49 @@
+/*
+ * Homepage
+ *
+ * This file contains styles that are specific to the home page.
+ *
+ *****************************************************************************/
+
+// SLIDER
+.component-slider {
+
+    .slider_wrap {
+        display: flex;
+        justify-content: space-between;
+        height: 600px;
+    }
+}
+
+.slider {
+    &-cell {
+        height: 100%;
+    }
+}
+
+.main-slider {
+    width: 66%;
+
+    &-cell {
+        width: 100%;
+        background-color: #f2f2f2;
+    }
+}
+
+.second-slider {
+    width: 33%;
+
+    &:before {
+        content: '';
+        position: absolute;
+        width: 50%; height: 100%;
+        left: 0; top: 0;
+        background-color: $white;
+        z-index: 100;
+    }
+    &-cell {
+        position: relative;
+        width: 50%;
+        background-color: #ccc;
+    }
+}
