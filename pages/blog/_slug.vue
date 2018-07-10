@@ -1,12 +1,15 @@
 <template>
-  <article>
-    <h1>{{ title }}</h1>
-    <p>{{ body }}</p>
-  </article>
+  <div class="post container large-width">
+      <div class="content-block">
+        <h1>{{ title }}</h1>
+        <p>{{ body }}</p>
+      </div>
+  </div>
 </template>
 
 <script>
 export default {
+  transition: 'fade',
   async asyncData({ params }) {
     // const postPromise = process.BROWSER_BUILD
     //   ? import('~/content/blog/posts/' + params.slug + '.json')

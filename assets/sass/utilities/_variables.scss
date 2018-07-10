@@ -143,6 +143,7 @@ $xxlarge-width: map-get($breakpoints, xxlarge);
 // Neat grid maps
 // @type Map
 $gutter-width: 30px;
+$spacing: $gutter-width;
 
 $grid: (
     columns: 12,

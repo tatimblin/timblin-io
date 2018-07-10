@@ -1,14 +1,16 @@
 <template>
-  <section class="container">
-    <h2>Home</h2>
-    <ul>
-      <li v-for="post in posts" :key="post.date">
-        <nuxt-link :to="post._path">
-          {{ post.title }}
-        </nuxt-link>
-      </li>
-    </ul>
-  </section>
+    <div class="home container large-width">
+        <div class="content-block">
+            <h2>Home</h2>
+            <ul>
+                <li v-for="post in posts" :key="post.date">
+                    <nuxt-link :to="post._path">
+                        {{ post.title }}
+                    </nuxt-link>
+                </li>
+            </ul>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -31,7 +33,3 @@ export default {
   }
 };
 </script>
-
-<style>
-
-</style>
