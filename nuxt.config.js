@@ -14,14 +14,22 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'nuxt-template',
+    titleTemplate: '%s - Small CMS Template',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Nuxt.js + Netlify CMS project' }
+      { hid: 'description', name: 'description', content: 'INSERT SITE DESCRIPTION - nuxt.config.js.' },
+      { hid: 'keywords', name: 'keywords', content: 'timblin, website' },
+      { name: 'twitter:card', content: 'summary_large_image'},
+      { name: 'twitter:site', content: '@TristanTimblin'},
+      { name: 'twitter:creator', content: '@TristanTimblin'},
+      { property: 'og:url', content: 'URL_HERE'},
+      { property: 'og:title', content: 'SITE_TITLE'},
+      { property: 'og:description', content: 'DESCRIPTION'},
+      { poroperty: 'og:image', content: '/social-card.jpg'}
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
     ]
   },
   css: [
