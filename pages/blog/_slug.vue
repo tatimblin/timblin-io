@@ -1,7 +1,7 @@
 <template>
   <div class="post container large-width">
       <div class="content-block">
-        <img src="{{ thumbnail }}">
+        <img :src="{{ thumbnail }}">
         <h1>{{ title }}</h1>
         <p>{{ body }}</p>
       </div>
