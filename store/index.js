@@ -4,6 +4,7 @@ const createStore = () => {
   return new Vuex.Store({
     state: {
       page: 'index',
+      currentPost: 1
     },
     mutations: {
        updatePage(state, pageName) {
