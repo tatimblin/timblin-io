@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app">
     <app-header></app-header>
     <nuxt/>
     <app-footer></app-footer>
