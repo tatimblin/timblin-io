@@ -1,6 +1,8 @@
 <template>
-  <section class="container">
-    <h2>About</h2>
+  <section class="container large-width">
+    <div class="content-block">
+      <h2>About</h2>
+    </div>
     
   </section>
 </template>
@@ -10,6 +12,7 @@ import AppLogo from '~/components/AppLogo.vue';
 
 export default {
   layout: 'default',
+  transition: 'fade',
   components: {
     AppLogo
   },

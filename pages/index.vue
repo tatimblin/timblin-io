@@ -18,6 +18,7 @@ import AppLogo from '~/components/AppLogo.vue';
 
 export default {
   layout: 'default',
+  transition: 'fade',
   components: {
     AppLogo
   },

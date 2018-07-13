@@ -10,6 +10,7 @@
 
 <script>
 export default {
+  layout: 'default',
   transition: 'fade',
   async asyncData({ params }) {
     // const postPromise = process.BROWSER_BUILD
