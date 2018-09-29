@@ -16,13 +16,13 @@
 @import
     'utilities/variables',
     'utilities/functions',
-    'utilities/mixins',
-    'utilities/flickity';
+    'utilities/mixins';
 
 // 3. Vendors
 @import
     'vendors/normalize',
-    'vendors/breakpoint';
+    'vendors/breakpoint',
+    'vendors/rfs';
 
 // 4. Base
 @import
@@ -34,15 +34,4 @@
 // 5. Global layout-related sections
 @import
     'layout/general',
-    'layout/grid',
-    'layout/header',
-    'layout/footer';
-
-// 6. Components
-@import
-    'components/button';
-
-// 7. Page-specific styles
-@import
-    'pages/home',
-    'pages/404';
+    'layout/grid';
