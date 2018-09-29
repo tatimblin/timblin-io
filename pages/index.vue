@@ -1,6 +1,6 @@
 <template>
     <div class="home container large-width">
-        <div class="content-block">
+        <div class="content">
             <h2>Home</h2>
             <ul>
                 <li v-for="post in posts" :key="post.date">

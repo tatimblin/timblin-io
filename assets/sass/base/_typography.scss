@@ -7,6 +7,8 @@
 
 
 body {
+    @include responsive-font-size(16);
+
     color: $text-color;
 	font-family: $sans-serif-stack;
     font-weight: $font-regular-weight;
@@ -24,31 +26,47 @@ h6 {
 }
 
 h1 {
-
+    @include responsive-font-size(type-scale(size8));
+    hyphens: auto;
 }
 
 h2 {
-
+    @include responsive-font-size(type-scale(size6));
+    hyphens: auto;
 }
 
 h3 {
-
+    @include responsive-font-size(type-scale(size4));
 }
 
 h4 {
-
+    @include responsive-font-size(type-scale(size3));
+    line-height: 1.875em;
 }
 
 h5 {
+    @include responsive-font-size(type-scale(size1));
+}
 
+h6 {
+    @include responsive-font-size(type-scale(size-1));
 }
 
 p {
     margin-bottom: 1rem;
 }
 
+li {
+    @include responsive-font-size(type-scale(size1));
+    
+    letter-spacing: $kerning50;
+
+    &:before {
+        @include responsive-font-size(type-scale(size3));
+    }
+}
+
 a {
-    color: $black;
     text-decoration: none;
     transition: color 0.2s ease-in-out;
     @include on-event {
