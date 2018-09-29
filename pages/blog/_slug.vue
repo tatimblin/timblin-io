@@ -24,3 +24,20 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+  @import '~assets/sass/main.scss';
+
+  .post {
+
+    img {
+      width: 100%;
+    }
+    p {
+      @include grid-media($grid-small) {
+        @include grid-column(8, $grid);
+        @include grid-push(2);
+      }
+    }
+  }
+</style>
