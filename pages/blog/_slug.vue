@@ -3,15 +3,20 @@
       <div class="content">
         <img :src="thumbnail">
         <h1>{{ title }}</h1>
-        <p>{{ body }}</p>
+        <vue-markdown>{{ body }}</vue-markdown>
       </div>
   </div>
 </template>
 
 <script>
+import VueMarkdown from 'vue-markdown'
+
 export default {
   layout: 'default',
   transition: 'fade',
+  components: {
+    VueMarkdown
+  },
   async asyncData({ params }) {
     // const postPromise = process.BROWSER_BUILD
     //   ? import('~/content/blog/posts/' + params.slug + '.json')
