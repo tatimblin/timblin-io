@@ -10,7 +10,7 @@ body {
     @include responsive-font-size(16);
 
     color: $text-color;
-	font-family: $sans-serif-stack;
+	font-family: $font-body;
     font-weight: $font-regular-weight;
 	letter-spacing: $kerning50;
 }
@@ -21,39 +21,44 @@ h3,
 h4,
 h5,
 h6 {
-    font-weight: $font-bold-weight;
-    margin: 0 0 1rem;
+    margin: 0;
+    font-family: $font-head;
+    font-weight: $font-regular-weight;
 }
 
 h1 {
-    @include responsive-font-size(type-scale(size8));
+    @include responsive-font-size(type-scale(size4));
     hyphens: auto;
 }
 
 h2 {
-    @include responsive-font-size(type-scale(size6));
+    @include responsive-font-size(type-scale(size4));
+    font-family: $font-family;
     hyphens: auto;
+    color: $light-gray;
 }
 
 h3 {
-    @include responsive-font-size(type-scale(size4));
+    @include responsive-font-size(type-scale(size3));
 }
 
 h4 {
-    @include responsive-font-size(type-scale(size3));
+    @include responsive-font-size(type-scale(size1));
     line-height: 1.875em;
 }
 
 h5 {
-    @include responsive-font-size(type-scale(size1));
+    @include responsive-font-size(type-scale(size-1));
 }
 
 h6 {
     @include responsive-font-size(type-scale(size-1));
+    font-family: $font-family;
 }
 
 p {
     margin-bottom: 1rem;
+    line-height: 1.375em;
 }
 
 li {
@@ -67,9 +72,14 @@ li {
 }
 
 a {
+    color: $black;
     text-decoration: none;
     transition: color 0.2s ease-in-out;
     @include on-event {
         color: lighten($black, 50%);
     }
+}
+
+.button a {
+    font-family: $font-head;
 }

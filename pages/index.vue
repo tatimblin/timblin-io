@@ -1,41 +1,66 @@
 <template>
-    <div class="home container large-width">
-        <div class="content">
-            <h2>Home</h2>
-            <ul>
-                <li v-for="post in posts" :key="post.date">
-                    <nuxt-link :to="post._path">
-                        {{ post.title }}
-                    </nuxt-link>
-                </li>
-            </ul>
-        </div>
+    <div class="site">
+        
+        <site-header></site-header>
+
+        <site-project-view></site-project-view>
+
+        <site-process></site-process>
+
+        process slider!
+
+        <section class="about large-width">
+
+            <site-title headline="A Creator">
+                hello, now you know me
+            </site-title>
+
+            <div class="row">
+
+                <div class="callout">
+                    <div class="callout-item">
+                        <h4>Tysons, VA</h4>
+                    </div>
+                    <div class="callout-item">
+                        <h4>Philadelphia, PA</h4>
+                    </div>
+                </div>
+
+            </div>
+
+            <site-divider half="true"/>
+
+        </section>
+
+        about me slider!
+
     </div>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue';
+import AppLogo from '~/components/AppLogo.vue'
+import SiteHeader from '~/components/site/SiteHeader.vue'
+import SiteProjectView from '~/components/site/SiteProjectView.vue'
+import SiteProcess from '~/components/site/SiteProcess.vue'
+import SiteTitle from '~/components/site/SiteTitle.vue'
+import SiteButton from '~/components/site/SiteButton.vue'
+import SiteDivider from '~/components/site/SiteDivider.vue'
 
 export default {
   layout: 'default',
   transition: 'fade',
   components: {
-    AppLogo
-  },
-  data() {
-    // Using webpacks context to gather all files from a folder
-    const context = require.context('~/content/blog/posts/', false, /\.json$/);
-
-    const posts = context.keys().map(key => ({
-      ...context(key),
-      _path: `/blog/${key.replace('.json', '').replace('./', '')}`
-    }));
-
-    return { posts };
+    AppLogo,
+    SiteHeader,
+    SiteProjectView,
+    SiteProcess,
+    SiteTitle,
+    SiteButton,
+    SiteDivider
   }
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 </style>

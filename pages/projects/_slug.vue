@@ -1,11 +1,38 @@
 <template>
-  <div class="post container large-width">
+  <section class="post container small-width">
+
+    <div class="row">
+
       <div class="content">
+
         <img :src="thumbnail">
-        <h1>{{ title }}</h1>
-        <vue-markdown>{{ body }}</vue-markdown>
+
       </div>
-  </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="content text-center">
+
+        <h3>{{ title }}</h3>
+        <p>Cohere • 2018</p>
+
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="body content">
+
+        <vue-markdown>{{ body }}</vue-markdown>
+
+      </div>
+
+    </div>
+
+  </section>
 </template>
 
 <script>
@@ -24,25 +51,24 @@ export default {
     //       require('~/content/blog/posts/' + params.slug + '.json')
     //     );
 
-    let post = await import('~/content/blog/posts/' + params.slug + '.json');
+    let post = await import('~/content/projects/posts/' + params.slug + '.json');
     return post;
   }
 };
 </script>
 
 <style lang="scss">
-  @import '~assets/sass/main.scss';
-
-  .post {
-
-    img {
-      width: 100%;
-    }
-    p {
-      @include grid-media($grid-small) {
-        @include grid-column(8, $grid);
-        @include grid-push(2);
-      }
-    }
+.body {
+  h1 {
+    margin: 1.125rem 0;
   }
+  p {
+    margin-bottom: 1.125rem;
+  }
+  img {
+    width: calc(100% - 60px);
+    padding: 1.125rem 0;
+    transform: translateX(60px);
+  }
+}
 </style>

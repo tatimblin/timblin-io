@@ -5,7 +5,7 @@ var path = require('path');
 // automatically and match it to the path of your Nuxt routes.
 // The Nuxt routes are generate by Nuxt automatically based on the pages folder.
 var dynamicRoutes = getDynamicPaths({
-  '/blog': 'blog/posts/*.json'
+  '/projects': 'projects/posts/*.json'
 });
 
 
@@ -29,7 +29,8 @@ module.exports = {
       { poroperty: 'og:image', content: '/social-card.jpg'}
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
+      { rel: 'stylesheet', href: 'https://use.typekit.net/zor5ibn.css' }
     ]
   },
   css: [

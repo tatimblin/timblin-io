@@ -13,7 +13,7 @@
 
 // Pure black
 // @type Color
-$black: #000;
+$black: #30323D;
 
 // Pure white
 // @type Color
@@ -33,7 +33,7 @@ $brand-red: #ff0000;
 
 // Light grey
 // @type Color
-$light-gray: lighten($black, 75%);
+$light-gray: lighten($black, 65%);
 
 // Medium grey
 // @type Color
@@ -49,17 +49,13 @@ $dark-gray: lighten($black, 25%);
  *
  *********************************************************/
 
+$font-head: 'nimbus-sans-extended', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+$font-family: 'nimbus-sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+$font-body: 'nimbus-roman', serif;
+
 // Sans-serif font family
 // @type List
 $sans-serif-stack: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
-
-// Serif font family
-// @type List
-$serif-font-stack: 'Georgia', 'Times New Roman', serif !default;
-
-// Headline font family
-// @type List
-$headline-stack: 'Impact', sans-serif !default;
 
 
 // Font weight
@@ -89,7 +85,7 @@ $line-height-xlg: 1.95;
 
 // Modularscale settings
 $baseline: 24px;
-$modular-scale-ratio: $minor-third;
+//$modular-scale-ratio: $minor-third;
 $modular-scale-base: 16px;
 
 

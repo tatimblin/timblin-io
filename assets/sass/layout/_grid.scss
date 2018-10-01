@@ -7,7 +7,7 @@
  *****************************************************************************/
 
 
-.container {
+section {
     @include grid-container;
 	margin: 0 auto;
     &.small-width {
@@ -29,7 +29,17 @@
 
 
 .row {
+    @include grid-column(12);
     @include clearfix();
+    margin-top: 1.375rem;
+    margin-bottom: 1.375rem;
+
+    .callout, .button {
+        @include grid-collapse;
+        &-item, a {
+            @include grid-column(3);
+        }
+    }
 }
 
 

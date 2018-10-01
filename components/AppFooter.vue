@@ -1,7 +1,21 @@
 <template>
-  <div class="app-footer container large-width">
-      <div class="content text-center">
-          <span>All content © ______ 2018 • Site by <a href="http://timblin.co" target="_blank">tris timb</a></span>
-      </div>
-  </div>
+    <div class="container large-width">
+        <div class="row">
+            <div class="footer content">
+                <div class="footer-item">
+                    <p>One of many sites by Tristan Timblin</p>
+                </div>
+                <div class="footer-item">
+                    <p>© TATIMBLIN, 2018</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
+
+<style>
+.footer {
+    display: flex;
+    justify-content: space-between;
+}
+</style>
