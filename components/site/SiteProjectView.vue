@@ -3,15 +3,16 @@
         <div class="project-view-slider">
             <section class="large-width">
                 <div class="project-view-slider-ctrl">
-                    <h6>prev — next</h6>
+                    <h6><span @click="changeSlide(prev)">prev</span> — <span>next</span></h6>
                 </div>
                 <nuxt-link :to="posts[0]._path">
-                    <img :src="posts[0].thumbnail" alt="Project">
+                    <img :src="posts[index].thumbnail" alt="Project">
                 </nuxt-link>
             </section>
         </div>
         <section class="small-width text-center">
-            <h3>{{posts[0].title}}</h3>
+            <h3>{{posts[index].title}}</h3>
+            <p>Cohere — 2018</p>
         </section>
     </div>
 </template>
@@ -28,7 +29,15 @@ export default {
         _path: `/projects/${key.replace('.json', '').replace('./', '')}`
         }));
 
-        return { posts };
+        return {
+            index: 0,
+            posts
+        };
+    },
+    methods: {
+        changeSlide(dir) {
+            this.index = 1
+        }
     }
 }
 </script>
