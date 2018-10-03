@@ -3,7 +3,7 @@
         <div class="project-view-slider">
             <section class="large-width">
                 <div class="project-view-slider-ctrl">
-                    <h6><span @click="changeSlide(prev)">prev</span> — <span>next</span></h6>
+                    <h6><span @click="changeSlide('prev')">prev</span> — <span @click="changeSlide('next')">next</span></h6>
                 </div>
                 <nuxt-link :to="posts[0]._path">
                     <img :src="posts[index].thumbnail" alt="Project">
@@ -36,7 +36,22 @@ export default {
     },
     methods: {
         changeSlide(dir) {
-            this.index = 1
+            var i = this.index
+            var l = this.posts.length - 1
+            if (dir === 'prev') {
+                if (i === 0) {
+                    i = l
+                } else {
+                    i = i - 1
+                }
+            } else {
+                if (i === l) {
+                    i = 0
+                } else {
+                    i++
+                }
+            }
+            this.index = i
         }
     }
 }
