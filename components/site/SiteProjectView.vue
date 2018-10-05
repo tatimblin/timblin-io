@@ -6,7 +6,9 @@
                     <h6><span @click="changeSlide('prev')">prev</span> — <span @click="changeSlide('next')">next</span></h6>
                 </div>
                 <nuxt-link :to="posts[0]._path">
-                    <img :src="posts[index].thumbnail" alt="Project">
+                    <transition name="slide" mode="out-in">
+                        <img :key="index" :src="posts[index].thumbnail" alt="Project">
+                    </transition>
                 </nuxt-link>
             </section>
         </div>
@@ -97,6 +99,25 @@ export default {
             height: 400px;
         }
     }
+    section {
+        h3 {
+            line-height: 2em;
+        }
+    }
 }
+
+.slide-enter-active, .slide-leave-active {
+    transform: translateX(0px);
+    transition: all 0.5s;
+}
+.slide-enter {
+    transform: translateX(-100px);
+    opacity: 0;
+}
+.slide-leave-to {
+    transform: translateX(100px);
+    opacity: 0;
+}
+
 </style>
 
