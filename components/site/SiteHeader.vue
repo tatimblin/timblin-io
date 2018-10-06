@@ -14,13 +14,6 @@
 
         <site-divider half="true"/>
 
-        <div class="row">
-
-            <site-button href="/">Projects</site-button>
-            <site-button href="/labs">Labs</site-button>
-
-        </div>
-
     </section>
 </template>
 

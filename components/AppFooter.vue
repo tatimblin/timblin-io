@@ -1,5 +1,5 @@
 <template>
-    <div class="container large-width">
+    <section class="large-width">
         <div class="row">
             <div class="footer content">
                 <div class="footer-item">
@@ -10,12 +10,16 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
-<style>
+<style lang="scss">
 .footer {
     display: flex;
     justify-content: space-between;
+
+    &-item {
+        font-family: 'nimbus-sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;;
+    }
 }
 </style>

@@ -1,45 +1,84 @@
 <template>
     <div class="project-view">
+        <section class="large-width">
+
+            <div class="row">
+
+                <button @click="postType('projects')">
+                    Projects
+                </button>
+
+                <button @click="postType('labs')">
+                    Labs
+                </button>
+
+            </div>
+
+        </section>
         <div class="project-view-slider">
+
             <section class="large-width">
+
                 <div class="project-view-slider-ctrl">
                     <h6><span @click="changeSlide('prev')">prev</span> — <span @click="changeSlide('next')">next</span></h6>
                 </div>
-                <nuxt-link :to="posts[0]._path">
+
+                <nuxt-link :to="post._path">
                     <transition name="slide" mode="out-in">
-                        <img :key="index" :src="posts[index].thumbnail" alt="Project">
+                        <img :key="index" :src="post.thumbnail" alt="Project">
                     </transition>
                 </nuxt-link>
+
             </section>
+
         </div>
         <section class="small-width text-center">
-            <h3>{{posts[index].title}}</h3>
+
+            <h3>{{ post.title }}</h3>
             <p>Cohere — 2018</p>
+
         </section>
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 
 export default {
+    computed: {
+        ...mapState(['labs']),
+    },
     data() {
         // Using webpacks context to gather all files from a folder
         const context = require.context('~/content/projects/posts/', false, /\.json$/);
 
-        const posts = context.keys().map(key => ({
+        const projects = context.keys().map(key => ({
         ...context(key),
         _path: `/projects/${key.replace('.json', '').replace('./', '')}`
         }));
 
         return {
             index: 0,
-            posts
+            projects,
+            post: '',
+            type: 'projects'
         };
     },
+    created() {
+        this.post = this.projects[0]
+    },
     methods: {
+        postType(type) {
+            this.type = type
+        },
         changeSlide(dir) {
             var i = this.index
-            var l = this.posts.length - 1
+            if (this.type === 'projects') {
+                var l = this.projects.length - 1
+            } else {
+                var l = this.$store.state.labs.length - 1
+            }
+            
             if (dir === 'prev') {
                 if (i === 0) {
                     i = l
@@ -54,6 +93,12 @@ export default {
                 }
             }
             this.index = i
+            
+            if (this.type === 'projects') {
+                this.post = this.projects[i]
+            } else {
+                this.post = this.$store.state.labs[i]
+            }
         }
     }
 }
