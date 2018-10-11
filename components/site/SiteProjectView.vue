@@ -60,18 +60,24 @@ export default {
         return {
             index: 0,
             projects,
-            post: '',
-            type: 'projects'
+            type: 'projects',
+            post: ''
         };
     },
     created() {
         this.post = this.projects[0]
     },
     methods: {
-        postType(type) {
-            this.type = type
+        postType: function (active) {
+            this.type = active
+            
+            if (active === 'projects') {
+                this.post = this.projects[0]
+            } else {
+                this.post = this.$store.state.labs[0]
+            }
         },
-        changeSlide(dir) {
+        changeSlide: function (dir) {
             var i = this.index
             if (this.type === 'projects') {
                 var l = this.projects.length - 1

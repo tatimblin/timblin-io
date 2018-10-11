@@ -6,7 +6,7 @@ const createStore = () => {
       const context = require.context('~/content/labs/posts/', false, /\.json$/);
       const labs = context.keys().map(key => ({
         ...context(key),
-        path: `/labs/${key.substring(13).replace('.json', '').replace('./', '')}`
+        _path: `/labs/${key.substring(13).replace('.json', '').replace('./', '')}`
       }));
       return {
         page: 'index',

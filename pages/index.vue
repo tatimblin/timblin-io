@@ -7,7 +7,9 @@
 
         <site-process></site-process>
 
-        process slider!
+        <site-slider count="4">
+            hi
+        </site-slider>
 
         <section class="about large-width">
 
@@ -42,6 +44,7 @@ import AppLogo from '~/components/AppLogo.vue'
 import SiteHeader from '~/components/site/SiteHeader.vue'
 import SiteProjectView from '~/components/site/SiteProjectView.vue'
 import SiteProcess from '~/components/site/SiteProcess.vue'
+import SiteSlider from '~/components/site/SiteSlider.vue'
 import SiteTitle from '~/components/site/SiteTitle.vue'
 import SiteButton from '~/components/site/SiteButton.vue'
 import SiteDivider from '~/components/site/SiteDivider.vue'
@@ -54,6 +57,7 @@ export default {
     SiteHeader,
     SiteProjectView,
     SiteProcess,
+    SiteSlider,
     SiteTitle,
     SiteButton,
     SiteDivider
