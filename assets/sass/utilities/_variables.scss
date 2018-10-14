@@ -135,6 +135,11 @@ $large-width: map-get($breakpoints, large);
 $xlarge-width: map-get($breakpoints, xlarge);
 $xxlarge-width: map-get($breakpoints, xxlarge);
 
+@mixin query($device) {
+    @media screen and (min-width: $device) {
+        @content;
+    }
+}
 
 // Neat grid maps
 // @type Map
