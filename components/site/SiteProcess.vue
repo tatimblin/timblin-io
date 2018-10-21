@@ -24,7 +24,11 @@
 
     <div class="row">
 
-      <site-button href="/process">Process</site-button>
+      <nuxt-link to="process" class="btn-wrap">
+
+        <site-button label="Process"/>
+
+      </nuxt-link>
 
     </div>
 

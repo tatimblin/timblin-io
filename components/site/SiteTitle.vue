@@ -19,6 +19,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.site-title {
+    margin-top: 4rem;
+}
 </style>
 

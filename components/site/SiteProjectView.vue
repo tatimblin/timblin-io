@@ -4,13 +4,17 @@
 
             <div class="row">
 
-                <button @click="postType('projects')">
-                    Projects
-                </button>
+                <div class="btn-wrap" :class="{activeFolio : type === 'projects'}" @click="postType('projects')">
 
-                <button @click="postType('labs')">
-                    Labs
-                </button>
+                    <site-button label="Projects"/>
+
+                </div>
+
+                <div class="btn-wrap" :class="{activeFolio : type === 'labs'}" @click="postType('labs')">
+
+                    <site-button label="Labs"/>
+
+                </div>
 
             </div>
 
@@ -43,10 +47,14 @@
 
 <script>
 import { mapState } from 'vuex'
+import SiteButton from '~/components/site/SiteButton.vue'
 
 export default {
     computed: {
         ...mapState(['labs']),
+    },
+    components: {
+        SiteButton
     },
     data() {
         // Using webpacks context to gather all files from a folder
@@ -111,6 +119,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~assets/sass/utilities/_variables.scss';
+
 .project-view {
     &-slider {
         position: relative;
@@ -135,19 +145,40 @@ export default {
             }
         }
         &-ctrl {
-            position: absolute;
-            width: 430px; height: 20px;
-            bottom: -20px;
-            padding: 10px 30px;
-            float: left;
-            text-align: right;
-            line-height: 0em;
-            transform-origin: 0 0;
-            transform: rotate(-90deg);
-            background-color: #fff;
+            height: 30px;
+            z-index: 1000;
+
+            @include query ($small-width) {
+                position: absolute;
+                width: 430px;
+                bottom: -30px;
+                padding: 15px 30px;
+                float: left;
+                text-align: right;
+                line-height: 0em;
+                transform-origin: 0 0;
+                transform: rotate(-90deg);
+                background-color: #fff;
+            }
+
+            @include query ($large-width) {
+                height: 60px;
+                bottom: -60px;
+                padding: 30px 30px;
+                transform: translateX(-15px) rotate(-90deg);
+            }
+
+            @include query ($xlarge-width) {
+                transform: translateX(-45px) rotate(-90deg);
+            }
+
+            span {
+                cursor: pointer;
+            }
         }
         img {
             height: 400px;
+            object-fit: cover;
         }
     }
     section {

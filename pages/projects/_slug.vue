@@ -1,6 +1,8 @@
 <template>
   <section class="post container small-width">
 
+    <nav-back>hi</nav-back>
+
     <div class="row">
 
       <div class="content">
@@ -37,12 +39,14 @@
 
 <script>
 import VueMarkdown from 'vue-markdown'
+import NavBack from '~/components/site/NavBack.vue'
 
 export default {
   layout: 'default',
   transition: 'fade',
   components: {
-    VueMarkdown
+    VueMarkdown,
+    NavBack
   },
   async asyncData({ params }) {
     // const postPromise = process.BROWSER_BUILD

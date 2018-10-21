@@ -1,38 +1,32 @@
 <template>
-  <div class="button">
-      <nuxt-link :to="`${href}`" exact>
-          <slot></slot>
-      </nuxt-link>
-  </div>
+  <button>
+    <h4>{{ label }}</h4>
+  </button>
 </template>
 
 <script>
 
 export default {
-  props: ['href']
+  props: ['label', 'href']
 }
 </script>
 
 <style lang="scss" scoped>
-.button {
-  a {
-    position: relative;
-    padding: 15px 0;
-    border-bottom: 2px solid #000;
-
-    &:after {
-      content: 'o';
-      position: absolute;
-      right: 0;
-    }
-  }
-}
-
-.nuxt-link-active {
-  opacity: 0.5;
+button {
+  width: 160px;
+  padding: 10px 0;
+  text-align: left;
+  border: none;
+  border-bottom: 3px solid #2b2b2b;
 
   &:after {
-    display: none;
+    content: '';
+    position: absolute;
+    width: 12px; height: 12px;
+    top: 40%;
+    right: 0;
+    background-image: url('~/assets/ui/arrow.svg');
+    background-repeat: no-repeat;
   }
 }
 </style>
