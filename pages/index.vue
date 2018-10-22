@@ -7,9 +7,7 @@
 
         <site-process></site-process>
 
-        <site-slider count="4">
-            hi
-        </site-slider>
+        <site-slider count="4"></site-slider>
 
         <section class="about large-width">
 
@@ -34,7 +32,7 @@
 
         </section>
 
-        about me slider!
+        <about-content></about-content>
 
     </div>
 </template>
@@ -48,6 +46,7 @@ import SiteSlider from '~/components/site/SiteSlider.vue'
 import SiteTitle from '~/components/site/SiteTitle.vue'
 import SiteButton from '~/components/site/SiteButton.vue'
 import SiteDivider from '~/components/site/SiteDivider.vue'
+import AboutContent from '~/components/site/AboutContent.vue'
 
 export default {
   layout: 'default',
@@ -60,7 +59,8 @@ export default {
     SiteSlider,
     SiteTitle,
     SiteButton,
-    SiteDivider
+    SiteDivider,
+    AboutContent
   }
 };
 </script>

@@ -19,7 +19,11 @@ export default {
     background-color: $black;
 
     &, .half {
-        width: calc(50% - 10px);
+        width: 100%;
+        
+        @include query ($small-width) {
+            width: calc(50% - 10px);
+        }
     }
 }
 </style>

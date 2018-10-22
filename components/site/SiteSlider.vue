@@ -9,8 +9,8 @@
             </div>
             <div class="slider-nav">
                 <div class="slider-nav-ctrl">
-                    <div class="slider-nav-ctrl-prev"></div>
-                    <div class="slider-nav-ctrl-next"></div>
+                    <div class="slider-nav-ctrl-prev" role="img" alt="previous"></div>
+                    <div class="slider-nav-ctrl-next" role="img" alt="next"></div>
                 </div>
                 <div class="slider-nav-prog"></div>
             </div>
@@ -27,10 +27,12 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~assets/sass/utilities/_variables.scss';
+
 .slider {
     &-view {
         display: grid;
-        grid-column-gap: 30px;
+        grid-column-gap: $spacing;
         grid-template-columns: repeat(auto-fill, minmax(calc(25% - 30px), 1fr));
         grid-auto-rows: 1fr;
 
@@ -52,7 +54,7 @@ export default {
     }
     &-nav {
         position: relative;
-        padding-top: 30px;
+        padding-top: $spacing;
 
         &-prog {
             position: relative;
@@ -63,14 +65,17 @@ export default {
                 content: '';
                 position: absolute;
                 width: 100%; height: 1px;
-                top: 1px; left: 0;
-                background-color: lighten(#2b2b2b, 50%);
+                left: 0;
+                background-color: lighten(#2b2b2b, 65%);
+                z-index: 99;
             }
             &:after {
                 content: '';
                 position: absolute;
-                width: 25%; height: 3px;
-                background-color: #2b2b2b;
+                width: 25%; height: 1px;
+                background-color: lighten(#2b2b2b, 0%);
+                box-shadow: 0px 0.1px 0.1px 0.2px #2b2b2b;
+                z-index: 100;
             }
         }
         &-ctrl {
@@ -81,7 +86,7 @@ export default {
 
             > div {
                 width: 12px; height: 12px;
-                margin-left: 15px;
+                margin-left: $spacing/2;
                 background-image: url('~/assets/ui/arrow.svg');
                 background-repeat: no-repeat;
             }

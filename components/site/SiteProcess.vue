@@ -2,7 +2,7 @@
   <section class="process large-width">
 
     <site-title headline="Trusting the Process">
-      lorem ipsum dolor, sit amet consectetur adipisicing elit.
+      seeing digital product development through, from design to development.
     </site-title>
 
     <div class="row">
@@ -10,11 +10,11 @@
       <div class="callout">
         <div class="callout-item">
           <h4>UX</h4>
-          <p>lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+          <p>research backed design to connect scope with user's needs.</p>
         </div>
         <div class="callout-item">
           <h4>Front-End</h4>
-          <p>lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+          <p>understanding and executing on design to deliver the right digital product.</p>
         </div>
       </div>
 

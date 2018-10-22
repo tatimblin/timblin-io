@@ -37,7 +37,11 @@ section {
     .callout, .button {
         @include grid-collapse;
         &-item, a {
-            @include grid-column(3);
+            @include grid-column(6);
+
+            @include query ($medium-width) {
+                @include grid-column(3);
+            }
         }
     }
 }
