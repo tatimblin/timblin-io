@@ -1,7 +1,9 @@
 <template>
-  <section class="post container small-width">
+<div class="post">
 
-    <nav-back>hi</nav-back>
+  <nav-back/>
+  
+  <section class="container small-width">
 
     <div class="row">
 
@@ -26,7 +28,7 @@
 
     <div class="row">
 
-      <div class="body content">
+      <div class="post-body content">
 
         <vue-markdown>{{ body }}</vue-markdown>
 
@@ -35,6 +37,7 @@
     </div>
 
   </section>
+</div>
 </template>
 
 <script>
@@ -62,7 +65,7 @@ export default {
 </script>
 
 <style lang="scss">
-.body {
+.post-body {
   h1 {
     margin: 1.125rem 0;
   }

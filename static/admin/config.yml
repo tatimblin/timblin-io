@@ -26,4 +26,20 @@ collections:
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Featured Image", name: "thumbnail", widget: "image", required: false}
       - {label: "Body", name: "body", widget: "markdown"}
+  - name: "process"
+    label: "Process"
+    folder: "content/process/items"
+    create: true
+    slug: "{{index}}-{{slug}}"
+    format: 'json'
+    fields:
+      - {label: "Index", name: "index", widget: "number"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - label: "Gallery"
+        name: "galleryImages"
+        widget: "list"
+        fields: 
+        - {label: Image, name: image, widget: image}
+        - {label: Caption, name: caption, widget: text}
 
