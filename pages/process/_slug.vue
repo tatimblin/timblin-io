@@ -2,18 +2,10 @@
 <div class="post">
 
   <nav-back/>
+
+  <process-list/>
   
   <section class="container small-width">
-
-    <div class="row">
-
-      <div class="content">
-
-        <img :src="thumbnail">
-
-      </div>
-
-    </div>
 
     <div class="row">
 
@@ -26,58 +18,22 @@
 
     </div>
 
-    <div class="row">
-
-      <div class="post-body content">
-
-        <vue-markdown>{{ body }}</vue-markdown>
-
-      </div>
-
-    </div>
-
   </section>
 </div>
 </template>
 
 <script>
-import { TweenMax } from 'gsap'
-
 import VueMarkdown from 'vue-markdown'
 import NavBack from '~/components/site/NavBack.vue'
+import ProcessList from '~/components/site/ProcessList.vue'
 
 export default {
   layout: 'default',
-  transition: {
-    mode: 'out-in',
-    css: false,
-    beforeEnter (el) {
-      TweenMax.set(el, {
-        transformPerspective: 600,
-        perspective: 300,
-        transformStyle: 'preserve-3d'
-      })
-    },
-    enter (el, done) {
-      TweenMax.to(el, 1, {
-        rotationY: 360,
-        transformOrigin: '50% 50%',
-        ease: Back.easeOut
-      })
-      done()
-    },
-    leave (el, done) {
-      TweenMax.to(el, 1, {
-        rotationY: 0,
-        transformOrigin: '50% 50%',
-        ease: Back.easeIn
-      })
-      done()
-    }
-  },
+  transition: 'fade',
   components: {
     VueMarkdown,
-    NavBack
+    NavBack,
+    ProcessList
   },
   async asyncData({ params }) {
     // const postPromise = process.BROWSER_BUILD
@@ -86,8 +42,8 @@ export default {
     //       require('~/content/blog/posts/' + params.slug + '.json')
     //     );
 
-    let post = await import('~/content/projects/posts/' + params.slug + '.json');
-    return post;
+    let item = await import('~/content/process/items/' + params.slug + '.json');
+    return item;
   }
 };
 </script>

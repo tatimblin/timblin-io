@@ -5,7 +5,7 @@
 
             <div class="nav-back">
 
-                <a href="/">timblin.io</a>
+                <nuxt-link to="/">timblin.io</nuxt-link>
 
             </div>
 
@@ -17,15 +17,6 @@
 <script>
 
 export default {
-    computed: {
-    
-    },
-    data() {
-        
-    },
-    methods: {
-        
-    }
 }
 </script>
 
@@ -34,13 +25,13 @@ export default {
 
 .nav-back {
     position: relative;
-    padding: 0 0 0 $spacing/2+8px;
+    padding: 2.25rem 0 0 $spacing/2+8px;
 
     &:before {
         content: '';
         position: absolute;
         width: 8px; height: 8px;
-        top: 0.5em; left: 0;
+        top: 2.75rem; left: 0;
         background-image: url('~/assets/ui/arrow.svg');
         background-repeat: no-repeat;
         transform: rotate(180deg) translateY(25%);

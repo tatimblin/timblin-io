@@ -33,7 +33,7 @@ export default {
 
 <style>
 .header {
-    margin-top: 6.875rem;
+    margin-top: 1.5rem;
 }
 </style>
 

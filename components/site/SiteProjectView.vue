@@ -28,7 +28,7 @@
                 </div>
 
                 <nuxt-link :to="post._path">
-                    <transition name="slide" mode="out-in">
+                    <transition :name="slide" mode="out-in">
                         <img :key="index" :src="post.thumbnail" alt="Project">
                     </transition>
                 </nuxt-link>
@@ -39,7 +39,7 @@
         <section class="small-width text-center">
 
             <h3>{{ post.title }}</h3>
-            <p>Cohere — 2018</p>
+            <p>Cohere — {{post.date | year}}</p>
 
         </section>
     </div>
@@ -69,8 +69,14 @@ export default {
             index: 0,
             projects,
             type: 'projects',
-            post: ''
+            post: '',
+            slide: 'slideLeft'
         };
+    },
+    filters: {
+        year: function (date) {
+            return date.substring(0, 4)
+        }
     },
     created() {
         this.post = this.projects[0]
@@ -99,12 +105,14 @@ export default {
                 } else {
                     i = i - 1
                 }
+                this.slide = 'slideLeft'
             } else {
                 if (i === l) {
                     i = 0
                 } else {
                     i++
                 }
+                this.slide = 'slideRight'
             }
             this.index = i
             
@@ -188,15 +196,15 @@ export default {
     }
 }
 
-.slide-enter-active, .slide-leave-active {
-    transform: translateX(0px);
+.slideLeft-enter-active, .slideLeft-leave-active, .slideRight-enter-active, .slideRight-leave-active {
+    //transform: translateX(0px);
     transition: all 0.5s;
 }
-.slide-enter {
+.slideLeft-enter, .slideRight-leave-to {
     transform: translateX(-100px);
     opacity: 0;
 }
-.slide-leave-to {
+.slideLeft-leave-to, .slideRight-enter {
     transform: translateX(100px);
     opacity: 0;
 }

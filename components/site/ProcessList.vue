@@ -1,14 +1,10 @@
 <template>
-  <div class="process">
-
-    <nav-back/>
-
     <section class="container large-width">
 
       <div class="process-item row" v-for="(item) in items" :key="item.index">
         <div class="process-item-title">
           <h2>{{ item.index }}</h2>
-          <h1>{{ item.title }}</h1>
+          <nuxt-link :to="item._path"><h1>{{ item.title }}</h1></nuxt-link>
         </div>
         <div class="process-item-desc">
           <p>{{ item.description }}</p>
@@ -16,31 +12,23 @@
       </div>
 
     </section>
-  </div>
 </template>
 
 <script>
-import NavBack from '~/components/site/NavBack.vue'
-
 export default {
-  layout: 'default',
-  transition: 'fade',
-  components: {
-    NavBack
-  },
-  data () {
-    // Using webpacks context to gather all files from a folder
-    const context = require.context('~/content/process/items/', false, /\.json$/);
+    data () {
+        // Using webpacks context to gather all files from a folder
+        const context = require.context('~/content/process/items/', false, /\.json$/);
 
-    const items = context.keys().map(key => ({
-        ...context(key),
-        _path: `/process/${key.replace('.json', '').replace('./', '')}`
-    }));
-    return {
-      items
+        const items = context.keys().map(key => ({
+            ...context(key),
+            _path: `/process/${key.replace('.json', '').replace('./', '')}`
+        }));
+        return {
+        items
+        }
     }
-  }
-};
+}
 </script>
 
 <style lang="scss">
@@ -49,7 +37,7 @@ export default {
 .process-item {
   display: flex;
   flex-direction: column;
-  align-items: baseline;
+  align-items: flex-start;
   margin-bottom: 0; //override .row global
   padding: $spacing/2 0;
   border-top: 2px solid $black;
@@ -92,3 +80,5 @@ export default {
   }
 }
 </style>
+
+

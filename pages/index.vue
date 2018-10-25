@@ -38,6 +38,8 @@
 </template>
 
 <script>
+import { TweenMax } from 'gsap'
+
 import AppLogo from '~/components/AppLogo.vue'
 import SiteHeader from '~/components/site/SiteHeader.vue'
 import SiteProjectView from '~/components/site/SiteProjectView.vue'
@@ -50,7 +52,33 @@ import AboutContent from '~/components/site/AboutContent.vue'
 
 export default {
   layout: 'default',
-  transition: 'fade',
+  transition: {
+    mode: 'out-in',
+    css: false,
+    beforeEnter (el) {
+      TweenMax.set(el, {
+        transformPerspective: 600,
+        perspective: 300,
+        transformStyle: 'preserve-3d'
+      })
+    },
+    enter (el, done) {
+      TweenMax.to(el, 1, {
+        rotationY: 10,
+        transformOrigin: '50% 50%',
+        ease: Back.easeOut
+      })
+      done()
+    },
+    leave (el, done) {
+      TweenMax.to(el, 1, {
+        rotationY: 0,
+        transformOrigin: '50% 50%',
+        ease: Back.easeIn
+      })
+      done()
+    }
+  },
   components: {
     AppLogo,
     SiteHeader,
