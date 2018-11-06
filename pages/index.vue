@@ -64,19 +64,19 @@ export default {
     },
     enter (el, done) {
       TweenMax.to(el, 1, {
-        rotationY: 10,
+        rotationY: 360,
         transformOrigin: '50% 50%',
-        ease: Back.easeOut
+        ease: Back.easeOut,
+        onComplete: done
       })
-      done()
     },
     leave (el, done) {
       TweenMax.to(el, 1, {
-        rotationY: 0,
+        rotationX: -360,
         transformOrigin: '50% 50%',
-        ease: Back.easeIn
+        ease: Back.easeIn,
+        onComplete: done
       })
-      done()
     }
   },
   components: {

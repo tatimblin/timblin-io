@@ -2,15 +2,18 @@
     <section class="slider large-width">
         <div class="row">
             <div class="slider-view">
-                <div class="slider-view-cell">1</div>
-                <div class="slider-view-cell">2</div>
-                <div class="slider-view-cell">3</div>
-                <div class="slider-view-cell">4</div>
+                <div 
+                    v-for="item in selectItems"
+                    :key="item.index"
+                    class="slider-view-cell"
+                >
+                    {{ item.title }}
+                </div>
             </div>
             <div class="slider-nav">
                 <div class="slider-nav-ctrl">
                     <div class="slider-nav-ctrl-prev" role="img" alt="previous"></div>
-                    <div class="slider-nav-ctrl-next" role="img" alt="next"></div>
+                    <div class="slider-nav-ctrl-next" role="img" alt="next" @click="slide()"></div>
                 </div>
                 <div class="slider-nav-prog"></div>
             </div>
@@ -23,6 +26,40 @@
 export default {
   components: {
   },
+  data () {
+    // Using webpacks context to gather all files from a folder
+    const context = require.context('~/content/process/items/', false, /\.json$/);
+
+    const items = context.keys().map(key => ({
+        ...context(key),
+        _path: `/process/${key.replace('.json', '').replace('./', '')}`
+    }));
+    return {
+      items,
+      start: 0,
+      end: 4,
+    }
+  },
+  methods: {
+      slide() {
+          if (this.start >= this.items.length - 4) {
+              this.start = 0
+          } else {
+              this.start = this.start + 4
+          }
+          if (this.end >= this.items.length) {
+              this.end = 4
+          } else {
+              this.end = this.end + 4
+          }
+          console.log0
+      }
+  },
+  computed: {
+      selectItems: function () {
+          return this.items.slice(this.start, this.end)
+      }
+  }
 }
 </script>
 
