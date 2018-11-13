@@ -1,29 +1,27 @@
 <template>
     <section class="slider large-width">
         <div class="row">
-            <div class="slider-view">
-                <transition-group 
-                    name="list" 
-                    tag="div"
-                    @enter="enter"
-                    @leave="leave"
-                >
-                <div 
-                    v-for="(slide, index) in slides[selectedGroup]"
-                    :key="index"
-                    class="slider-view-cell"
-                >
-                   {{slide}}
+            <transition 
+                name="list" 
+                tag="div"
+            >
+                <div class="slider-view">
+                    <div 
+                        v-for="(slide) in slides[selectedGroup]"
+                        :key="slide"
+                        class="slider-view-cell"
+                    >
+                        {{slide}}
+                    </div>
                 </div>
-                </transition-group>
-            </div>
+            </transition>
             <div class="slider-nav">
                 <div class="slider-nav-ctrl">
                     <div class="slider-nav-ctrl-prev" role="img" alt="previous" @click="currentSlide('prev')"></div>
                     <div class="slider-nav-ctrl-next" role="img" alt="next" @click="currentSlide('next')"></div>
                 </div>
                 <div class="slider-nav-prog">
-                    <div class="slider-nav-prog-bar" :style="{ width: timer + '%'}"></div>    
+                    <div class="slider-nav-prog-bar" :style="{ width: timer + '%'}"></div>
                 </div>
             </div>
         </div>
@@ -52,14 +50,16 @@ export default {
     }
   },
   created() {
+      // Group process items into groups of 4
       const count = 4;
       const titles = this.items.map(a => a.title);
       var newArray = [];
       while (titles.length > 0) {
         newArray.push(titles.splice(0, count)); 
       }
-      console.log(newArray);
       this.slides = newArray;
+
+      this.runTimer()
   },
   methods: {
       currentSlide(dir) {
@@ -68,29 +68,22 @@ export default {
               this.selected = 0;
           } else if (dir === 'next' ) {
               ++this.selected;
-              console.log('yes');
           } else if (dir === 'prev' && this.selected === 0) {
               this.selected = l - 1;
           } else if (dir === 'prev') {
               --this.selected;
           }
-          console.log(this.selected + ' | ' + l)
+
+          this.timer = 0;
       },
-      enter (el, done) {
-          TweenMax.fromTo(el, 3, {
-              x: '-200px',
-          },
-          {
-              x: '0',
-              onComplete: done,
-          });
-      },
-      leave (el, done) {
-          TweenMax.to(el, 3, {
-              x: '200px',
-              onComplete: done,
-          });
-      },
+      runTimer() {
+          this.count = setInterval(() => {
+              this.timer++
+              if (this.timer === 100) {
+                  this.currentSlide('next')
+              }
+          }, 50)
+      }
   },
   computed: {
       selectedGroup: function () {
@@ -115,7 +108,7 @@ export default {
 @import '~assets/sass/utilities/_variables.scss';
 
 .slider {
-    &-view div {
+    &-view {
         display: grid;
         grid-column-gap: $spacing;
         grid-template-columns: repeat(auto-fill, minmax(calc(25% - 30px), 1fr));
@@ -159,6 +152,7 @@ export default {
                 position: absolute;
                 height: 1px;
                 background-color: lighten(#2b2b2b, 0%);
+                transition: all 50ms $ease;
                 z-index: 100;
             }
         }

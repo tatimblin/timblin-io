@@ -23,9 +23,7 @@
 
             <section class="large-width">
 
-                <div class="project-view-slider-ctrl">
-                    <h6><span @click="changeSlide('prev')">prev</span> — <span @click="changeSlide('next')">next</span></h6>
-                </div>
+                <view-ctrl></view-ctrl>
 
                 <nuxt-link :to="post._path">
                     <transition :name="slide" mode="out-in">
@@ -46,15 +44,17 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import SiteButton from '~/components/site/SiteButton.vue'
+import { mapState } from 'vuex';
+import SiteButton from '~/components/site/SiteButton.vue';
+import ViewCtrl from '~/components/site/ViewCtrl.vue';
 
 export default {
     computed: {
         ...mapState(['labs']),
     },
     components: {
-        SiteButton
+        SiteButton,
+        ViewCtrl,
     },
     data() {
         // Using webpacks context to gather all files from a folder
@@ -89,37 +89,6 @@ export default {
                 this.post = this.projects[0]
             } else {
                 this.post = this.$store.state.labs[0]
-            }
-        },
-        changeSlide: function (dir) {
-            var i = this.index
-            if (this.type === 'projects') {
-                var l = this.projects.length - 1
-            } else {
-                var l = this.$store.state.labs.length - 1
-            }
-            
-            if (dir === 'prev') {
-                if (i === 0) {
-                    i = l
-                } else {
-                    i = i - 1
-                }
-                this.slide = 'slideLeft'
-            } else {
-                if (i === l) {
-                    i = 0
-                } else {
-                    i++
-                }
-                this.slide = 'slideRight'
-            }
-            this.index = i
-            
-            if (this.type === 'projects') {
-                this.post = this.projects[i]
-            } else {
-                this.post = this.$store.state.labs[i]
             }
         }
     }
