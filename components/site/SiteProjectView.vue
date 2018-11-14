@@ -23,7 +23,10 @@
 
             <section class="large-width">
 
-                <view-ctrl></view-ctrl>
+                <view-ctrl
+                    v-on:prev-slide="changeSlide('prev')"
+                    v-on:next-slide="changeSlide('next')"
+                ></view-ctrl>
 
                 <nuxt-link :to="post._path">
                     <transition :name="slide" mode="out-in">
@@ -90,7 +93,38 @@ export default {
             } else {
                 this.post = this.$store.state.labs[0]
             }
-        }
+        },
+        changeSlide: function (dir) {
+            var i = this.index
+            if (this.type === 'projects') {
+                var l = this.projects.length - 1
+            } else {
+                var l = this.$store.state.labs.length - 1
+            }
+            
+            if (dir === 'prev') {
+                if (i === 0) {
+                    i = l
+                } else {
+                    i = i - 1
+                }
+                this.slide = 'slideLeft'
+            } else {
+                if (i === l) {
+                    i = 0
+                } else {
+                    i++
+                }
+                this.slide = 'slideRight'
+            }
+            this.index = i
+            
+            if (this.type === 'projects') {
+                this.post = this.projects[i]
+            } else {
+                this.post = this.$store.state.labs[i]
+            }
+        },
     }
 }
 </script>
