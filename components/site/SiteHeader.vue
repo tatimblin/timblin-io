@@ -7,8 +7,8 @@
 
         <div class="row">
 
-            <h4>developing @ cohere.city/</h4>
-            <h4>now on github, codepen, and twitter</h4>
+            <h4>developing @ <a href="https://cohere.city/" target="_blank">cohere.city/</a></h4>
+            <h4>now on <a href="https://github.com/tatimblin/" target="_blank">github</a>, <a href="https://codepen.io/tatimblin/" target="_blank">codepen</a>, and <a href="https://twitter.com/TristanTimblin" target="_blank">twitter</a></h4>
 
         </div>
 

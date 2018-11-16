@@ -136,6 +136,7 @@ export default {
     &-slider {
         position: relative;
         text-align: center;
+        overflow: hidden;
 
         &:after {
             content: '';
@@ -201,7 +202,7 @@ export default {
 
 .slideLeft-enter-active, .slideLeft-leave-active, .slideRight-enter-active, .slideRight-leave-active {
     //transform: translateX(0px);
-    transition: all 0.5s;
+    transition: all 0.6s;
 }
 .slideLeft-enter, .slideRight-leave-to {
     transform: translateX(-100px);
@@ -210,6 +211,15 @@ export default {
 .slideLeft-leave-to, .slideRight-enter {
     transform: translateX(100px);
     opacity: 0;
+}
+
+.slideLeft-enter {
+    transform: translateX(-150px) scale(0.8, 1.5);
+    transition: all 0.45s ease-in;
+}
+.slideRight-enter {
+    transform: translateX(150px) scale(0.8, 1.5);
+    transition: all 0.45s ease-in;
 }
 
 </style>

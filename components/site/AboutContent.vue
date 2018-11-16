@@ -8,7 +8,7 @@
                     v-on:prev-slide="changeSlide('prev')"
                     v-on:next-slide="changeSlide('next')"
                 ></view-ctrl>
-                {{slide}}
+                {{slide}}{{index}}
             </div>
             <div class="about-content-slider-txt">
                 <h5>0{{index + 1}}/0{{slides.length}}</h5>
