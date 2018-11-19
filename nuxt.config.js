@@ -52,6 +52,7 @@ module.exports = {
       }
     ]
   },
+  plugins: ['~/plugins/vue-scrollmonitor'],
   /*
   ** Customize the progress bar color
   */

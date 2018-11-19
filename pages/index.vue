@@ -1,39 +1,36 @@
 <template>
     <div class="site">
+      <scroll-container @change="updateState">
         
-        <site-header></site-header>
+        <scroll-item @change="onChange">
+          <div :class="`${state[0] && state[0].isFullyInViewport}`">hi</div>
+          <site-header></site-header>
+          <site-project-view></site-project-view>
+        </scroll-item>
 
-        <site-project-view></site-project-view>
+          <site-process></site-process>
+          <site-slider count="4"></site-slider>
 
-        <site-process></site-process>
+          <section class="about large-width">
+              <site-title headline="A Creator" subline="hello, now you know me">
+              </site-title>
 
-        <site-slider count="4"></site-slider>
+              <div class="row">
+                  <div class="callout">
+                      <div class="callout-item">
+                          <h4>Tysons, VA</h4>
+                      </div>
+                      <div class="callout-item">
+                          <h4>Philadelphia, PA</h4>
+                      </div>
+                  </div>
+              </div>
+              <site-divider half="true"/>
+          </section>
 
-        <section class="about large-width">
+          <about-content></about-content>
 
-            <site-title headline="A Creator">
-                hello, now you know me
-            </site-title>
-
-            <div class="row">
-
-                <div class="callout">
-                    <div class="callout-item">
-                        <h4>Tysons, VA</h4>
-                    </div>
-                    <div class="callout-item">
-                        <h4>Philadelphia, PA</h4>
-                    </div>
-                </div>
-
-            </div>
-
-            <site-divider half="true"/>
-
-        </section>
-
-        <about-content></about-content>
-
+      </scroll-container>
     </div>
 </template>
 
@@ -89,7 +86,23 @@ export default {
     SiteButton,
     SiteDivider,
     AboutContent
-  }
+  },
+  data: () => ({
+    state: {},
+  }),
+  methods: {
+    updateState (state) {
+      this.state = state
+    },
+    onChange (state) {
+      console.log('change')
+    },
+  },
+  computed: {
+    itemsInViewport() {
+      return _.pickBy(this.state, ({ isInViewport }) => isInViewport)
+    }
+  },
 };
 </script>
 

@@ -1,9 +1,7 @@
 <template>
     <section class="header large-width">
 
-        <site-title headline="Tristan Timblin">
-            an interaction designer using motion, to tell engaging stories for brands.
-        </site-title> 
+        <site-title headline="Tristan Timblin" subline="an interaction designer using motion, to tell engaging stories for brands."></site-title> 
 
         <div class="row">
 

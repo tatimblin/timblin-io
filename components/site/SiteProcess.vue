@@ -1,9 +1,7 @@
 <template>
   <section class="process large-width">
 
-    <site-title headline="Trusting the Process">
-      seeing digital product development through, from design to development.
-    </site-title>
+    <site-title headline="Trusting the Process" subline="seeing digital product development through, from design to development."></site-title>
 
     <div class="row">
 

@@ -19,7 +19,8 @@
     "hoek": "^5.0.3",
     "nuxt": "^1.0.0",
     "nuxt-sass-resources-loader": "^2.0.5",
-    "vue-markdown": "^2.2.4"
+    "vue-markdown": "^2.2.4",
+    "vue-scrollmonitor": "^0.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
