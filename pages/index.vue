@@ -3,15 +3,21 @@
       <scroll-container @change="updateState">
         
         <scroll-item @change="onChange">
-          <div :class="`${state[0] && state[0].isFullyInViewport}`">hi</div>
-          <site-header></site-header>
-          <site-project-view></site-project-view>
+          <div :class="state[0] && state[0].isFullyInViewport">
+            <site-header></site-header>
+            <site-project-view></site-project-view>
+          </div>
         </scroll-item>
 
-          <site-process></site-process>
-          <site-slider count="4"></site-slider>
+        <scroll-item @change="onChange">
+          <div :class="state[1] && state[1].isFullyInViewport">
+            <site-process></site-process>
+            <site-slider count="4"></site-slider>
+          </div>
+        </scroll-item>
 
-          <section class="about large-width">
+        <scroll-item @change="onChange">
+          <section class="about large-width" :class="state[2] && state[2].isFullyInViewport">
               <site-title headline="A Creator" subline="hello, now you know me">
               </site-title>
 
@@ -27,6 +33,7 @@
               </div>
               <site-divider half="true"/>
           </section>
+        </scroll-item>
 
           <about-content></about-content>
 
