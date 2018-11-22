@@ -1,18 +1,16 @@
 <template>
   <div class="app">
-    <labs-ui></labs-ui>
     <nuxt/>
+    <app-footer></app-footer>
   </div>
 </template>
 
 <script>
-import LabsUi from '~/components/labs/LabsUi.vue'
 import AppFooter from '~/components/AppFooter.vue';
 
 export default {
   components: {
-    LabsUi,
-    AppFooter,
+    AppFooter
   },
 }
 </script>

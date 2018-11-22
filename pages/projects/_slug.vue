@@ -47,7 +47,7 @@ import VueMarkdown from 'vue-markdown'
 import NavBack from '~/components/site/NavBack.vue'
 
 export default {
-  layout: 'default',
+  layout: 'site',
   transition: {
     mode: 'out-in',
     css: false,

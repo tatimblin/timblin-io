@@ -55,7 +55,7 @@ import SiteDivider from '~/components/site/SiteDivider.vue'
 import AboutContent from '~/components/site/AboutContent.vue'
 
 export default {
-  layout: 'default',
+  layout: 'site',
   transition: {
     mode: 'out-in',
     css: false,

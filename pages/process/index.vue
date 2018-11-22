@@ -13,7 +13,7 @@ import NavBack from '~/components/site/NavBack.vue'
 import ProcessList from '~/components/site/ProcessList.vue'
 
 export default {
-  layout: 'default',
+  layout: 'site',
   transition: 'fade',
   components: {
     NavBack,
