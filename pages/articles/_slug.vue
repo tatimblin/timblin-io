@@ -1,18 +1,21 @@
 <template>
-  <div class="app">
-    <labs-ui></labs-ui>
-    <nuxt/>
-  </div>
+<div class="post">
+  <h1>{{title}}</h1>
+  <p>{{body}}</p>
+
+</div>
 </template>
 
 <script>
-import LabsUi from '~/components/labs/LabsUi.vue'
-import AppFooter from '~/components/AppFooter.vue';
+import { TweenMax } from 'gsap'
+
+import VueMarkdown from 'vue-markdown'
+import NavBack from '~/components/site/NavBack.vue'
 
 export default {
+  layout: 'default',
   components: {
-    LabsUi,
-    AppFooter,
+    VueMarkdown,
   },
   async asyncData({ params }) {
     // const postPromise = process.BROWSER_BUILD
@@ -24,9 +27,21 @@ export default {
     let labs = await import('~/content/labs/posts/2018-02-13-' + params.slug + '.json');
     return labs;
   },
-}
+};
 </script>
 
 <style lang="scss">
-
+.post-body {
+  h1 {
+    margin: 1.125rem 0;
+  }
+  p {
+    margin-bottom: 1.125rem;
+  }
+  img {
+    width: calc(100% - 60px);
+    padding: 1.125rem 0;
+    transform: translateX(60px);
+  }
+}
 </style>

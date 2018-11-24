@@ -1,11 +1,32 @@
 <template>
     <div class="labsnav">
         <div class="labsnav__nav">
-            <div>prev</div>
-            <div>next</div>
+            <div>
+                <nuxt-link :to="nav.prev">
+                    prev
+                </nuxt-link>
+            </div>
+            <div>
+                <nav-link :to="nav.next">
+                    next
+                </nav-link>
+            </div>
         </div>
         <div class="labsnav__title">
-            title
+            {{title}}
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    props: ['title', 'nav'],
+}
+</script>
+
+
+<style scoped lang="scss">
+.labsnav {
+    display: flex;
+}
+</style>
