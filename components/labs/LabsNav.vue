@@ -7,9 +7,9 @@
                 </nuxt-link>
             </div>
             <div>
-                <nav-link :to="nav.next">
+                <nuxt-link :to="nav.next">
                     next
-                </nav-link>
+                </nuxt-link>
             </div>
         </div>
         <div class="labsnav__title">

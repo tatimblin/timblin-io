@@ -12,32 +12,34 @@ const createStore = () => {
       return {
         page: 'index',
         labs,
-        indexedLab: 0,
+        indexedLab: 1,
       }
     },
     getters: {
       labs: state => state.labs,
 
+      thisLab: state => state.labs[state.indexedLab],
+
       nav: state => {
-        let i = state.indexedLab
-        let l = state.labs.length
-        let nextIndex = i + 1
-        let prevIndex = i - 1
+        let i = state.indexedLab;
+        let l = state.labs.length;
+        let nextIndex = i + 1;
+        let prevIndex = i - 1;
 
         if (i >= l - 1) {
-            nextIndex = 0
+            nextIndex = 0;
         }
         if (i === 0) {
-            prevIndex = l - 1
+            prevIndex = l - 1;
         }
-        //console.log('INDEX -> next: ' + nextIndex + ', prev: ' + prevIndex)
+        //console.log('INDEX -> next: ' + nextIndex + ', prev: ' + prevIndex);
 
-        let next = state.labs[1]._path
-        let prev = state.labs[0]._path
-        console.log('PATHS -> next: ' + next + ', prev: ' + prev)
+        let next = state.labs[nextIndex]._path;
+        let prev = state.labs[0]._path;
+        console.log('PATHS -> next: ' + next + ', prev: ' + prev);
         return {
             prev,
-            next
+            next,
         }
       },
     },
@@ -47,7 +49,7 @@ const createStore = () => {
       },
       updateIndex (state, pageName) {
           state.indexedLab = state.labs.findIndex(x => x.path === pageName)
-          console.log('I am here' + state.indexedLab)
+          console.log('I am here ' + pageName + ', ' + state.labs[0]._path)
       },
     }
   })
