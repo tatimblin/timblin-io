@@ -1,7 +1,7 @@
 <template>
 <div class="post">
   <h1>{{title}}</h1>
-  <p>{{body}}</p>
+  <vue-markdown>{{body}}</vue-markdown>
 
 </div>
 </template>
@@ -24,7 +24,7 @@ export default {
     //       require('~/content/blog/posts/' + params.slug + '.json')
     //     );
 
-    let labs = await import('~/content/labs/posts/2018-02-13-' + params.slug + '.json');
+    let labs = await import('~/content/labs/posts/' + params.slug + '.json');
     return labs;
   },
 };

@@ -16,7 +16,7 @@ export default {
         LabsMode,
     },
     computed: {
-        ...mapGetters(['labs', 'nav']),
+        ...mapGetters(['labs', 'nav', 'thisLab']),
     },
     data() {
         return {

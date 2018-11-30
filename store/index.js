@@ -7,7 +7,7 @@ const createStore = () => {
       const labs = context.keys().map(key => ({
         ...context(key),
         _path: `/labs/${key.substring(13).replace('.json', '').replace('./', '')}`,
-        _pathArticles: `/articles/${key.substring(13).replace('.json', '').replace('./', '')}`
+        _pathArticles: `/articles/${key.replace('.json', '')}`
       }));
       return {
         page: 'index',
@@ -34,7 +34,7 @@ const createStore = () => {
         }
         //console.log('INDEX -> next: ' + nextIndex + ', prev: ' + prevIndex);
 
-        let next = state.labs[nextIndex]._path;
+        let next = state.labs[0]._path;
         let prev = state.labs[0]._path;
         console.log('PATHS -> next: ' + next + ', prev: ' + prev);
         return {
@@ -49,7 +49,7 @@ const createStore = () => {
       },
       updateIndex (state, pageName) {
           state.indexedLab = state.labs.findIndex(x => x.path === pageName)
-          console.log('I am here ' + pageName + ', ' + state.labs[0]._path)
+          //console.log('I am here ' + pageName.replace("-","") + ', ' + state.labs[0]._path.replace("/",""))
       },
     }
   })
