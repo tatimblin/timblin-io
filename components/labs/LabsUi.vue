@@ -1,7 +1,7 @@
 <template>
     <div class="labsui">
         <labs-nav :title="labs[0].title" :nav="nav"></labs-nav>
-        <labs-mode :labUrl="labs[0]._path" :articleUrl="labs[0]._pathArticles"></labs-mode>
+        <labs-mode :url="thisLab._path"></labs-mode>
     </div>
 </template>
 

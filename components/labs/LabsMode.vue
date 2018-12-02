@@ -1,12 +1,12 @@
 <template>
     <div class="labsmode">
         <div class="labsmode__item">
-            <nuxt-link :to="articleUrl">
+            <nuxt-link :to="`/articles/${url}`">
                 Article
             </nuxt-link>
         </div>
         <div class="labsmode__item">
-            <nuxt-link :to="labUrl">
+            <nuxt-link :to="`/labs/${url}`">
                 Lab
             </nuxt-link>
         </div>
@@ -20,7 +20,7 @@
 
 <script>
 export default {
-    props: ['labUrl', 'articleUrl'],
+    props: ['url'],
 }
 </script>
 
