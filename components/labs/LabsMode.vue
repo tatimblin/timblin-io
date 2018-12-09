@@ -1,17 +1,17 @@
 <template>
     <div class="labsmode">
         <div class="labsmode__item">
-            <nuxt-link :to="`/articles${$route.path}`">
+            <nuxt-link :to="`/articles/${url}`">
                 Article
             </nuxt-link>
         </div>
         <div class="labsmode__item">
-            <nuxt-link :to="`/labs${$route.path}`">
+            <nuxt-link :to="`/labs/${url}`">
                 Lab
             </nuxt-link>
         </div>
         <div class="labsmode__item">
-            <a :href="`https://github.com/tatimblin/labs/blob/master/pages${$route.path}.vue`" target="_blank">
+            <a :href="`https://github.com/tatimblin/timblin-io/blob/master/pages${$route.path}.vue`" target="_blank">
                 Github
             </a>
         </div>

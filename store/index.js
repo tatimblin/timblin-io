@@ -51,7 +51,8 @@ const createStore = () => {
       },
       updateIndex (state, pageName) {
         // match the current route with array index to set 'indexedLab'
-        let url = pageName.replace("labs-","");
+        let url = pageName.substring(pageName.lastIndexOf("/") + 1);
+        console.log('url: ' + url);
         state.indexedLab = state.labs.findIndex(x => x._path === url);
       },
     }
