@@ -1,7 +1,7 @@
 <template>
 <div class="post">
-  <h1>{{title}}</h1>
-  <vue-markdown>{{body}}</vue-markdown>
+  <h1>title</h1>
+  <vue-markdown>body</vue-markdown>
 
 </div>
 </template>
@@ -17,16 +17,7 @@ export default {
   components: {
     VueMarkdown,
   },
-  async asyncData({ params }) {
-    // const postPromise = process.BROWSER_BUILD
-    //   ? import('~/content/blog/posts/' + params.slug + '.json')
-    //   : Promise.resolve(
-    //       require('~/content/blog/posts/' + params.slug + '.json')
-    //     );
-
-    let labs = await import('~/content/labs/posts/' + params.slug + '.json');
-    return labs;
-  },
+  
 };
 </script>
 

@@ -1,12 +1,12 @@
 <template>
     <div class="labsmode">
         <div class="labsmode__item">
-            <nuxt-link :to="`/articles/${url}`">
+            <nuxt-link :to="`/articles${$route.path}`">
                 Article
             </nuxt-link>
         </div>
         <div class="labsmode__item">
-            <nuxt-link :to="`/labs/${url}`">
+            <nuxt-link :to="`/labs${$route.path}`">
                 Lab
             </nuxt-link>
         </div>

@@ -1,6 +1,6 @@
 <template>
     <div class="labsui">
-        <labs-nav :title="labs[0].title" :nav="nav"></labs-nav>
+        <labs-nav :title="thisLab.title" :nav="nav"></labs-nav>
         <labs-mode :url="thisLab._path"></labs-mode>
     </div>
 </template>

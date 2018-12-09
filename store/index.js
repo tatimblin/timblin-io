@@ -6,8 +6,11 @@ const createStore = () => {
       const context = require.context('~/content/labs/posts/', false, /\.json$/);
       const labs = context.keys().map(key => ({
         ...context(key),
-        _path: `${key.substring(13).replace('.json', '').replace('./', '')}`,
-      }));
+        _path: `${key.replace('.json', '').replace('./', '')}`,
+      })).sort(function(a, b) {
+        var dateA = new Date(a.date), dateB = new Date(b.date);
+        return dateA - dateB;
+      });;
       return {
         page: 'index',
         labs,
