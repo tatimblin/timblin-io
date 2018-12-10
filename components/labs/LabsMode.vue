@@ -26,8 +26,14 @@ export default {
 
 
 <style scoped lang="scss">
+@import '~assets/sass/utilities/_variables.scss';
+
 .labsmode {
     display: flex;
     justify-content: space-between;
+
+    &__item {
+        padding: 5px $spacing/2;
+    }
 }
 </style>

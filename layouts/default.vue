@@ -1,7 +1,20 @@
 <template>
-  <div class="app">
+  <div class="app" :class="{'show-ui' : showUi, 'article' : isArticle }">
+
+    <div class="app__toggle" @click="toggleUi()">
+        Close
+    </div>
+
     <labs-ui></labs-ui>
-    <nuxt/>
+
+    <div class="app__content">
+        <nuxt/>
+    </div>
+
+    <footer>
+      <nuxt-link to="/">timblin.io</nuxt-link>
+    </footer>
+
   </div>
 </template>
 
@@ -14,19 +27,81 @@ export default {
     LabsUi,
     AppFooter,
   },
-  async asyncData({ params }) {
-    // const postPromise = process.BROWSER_BUILD
-    //   ? import('~/content/blog/posts/' + params.slug + '.json')
-    //   : Promise.resolve(
-    //       require('~/content/blog/posts/' + params.slug + '.json')
-    //     );
-
-    let labs = await import('~/content/labs/posts/2018-02-13-' + params.slug + '.json');
-    return labs;
+  data() {
+    return {
+      showUi: true,
+      isArticle: true,
+    };
+  },
+  methods: {
+    toggleUi() {
+      this.showUi = !this.showUi;
+    },
   },
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+@import '~assets/sass/utilities/_variables.scss';
+$app-bg: #ededed;
 
+.app {
+  background-color: $app-bg;
+
+  &__toggle {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99999;
+  }
+  .labsui {
+    position: fixed;
+    width: 100%;
+    top: 0; 
+    background-color: $app-bg;
+    transform: translateY(-100%);
+    transition: all 900ms 150ms $ease;
+    z-index: 99998;
+  }
+
+  &__content { // Generic stying to always be present on labs wrapper
+    max-width: 100%;
+    margin: 0 auto;
+    padding-top: 0px;
+    transition: all 900ms 150ms $ease;
+
+    &__wrapper {
+      margin: 0;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 30px 60px 0px;
+      transition: all 900ms 150ms $ease;
+      overflow: hidden;
+    }
+  }
+
+  footer {
+    padding: $spacing/2 0;
+    text-align: center;
+    transition: all 900ms 150ms $ease;
+  }
+
+  &.show-ui { // Specialized styling for when UI is present
+
+    .labsui {
+      transform: translateY(0%);
+    }
+
+    .app__content {
+      max-width: $large-width;
+      padding-top: 66px; // Height of ui
+      > section, > div {
+        margin: 0 $spacing/2;
+        border-radius: 15px;
+      }
+    }
+
+    footer {
+      padding: $spacing 0;
+    }
+  }
+}
 </style>

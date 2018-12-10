@@ -1,13 +1,14 @@
 <template>
 <div class="post">
-  <h1>{{title}}</h1>
-  <vue-markdown>{{body}}</vue-markdown>
-
+  <div class="post__content">
+    <h1>{{title}}</h1>
+    <vue-markdown>{{body}}</vue-markdown>
+  </div>
 </div>
 </template>
 
 <script>
-import { TweenMax } from 'gsap'
+import { TweenMax, Back } from 'gsap'
 
 import VueMarkdown from 'vue-markdown'
 import NavBack from '~/components/site/NavBack.vue'
@@ -31,17 +32,16 @@ export default {
 </script>
 
 <style lang="scss">
-.post-body {
-  h1 {
-    margin: 1.125rem 0;
-  }
-  p {
-    margin-bottom: 1.125rem;
-  }
-  img {
-    width: calc(100% - 60px);
-    padding: 1.125rem 0;
-    transform: translateX(60px);
+@import '~assets/sass/utilities/_variables.scss';
+
+.post {
+  padding: 0 $spacing/2;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  &__content {
+    max-width: $small-width;
+    margin: $spacing*2 auto;
   }
 }
 </style>

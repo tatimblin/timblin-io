@@ -1,7 +1,9 @@
 <template>
     <div class="labsui">
-        <labs-nav :title="thisLab.title" :nav="nav"></labs-nav>
-        <labs-mode :url="thisLab._path"></labs-mode>
+        <div class="labsui__nav">
+            <labs-nav :title="thisLab.title" :nav="nav"></labs-nav>
+            <labs-mode :url="thisLab._path"></labs-mode>
+        </div>
     </div>
 </template>
 
@@ -18,10 +20,21 @@ export default {
     computed: {
         ...mapGetters(['labs', 'nav', 'thisLab']),
     },
-    data() {
-        return {
-            //labs: this.$store.state.labs[0].path,
-        }
+};
+</script>
+
+<style lang="scss" scoped>
+@import '~assets/sass/utilities/_variables.scss';
+
+.labsui__nav {
+    max-width: $large-width;
+    margin: 0 auto;
+    padding: $spacing/2 0;
+
+    @include query ($medium-width) {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
     }
 }
-</script>
+</style>

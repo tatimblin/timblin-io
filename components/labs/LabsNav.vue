@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="labsnav__title">
-            {{title}}
+            <h4>{{title}}</h4>
         </div>
     </div>
 </template>
@@ -26,7 +26,22 @@ export default {
 
 
 <style scoped lang="scss">
+@import '~assets/sass/utilities/_variables.scss';
+
 .labsnav {
     display: flex;
+    align-items: baseline;
+
+    &__nav {
+        display: flex;
+        border-right: 1px solid $black;
+
+        div {
+            padding: 5px $spacing/2;
+        }
+    }
+    &__title {
+        padding: 0 $spacing/2;
+    }
 }
 </style>

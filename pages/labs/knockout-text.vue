@@ -19,8 +19,7 @@ export default {
 
 <style scoped lang="scss">
 .page {
-    h1 {
-        background-color: orange;
-    }
+    height: 110vh;
+    background-color: purple;
 }
 </style>
