@@ -5,9 +5,9 @@
         Close
     </div>
 
-    <labs-ui></labs-ui>
+    <labs-ui ref="labsUi"></labs-ui>
 
-    <div class="app__content">
+    <div class="app__content" :style="{ paddingTop: uiHeight + 'px' }">
         <nuxt/>
     </div>
 
@@ -30,13 +30,25 @@ export default {
   data() {
     return {
       showUi: true,
+      uiHeight: '65px',
       isArticle: true,
     };
+  },
+  mounted() {
+    this.$nextTick(this.setUiHeight());
   },
   methods: {
     toggleUi() {
       this.showUi = !this.showUi;
+      this.setUiHeight()
     },
+    setUiHeight() {
+      if(this.showUi == true) {
+        this.uiHeight = this.$refs.labsUi.$el.clientHeight;
+      } else {
+        this.uiHeight = 0;
+      }
+    }
   },
 }
 </script>
@@ -70,7 +82,7 @@ $app-bg: #ededed;
     padding-top: 0px;
     transition: all 900ms 150ms $ease;
 
-    &__wrapper {
+    > section, > div {
       margin: 0;
       box-shadow: rgba(0, 0, 0, 0.2) 0px 30px 60px 0px;
       transition: all 900ms 150ms $ease;
@@ -92,7 +104,6 @@ $app-bg: #ededed;
 
     .app__content {
       max-width: $large-width;
-      padding-top: 66px; // Height of ui
       > section, > div {
         margin: 0 $spacing/2;
         border-radius: 15px;
