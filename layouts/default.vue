@@ -1,9 +1,9 @@
 <template>
-  <div class="app" :class="{'show-ui' : showUi, 'article' : isArticle }">
+  <div class="app" :class="{ 'show-ui' : showUi }">
 
-    <div class="app__toggle" @click="toggleUi()">
+    <button class="app__toggle" @click="toggleUi()">
         Close
-    </div>
+    </button>
 
     <labs-ui ref="labsUi"></labs-ui>
 
@@ -30,8 +30,7 @@ export default {
   data() {
     return {
       showUi: true,
-      uiHeight: '65px',
-      isArticle: true,
+      uiHeight: 65,
     };
   },
   mounted() {
