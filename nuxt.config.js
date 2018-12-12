@@ -61,10 +61,6 @@ module.exports = {
     base: '',
     middleware: 'pages'
   },
-  layoutTransition: {
-    name: 'layout',
-    mode: 'out-in',
-  },
   /*
   ** Route config for pre-rendering
   */

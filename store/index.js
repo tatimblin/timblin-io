@@ -10,7 +10,7 @@ const createStore = () => {
       })).sort(function(a, b) {
         var dateA = new Date(a.date), dateB = new Date(b.date);
         return dateA - dateB;
-      });;
+      });
       return {
         page: 'index',
         labs,
