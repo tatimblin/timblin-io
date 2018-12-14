@@ -83,7 +83,6 @@ $app-bg: #ededed;
 
     > section, > div {
       margin: 0;
-      box-shadow: rgba(0, 0, 0, 0.2) 0px 30px 60px 0px;
       transition: all 900ms 150ms $ease;
       overflow: hidden;
     }
@@ -106,6 +105,7 @@ $app-bg: #ededed;
       > section, > div {
         margin: 0 $spacing/2;
         border-radius: 15px;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 30px 60px 0px;
       }
     }
 

@@ -1,14 +1,18 @@
 <template>
 <div class="post">
   <div class="post__content">
-    <h1>{{title}}</h1>
+    <div class="post__content--title">
+      <h1>{{title}}</h1>
+      <p>{{date | moment}}</p>
+    </div>
     <vue-markdown>{{body}}</vue-markdown>
   </div>
 </div>
 </template>
 
 <script>
-import { TweenMax, Back } from 'gsap'
+import { TweenMax, Back } from 'gsap';
+import moment from 'moment';
 
 import VueMarkdown from 'vue-markdown'
 import NavBack from '~/components/site/NavBack.vue'
@@ -28,6 +32,16 @@ export default {
     let labs = await import('~/content/labs/posts/' + params.slug + '.json');
     return labs;
   },
+  data() {
+    return {
+      timeAgo:'',
+    };
+  },
+  filters: {
+    moment: function (date) {
+      return moment(date).startOf('day').fromNow();
+    }
+  },
 };
 </script>
 
@@ -41,7 +55,20 @@ export default {
 
   &__content {
     max-width: $small-width;
-    margin: $spacing*2 auto;
+    margin: $spacing auto 0 auto;
+
+    h1, h2, h3 {
+      margin: $spacing 0 $spacing/2 0;
+    }
+    img {
+      width: 100%;
+      padding: $spacing 0;
+    }
+    &--title {
+      margin-bottom: $spacing*1;
+      padding: $spacing 0 $spacing*2 0;
+      border-bottom: 1px solid $black;
+    }
   }
 }
 </style>

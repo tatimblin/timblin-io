@@ -27,19 +27,19 @@ h6 {
 }
 
 h1 {
-    @include responsive-font-size(type-scale(size4));
+    @include responsive-font-size(type-scale(size5));
     hyphens: auto;
 }
 
 h2 {
-    @include responsive-font-size(type-scale(size4));
+    @include responsive-font-size(type-scale(size3));
     font-family: $font-family;
     hyphens: auto;
-    color: $light-gray;
+    //color: $light-gray;
 }
 
 h3 {
-    @include responsive-font-size(type-scale(size3));
+    @include responsive-font-size(type-scale(size2));
 }
 
 h4 {

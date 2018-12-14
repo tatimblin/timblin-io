@@ -14,9 +14,11 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "@nuxtjs/moment": "^1.1.0",
     "ajv": "^6.5.2",
     "gsap": "^2.0.2",
     "hoek": "^5.0.3",
+    "moment": "^2.23.0",
     "nuxt": "^1.0.0",
     "nuxt-sass-resources-loader": "^2.0.5",
     "vue-markdown": "^2.2.4",
