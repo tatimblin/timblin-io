@@ -2,12 +2,12 @@
     <div class="labsnav">
         <div class="labsnav__nav">
             <div>
-                <nuxt-link :to="nav.prev">
+                <nuxt-link :to="`/labs/${nav.prev}`">
                     prev
                 </nuxt-link>
             </div>
             <div>
-                <nuxt-link :to="nav.next">
+                <nuxt-link :to="`/labs/${nav.next}`">
                     next
                 </nuxt-link>
             </div>
