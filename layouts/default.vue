@@ -7,7 +7,7 @@
 
     <labs-ui ref="labsUi"></labs-ui>
 
-    <div class="app__content" :style="{ paddingTop: uiHeight + 'px' }">
+    <div class="app__content" :style="stylesUi">
         <nuxt/>
     </div>
 
@@ -30,7 +30,11 @@ export default {
   data() {
     return {
       showUi: true,
-      uiHeight: 65,
+      stylesUi: {
+        marginTop: '65px',
+        boxShadow: 'rgba(0, 0, 0, 0.2) 0px 30px 60px 0px',
+        borderRadius: '15px'
+      },
     };
   },
   mounted() {
@@ -38,14 +42,22 @@ export default {
   },
   methods: {
     toggleUi() {
+      const css = this.stylesUi;
       this.showUi = !this.showUi;
+      if (this.showUi) {
+        css.boxShadow = 'rgba(0, 0, 0, 0.2) 0px 30px 60px 0px';
+        css.borderRadius = '15px';
+      } else {
+        css.boxShadow = 'none';
+        css.borderRadius = '0px';
+      }
       this.setUiHeight()
     },
     setUiHeight() {
       if(this.showUi == true) {
-        this.uiHeight = this.$refs.labsUi.$el.clientHeight;
+        this.stylesUi.marginTop = this.$refs.labsUi.$el.clientHeight + 'px';
       } else {
-        this.uiHeight = 0;
+        this.stylesUi.marginTop = 0;
       }
     }
   },
@@ -61,7 +73,7 @@ $app-bg: #ededed;
 
   &__toggle {
     position: fixed;
-    left: 50%;
+    top: 0; left: 50%;
     transform: translateX(-50%);
     z-index: 99999;
   }
@@ -78,14 +90,9 @@ $app-bg: #ededed;
   &__content { // Generic stying to always be present on labs wrapper
     max-width: 100%;
     margin: 0 auto;
-    padding-top: 0px;
+    padding-top: -15px;
     transition: all 900ms 150ms $ease;
-
-    > section, > div {
-      margin: 0;
-      transition: all 900ms 150ms $ease;
-      overflow: hidden;
-    }
+    overflow: hidden !important;
   }
 
   footer {
@@ -102,11 +109,6 @@ $app-bg: #ededed;
 
     .app__content {
       max-width: $large-width;
-      > section, > div {
-        margin: 0 $spacing/2;
-        border-radius: 15px;
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 30px 60px 0px;
-      }
     }
 
     footer {

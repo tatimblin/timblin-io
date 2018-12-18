@@ -1,5 +1,5 @@
 <template>
-  <section class="page">
+  <section class="page page-leave-active">
     <div>
       <h1>This is saint-california.vue</h1>
     </div>

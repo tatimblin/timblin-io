@@ -1,5 +1,5 @@
 <template>
-  <section class="page">
+  <section class="page page-leave-active">
     <div>
       <h1>This is demo1.vue</h1>
     </div>
@@ -21,5 +21,6 @@ export default {
 .page {
     height: 110vh;
     background-color: orange;
+    text-align: center;
 }
 </style>

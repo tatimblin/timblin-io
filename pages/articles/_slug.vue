@@ -3,7 +3,7 @@
   <div class="post__content">
     <div class="post__content--title">
       <h1>{{title}}</h1>
-      <p>{{date | moment}}</p>
+      <p>published {{date | moment}}</p>
     </div>
     <vue-markdown>{{body}}</vue-markdown>
   </div>
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { TweenMax, Back } from 'gsap';
+//import { TweenMax, Back } from 'gsap';
 import moment from 'moment';
 
 import VueMarkdown from 'vue-markdown'
