@@ -7,7 +7,7 @@
 
     <labs-ui ref="labsUi"></labs-ui>
 
-    <div class="app__content" :style="stylesUi">
+    <div class="app__content" :class="{'app__content--article' : $route.name == 'articles-slug'}" :style="stylesUi">
         <nuxt/>
     </div>
 
@@ -83,7 +83,7 @@ $app-bg: #ededed;
     top: 0; 
     background-color: $app-bg;
     transform: translateY(-100%);
-    transition: all 900ms 150ms $ease;
+    transition: all 900ms 50ms $ease;
     z-index: 99998;
   }
 
@@ -91,14 +91,19 @@ $app-bg: #ededed;
     max-width: 100%;
     margin: 0 auto;
     padding-top: -15px;
-    transition: all 900ms 150ms $ease;
+    transition: all 900ms 50ms $ease;
     overflow: hidden !important;
+
+    &.app__content--article { // Hide border styles for articles
+      box-shadow: none !important;
+      transition: all 900ms 50ms $ease, box-shadow 300ms $ease;
+    }
   }
 
   footer {
     padding: $spacing/2 0;
     text-align: center;
-    transition: all 900ms 150ms $ease;
+    transition: all 900ms 50ms $ease;
   }
 
   &.show-ui { // Specialized styling for when UI is present
