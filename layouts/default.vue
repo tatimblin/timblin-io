@@ -8,11 +8,11 @@
     <labs-ui ref="labsUi"></labs-ui>
 
     <!-- Use vue transition to be dynamic -->
-    <transition :name="dir">
+    <transition-group :name="dir">
       <div class="app__content" :class="{'app__content--article' : $route.name == 'articles-slug'}" :style="stylesUi">
         <nuxt/>
       </div>
-    </transition>
+    </transition-group>
 
     <footer>
       <nuxt-link to="/">timblin.io</nuxt-link>
