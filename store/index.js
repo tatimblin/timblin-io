@@ -15,6 +15,7 @@ const createStore = () => {
         page: 'index',
         labs,
         indexedLab: 1,
+        currentTransition: 'slide-right',
       }
     },
     getters: {

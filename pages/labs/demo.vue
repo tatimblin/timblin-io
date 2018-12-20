@@ -13,6 +13,7 @@ export default {
         return {
             title: 'Issa demo',
             dir: 'left',
+            currentTransition: 'slide-left',
         };
     },
 }
@@ -24,20 +25,4 @@ export default {
     background-color: orange;
     text-align: center;
 }
-
-    .slide-left-enter-active, .slide-left-leave-active {
-      transition: all .50s ease-out;
-    }
-    .slide-left-enter, .slide-left-leave-active {
-      transform: scale(2);
-      transform-origin: 50% 50%;
-    }
-
-    .slide-right-enter-active, .slide-right-leave-active {
-      transition: all .50s ease-out;
-    }
-    .slide-right-enter, .slide-right-leave-active {
-      transform: scale(0);
-      transform-origin: 50% 50%;
-    }
 </style>

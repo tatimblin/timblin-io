@@ -8,7 +8,10 @@
     <labs-ui ref="labsUi"></labs-ui>
 
     <div class="app__content" :class="{'app__content--article' : $route.name == 'articles-slug'}" :style="stylesUi">
-        <nuxt/>
+        <!-- Use vue transition to be dynamic -->
+        <transition :name="dir">
+          <nuxt/>
+        </transition>
     </div>
 
     <footer>
@@ -35,7 +38,19 @@ export default {
         boxShadow: 'rgba(0, 0, 0, 0.2) 0px 30px 60px 0px',
         borderRadius: '15px'
       },
+      dir: 'slide-right',
     };
+  },
+  watch: {
+    $route (to, from) {
+      //let name = this.$route.name;
+      console.log(to.name + ', ' + from.name);
+      if (to.name == 'labs-knockout-text' && from.name == 'labs-demo') {
+        this.dir = 'slide-left';
+      } else {
+        this.dir = 'slide-right';
+      }
+    }
   },
   mounted() {
     this.$nextTick(this.setUiHeight());
@@ -121,4 +136,21 @@ $app-bg: #ededed;
     }
   }
 }
+
+
+.slide-left-enter-active, .slide-left-leave-active {
+      transition: all 1s ease-out;
+    }
+    .slide-left-enter, .slide-left-leave-active {
+      transform: scale(2);
+      transform-origin: 50% 50%;
+    }
+
+    .slide-right-enter-active, .slide-right-leave-active {
+      transition: all 1s ease-out;
+    }
+    .slide-right-enter, .slide-right-leave-active {
+      transform: scale(0);
+      transform-origin: 50% 50%;
+    }
 </style>
