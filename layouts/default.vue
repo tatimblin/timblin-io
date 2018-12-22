@@ -7,9 +7,11 @@
 
     <labs-ui ref="labsUi"></labs-ui>
     
-      <div class="app__content" :class="{'app__content--article' : $route.name == 'articles-slug'}" :style="stylesUi">
+      <div class="app__content" :class="{'app__content--article' : $route.name == 'articles-slug'}" >
         <transition :name="dir" mode="out-in">
-          <nuxt v-bind:key="page" />
+          <div v-bind:key="page" :style="stylesUi">
+            <nuxt/>
+          </div>
         </transition>
       </div>
 
@@ -48,6 +50,10 @@ export default {
       this.page = to.name;
       if (to.name == 'labs-knockout-text' && from.name == 'labs-demo') {
         this.dir = 'slide-left';
+      } else if (to.name == 'articles-slug') {
+        this.dir = 'to-article';
+      } else if (from.name == 'articles-slug') {
+        this.dir = 'from-article';
       } else {
         this.dir = 'slide-right';
       }
@@ -84,6 +90,10 @@ export default {
 @import '~assets/sass/utilities/_variables.scss';
 $app-bg: #ededed;
 
+body {
+  background-color: $app-bg;
+}
+
 .app {
   background-color: $app-bg;
 
@@ -108,11 +118,16 @@ $app-bg: #ededed;
     margin: 0 auto;
     padding-top: -15px;
     transition: all 900ms 50ms $ease;
-    overflow: hidden !important;
 
-    &.app__content--article { // Hide border styles for articles
+    &.app__content--article > div{ // Hide border styles for articles
       box-shadow: none !important;
       transition: all 900ms 50ms $ease, box-shadow 300ms $ease;
+    }
+
+    > div {
+      overflow: hidden !important;
+      transition: all 950ms 50ms $ease;
+      transform-origin: 50% 480px;
     }
   }
 
@@ -165,5 +180,42 @@ $app-bg: #ededed;
 }
 .slide-right-enter {
   transform: translateX(100%);
+}
+
+.to-article-enter-active {
+  animation: to-article 450ms 0s ease-in 1 reverse forwards;
+}
+.to-article-leave-active {
+  animation: from-article 1.6s 0s $ease 1 forwards;
+}
+.from-article-enter-active {
+  animation: from-article 1.6s 0s $ease 1 reverse forwards;
+}
+.from-article-leave-active {
+  animation: to-article 450ms 0s ease-in 1 forwards;
+}
+
+@keyframes to-article {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(90px);
+    opacity: 0;
+  }
+}
+
+@keyframes from-article {
+  0% {
+    opacity: 1;
+  }
+  55% {
+    transform: scale(0.625);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.625) translateY(-240px);
+    opacity: 0;
+  }
 }
 </style>
