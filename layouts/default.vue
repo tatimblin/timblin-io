@@ -9,7 +9,7 @@
     
       <div class="app__content" :class="{'app__content--article' : $route.name == 'articles-slug'}" :style="stylesUi">
         <transition :name="dir" mode="out-in">
-          <nuxt/>
+          <nuxt v-bind:key="page" />
         </transition>
       </div>
 
@@ -38,12 +38,14 @@ export default {
         borderRadius: '15px'
       },
       dir: 'slide-right',
+      page: '',
     };
   },
   watch: {
     $route (to, from) {
       //let name = this.$route.name;
       console.log(to.name + ', ' + from.name);
+      this.page = to.name;
       if (to.name == 'labs-knockout-text' && from.name == 'labs-demo') {
         this.dir = 'slide-left';
       } else {
@@ -138,18 +140,30 @@ $app-bg: #ededed;
 
 
 .slide-left-enter-active, .slide-left-leave-active {
-  transition: all 1s ease-out;
+  transition: all .6s $ease;
 }
-.slide-left-enter-active, .slide-left-leave {
-  transform: translate(100%);
+
+.slide-left-leave {
+  transform: translate(0%);
+}
+.slide-left-enter, .slide-left-leave-to {
+  transform: translateX(100%);
+  opacity:0;
   transform-origin: 50% 50%;
+}
+.slide-left-enter {
+  transform: translateX(-100%);
 }
 
 .slide-right-enter-active, .slide-right-leave-active {
-  transition: all 1s ease-out;
+  transition: all .6s $ease;
 }
-.slide-right-enter-active, .slide-right-leave {
-  transform: translate(-100%);
+.slide-right-enter, .slide-right-leave-to {
+  transform: translateX(-100%);
+  opacity:0;
   transform-origin: 50% 50%;
+}
+.slide-right-enter {
+  transform: translateX(100%);
 }
 </style>
