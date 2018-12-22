@@ -6,13 +6,12 @@
     </button>
 
     <labs-ui ref="labsUi"></labs-ui>
-
-    <!-- Use vue transition to be dynamic -->
-    <transition-group :name="dir">
+    
       <div class="app__content" :class="{'app__content--article' : $route.name == 'articles-slug'}" :style="stylesUi">
-        <nuxt/>
+        <transition :name="dir" mode="out-in">
+          <nuxt/>
+        </transition>
       </div>
-    </transition-group>
 
     <footer>
       <nuxt-link to="/">timblin.io</nuxt-link>
@@ -139,18 +138,18 @@ $app-bg: #ededed;
 
 
 .slide-left-enter-active, .slide-left-leave-active {
-      transition: all 1s ease-out;
-    }
-    .slide-left-enter, .slide-left-leave-active {
-      transform: scale(2);
-      transform-origin: 50% 50%;
-    }
+  transition: all 1s ease-out;
+}
+.slide-left-enter-active, .slide-left-leave {
+  transform: translate(100%);
+  transform-origin: 50% 50%;
+}
 
-    .slide-right-enter-active, .slide-right-leave-active {
-      transition: all 1s ease-out;
-    }
-    .slide-right-enter, .slide-right-leave-active {
-      transform: scale(0);
-      transform-origin: 50% 50%;
-    }
+.slide-right-enter-active, .slide-right-leave-active {
+  transition: all 1s ease-out;
+}
+.slide-right-enter-active, .slide-right-leave {
+  transform: translate(-100%);
+  transform-origin: 50% 50%;
+}
 </style>

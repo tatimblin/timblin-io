@@ -1,5 +1,5 @@
 <template>
-  <section class="page page-leave-active">
+  <section class="page">
     <div>
       <h1>This is knockout-text.vue</h1>
     </div>
