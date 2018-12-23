@@ -159,49 +159,54 @@ export default {
 }
 
 // NEXT LAB ANIMATIONS
-$dur: 1.33s;
+$dur: 1.66s;
+$ease: cubic-bezier(0.77, 0, 0.175, 1);
 
 .slide-left-enter-active {
-  animation: slide-right $dur 0s $ease 1 reverse forwards;
+  animation: slide-left $dur 0s $ease 1 reverse forwards;
 }
 
 .slide-left-leave-active {
-  animation: slide-left $dur 0s $ease 1 forwards;
+  animation: slide-right $dur 0s $ease 1 forwards;
 }
 
 .slide-right-enter-active {
-  animation: slide-right $dur 0s $ease 1 reverse forwards;
+  animation: slide-left $dur 0s $ease 1 reverse forwards;
 }
 
 .slide-right-leave-active {
   animation: slide-right $dur 0s $ease 1 forwards;
 }
 
-@keyframes slide-left {
-  0% {
-    transform: translateX(0%);
-  }
-  55% {
-    transform: translateX(0%) scale(0.625);
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateX(66%) scale(0.5) rotate3d(0, 1, 0, -5deg);
-    opacity: 0;
-  }
-}
-
 @keyframes slide-right {
   0% {
     transform: translateX(0%);
   }
-  55% {
+  70% {
     transform: translateX(0%) scale(0.625);
-    opacity: 0.8;
+    opacity: 1;
+    transform-origin: 50% 240px;
   }
   100% {
-    transform: translateX(-66%) scale(0.5) rotate3d(0, 1, 0, 5deg);
+    transform: translateX(50%) scale(0.55) rotate3d(0, 1, 0, 2deg);
     opacity: 0;
+    transform-origin: 0% 240px;
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(0%);
+  }
+  70% {
+    transform: translateX(0%) scale(0.625);
+    opacity: 1;
+    transform-origin: 50% 240px;
+  }
+  100% {
+    transform: translateX(-50%) scale(0.55) rotate3d(0, 1, 0, -2deg);
+    opacity: 0;
+    transform-origin: 100% 240px;
   }
 }
 
@@ -236,7 +241,7 @@ $dur: 1.33s;
   }
   55% {
     transform: scale(0.625);
-    opacity: 0.8;
+    opacity: 1;
   }
   100% {
     transform: scale(0.5) translateY(-240px) rotate3d(1, 0, 0, 5deg);
