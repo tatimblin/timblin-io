@@ -1,12 +1,12 @@
 <template>
     <div class="labsnav">
         <div class="labsnav__nav">
-            <div>
+            <div @click="updateDirection('prev')">
                 <nuxt-link :to="`/labs/${nav.prev}`">
                     prev
                 </nuxt-link>
             </div>
-            <div>
+            <div @click="updateDirection('next')">
                 <nuxt-link :to="`/labs/${nav.next}`">
                     next
                 </nuxt-link>
@@ -19,8 +19,13 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
     props: ['title', 'nav'],
+    methods: {
+        ...mapMutations(['updateDirection'])
+    }
 }
 </script>
 

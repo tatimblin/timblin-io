@@ -25,6 +25,7 @@
 <script>
 import LabsUi from '~/components/labs/LabsUi.vue'
 import AppFooter from '~/components/AppFooter.vue';
+import { mapState } from 'vuex';
 
 export default {
   components: {
@@ -35,7 +36,7 @@ export default {
     return {
       showUi: true,
       stylesUi: {
-        marginTop: '65px',
+        marginTop: '65px', marginLeft: '15px', marginRight: '15px',
         boxShadow: 'rgba(0, 0, 0, 0.2) 0px 30px 60px 0px',
         borderRadius: '15px'
       },
@@ -45,15 +46,15 @@ export default {
   },
   watch: {
     $route (to, from) {
-      //let name = this.$route.name;
+      let dir = this.direction;
       console.log(to.name + ', ' + from.name);
       this.page = to.name;
-      if (to.name == 'labs-knockout-text' && from.name == 'labs-demo') {
-        this.dir = 'slide-left';
+      if (from.name == 'articles-slug') {
+        this.dir = 'from-article';
       } else if (to.name == 'articles-slug') {
         this.dir = 'to-article';
-      } else if (from.name == 'articles-slug') {
-        this.dir = 'from-article';
+      } else if (dir == 'next') {
+        this.dir = 'slide-left';
       } else {
         this.dir = 'slide-right';
       }
@@ -67,9 +68,13 @@ export default {
       const css = this.stylesUi;
       this.showUi = !this.showUi;
       if (this.showUi) {
+        css.marginLeft = '15px';
+        css.marginRight = '15px';
         css.boxShadow = 'rgba(0, 0, 0, 0.2) 0px 30px 60px 0px';
         css.borderRadius = '15px';
       } else {
+        css.marginLeft = '0px';
+        css.marginRight = '0px';
         css.boxShadow = 'none';
         css.borderRadius = '0px';
       }
@@ -81,21 +86,20 @@ export default {
       } else {
         this.stylesUi.marginTop = 0;
       }
-    }
+    },
+  },
+  computed: {
+    ...mapState(['direction'])
   },
 }
 </script>
 
 <style lang="scss" scoped>
 @import '~assets/sass/utilities/_variables.scss';
-$app-bg: #ededed;
-
-body {
-  background-color: $app-bg;
-}
+//$app-bg: #ededed;
 
 .app {
-  background-color: $app-bg;
+  //background-color: $app-bg;
 
   &__toggle {
     position: fixed;
@@ -107,7 +111,7 @@ body {
     position: fixed;
     width: 100%;
     top: 0; 
-    background-color: $app-bg;
+    background-color: $bg;
     transform: translateY(-100%);
     transition: all 900ms 50ms $ease;
     z-index: 99998;
@@ -116,8 +120,8 @@ body {
   &__content { // Generic stying to always be present on labs wrapper
     max-width: 100%;
     margin: 0 auto;
-    padding-top: -15px;
     transition: all 900ms 50ms $ease;
+    perspective: 1000px;
 
     &.app__content--article > div{ // Hide border styles for articles
       box-shadow: none !important;
@@ -125,9 +129,10 @@ body {
     }
 
     > div {
+      margin: 0 $spacing/2;
       overflow: hidden !important;
       transition: all 950ms 50ms $ease;
-      transform-origin: 50% 480px;
+      transform-origin: 50% 240px;
     }
   }
 
@@ -153,35 +158,55 @@ body {
   }
 }
 
+// NEXT LAB ANIMATIONS
+$dur: 1.33s;
 
-.slide-left-enter-active, .slide-left-leave-active {
-  transition: all .6s $ease;
-}
-
-.slide-left-leave {
-  transform: translate(0%);
-}
-.slide-left-enter, .slide-left-leave-to {
-  transform: translateX(100%);
-  opacity:0;
-  transform-origin: 50% 50%;
-}
-.slide-left-enter {
-  transform: translateX(-100%);
+.slide-left-enter-active {
+  animation: slide-right $dur 0s $ease 1 reverse forwards;
 }
 
-.slide-right-enter-active, .slide-right-leave-active {
-  transition: all .6s $ease;
-}
-.slide-right-enter, .slide-right-leave-to {
-  transform: translateX(-100%);
-  opacity:0;
-  transform-origin: 50% 50%;
-}
-.slide-right-enter {
-  transform: translateX(100%);
+.slide-left-leave-active {
+  animation: slide-left $dur 0s $ease 1 forwards;
 }
 
+.slide-right-enter-active {
+  animation: slide-right $dur 0s $ease 1 reverse forwards;
+}
+
+.slide-right-leave-active {
+  animation: slide-right $dur 0s $ease 1 forwards;
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(0%);
+  }
+  55% {
+    transform: translateX(0%) scale(0.625);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(66%) scale(0.5) rotate3d(0, 1, 0, -5deg);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(0%);
+  }
+  55% {
+    transform: translateX(0%) scale(0.625);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(-66%) scale(0.5) rotate3d(0, 1, 0, 5deg);
+    opacity: 0;
+  }
+}
+
+
+// ARTICLE ANIMATIONS
 .to-article-enter-active {
   animation: to-article 450ms 0s ease-in 1 reverse forwards;
 }
@@ -211,10 +236,10 @@ body {
   }
   55% {
     transform: scale(0.625);
-    opacity: 1;
+    opacity: 0.8;
   }
   100% {
-    transform: scale(0.625) translateY(-240px);
+    transform: scale(0.5) translateY(-240px) rotate3d(1, 0, 0, 5deg);
     opacity: 0;
   }
 }

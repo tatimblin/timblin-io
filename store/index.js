@@ -15,7 +15,7 @@ const createStore = () => {
         page: 'index',
         labs,
         indexedLab: 1,
-        currentTransition: 'slide-right',
+        direction: 'prev',
       }
     },
     getters: {
@@ -54,7 +54,13 @@ const createStore = () => {
         let url = pageName.substring(pageName.lastIndexOf("/") + 1);
         state.indexedLab = state.labs.findIndex(x => x._path === url);
       },
-    }
+      updateDirection(state, dir) {
+        console.log('STORE: setting direction to ' + dir);
+        state.direction = dir;
+      },
+    },
+    actions: {
+    },
   })
 }
 
