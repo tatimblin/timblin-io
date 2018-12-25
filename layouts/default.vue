@@ -159,15 +159,15 @@ export default {
 }
 
 // NEXT LAB ANIMATIONS
-$dur: 1.66s;
+$dur: 1.3s;
 $ease: cubic-bezier(0.77, 0, 0.175, 1);
 
 .slide-left-enter-active {
-  animation: slide-left $dur 0s $ease 1 reverse forwards;
+  animation: slide-right $dur 0s $ease 1 reverse forwards;
 }
 
 .slide-left-leave-active {
-  animation: slide-right $dur 0s $ease 1 forwards;
+  animation: slide-left $dur 0s $ease 1 forwards;
 }
 
 .slide-right-enter-active {
@@ -182,13 +182,13 @@ $ease: cubic-bezier(0.77, 0, 0.175, 1);
   0% {
     transform: translateX(0%);
   }
-  70% {
+  40% {
     transform: translateX(0%) scale(0.625);
     opacity: 1;
     transform-origin: 50% 240px;
   }
   100% {
-    transform: translateX(50%) scale(0.55) rotate3d(0, 1, 0, 2deg);
+    transform: translateX(50%) scale(0.55) rotate3d(0, 1, 0, 3deg);
     opacity: 0;
     transform-origin: 0% 240px;
   }
@@ -198,13 +198,13 @@ $ease: cubic-bezier(0.77, 0, 0.175, 1);
   0% {
     transform: translateX(0%);
   }
-  70% {
+  40% {
     transform: translateX(0%) scale(0.625);
     opacity: 1;
     transform-origin: 50% 240px;
   }
   100% {
-    transform: translateX(-50%) scale(0.55) rotate3d(0, 1, 0, -2deg);
+    transform: translateX(-50%) scale(0.55) rotate3d(0, 1, 0, -3deg);
     opacity: 0;
     transform-origin: 100% 240px;
   }
@@ -244,7 +244,7 @@ $ease: cubic-bezier(0.77, 0, 0.175, 1);
     opacity: 1;
   }
   100% {
-    transform: scale(0.5) translateY(-240px) rotate3d(1, 0, 0, 5deg);
+    transform: scale(0.5) translateY(-320px) rotate3d(1, 0, 0, 5deg);
     opacity: 0;
   }
 }
