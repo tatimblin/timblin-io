@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import ViewCtrl from '~/components/site/ViewCtrl.vue';
+import ViewCtrl from '~/components/temp/ViewCtrl.vue';
 
 export default {
     components: {

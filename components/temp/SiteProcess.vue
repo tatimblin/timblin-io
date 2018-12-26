@@ -34,9 +34,9 @@
 </template>
 
 <script>
-import SiteTitle from '~/components/site/SiteTitle.vue'
-import SiteButton from '~/components/site/SiteButton.vue'
-import SiteDivider from '~/components/site/SiteDivider.vue'
+import SiteTitle from '~/components/temp/SiteTitle.vue'
+import SiteButton from '~/components/temp/SiteButton.vue'
+import SiteDivider from '~/components/temp/SiteDivider.vue'
 
 export default {
     components: {

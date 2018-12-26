@@ -121,7 +121,7 @@ export default {
     max-width: 100%;
     margin: 0 auto;
     transition: all 900ms 50ms $ease;
-    perspective: 1000px;
+    perspective: 375px;
 
     &.app__content--article > div{ // Hide border styles for articles
       box-shadow: none !important;
@@ -159,7 +159,7 @@ export default {
 }
 
 // NEXT LAB ANIMATIONS
-$dur: 1.3s;
+$dur: 1.6s;
 $ease: cubic-bezier(0.77, 0, 0.175, 1);
 
 .slide-left-enter-active {
@@ -182,7 +182,7 @@ $ease: cubic-bezier(0.77, 0, 0.175, 1);
   0% {
     transform: translateX(0%);
   }
-  40% {
+  50% {
     transform: translateX(0%) scale(0.625);
     opacity: 1;
     transform-origin: 50% 240px;
@@ -198,7 +198,7 @@ $ease: cubic-bezier(0.77, 0, 0.175, 1);
   0% {
     transform: translateX(0%);
   }
-  40% {
+  50% {
     transform: translateX(0%) scale(0.625);
     opacity: 1;
     transform-origin: 50% 240px;

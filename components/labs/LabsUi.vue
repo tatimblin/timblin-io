@@ -18,7 +18,7 @@ export default {
         LabsMode,
     },
     computed: {
-        ...mapGetters(['labs', 'nav', 'thisLab']),
+        ...mapGetters(['nav', 'thisLab']),
     },
 };
 </script>

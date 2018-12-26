@@ -15,7 +15,7 @@
 import moment from 'moment';
 
 import VueMarkdown from 'vue-markdown'
-import NavBack from '~/components/site/NavBack.vue'
+import NavBack from '~/components/temp/NavBack.vue'
 
 export default {
   layout: 'default',

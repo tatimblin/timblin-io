@@ -48,8 +48,8 @@
 
 <script>
 import { mapState } from 'vuex';
-import SiteButton from '~/components/site/SiteButton.vue';
-import ViewCtrl from '~/components/site/ViewCtrl.vue';
+import SiteButton from '~/components/temp/SiteButton.vue';
+import ViewCtrl from '~/components/temp/ViewCtrl.vue';
 
 export default {
     computed: {

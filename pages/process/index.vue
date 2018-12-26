@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import NavBack from '~/components/site/NavBack.vue'
-import ProcessList from '~/components/site/ProcessList.vue'
+import NavBack from '~/components/temp/NavBack.vue'
+import ProcessList from '~/components/temp/ProcessList.vue'
 
 export default {
   layout: 'site',
