@@ -42,6 +42,7 @@ export default {
 
     &__item {
         padding: 5px $spacing/2;
+        font-family: $font-family;
     }
 }
 </style>

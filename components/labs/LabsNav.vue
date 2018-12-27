@@ -3,12 +3,12 @@
         <div class="labsnav__nav">
             <div @click="updateDirection('prev')">
                 <nuxt-link :to="`/labs/${nav.prev}`">
-                    prev
+                    <img src="~assets/ui/arrow.svg" alt="Previous Demo">
                 </nuxt-link>
             </div>
             <div @click="updateDirection('next')">
                 <nuxt-link :to="`/labs/${nav.next}`">
-                    next
+                    <img src="~assets/ui/arrow.svg" alt="Next Demo">
                 </nuxt-link>
             </div>
         </div>
@@ -23,6 +23,11 @@ import { mapMutations } from 'vuex'
 
 export default {
     props: ['title', 'nav'],
+    computed: {
+        arrow() {
+            return require('./ui/arrow.svg');
+        },
+    },
     methods: {
         ...mapMutations(['updateDirection'])
     }

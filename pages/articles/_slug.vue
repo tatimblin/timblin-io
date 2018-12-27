@@ -67,6 +67,7 @@ export default {
     &--title {
       margin-bottom: $spacing*1;
       padding: $spacing 0 $spacing*2 0;
+      font-family: $font-family;
       border-bottom: 1px solid $black;
     }
   }
