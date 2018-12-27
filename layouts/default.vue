@@ -1,9 +1,9 @@
 <template>
   <div class="app" :class="{ 'show-ui' : showUi }">
 
-    <button class="app__toggle" @click="toggleUi()">
-        Close
-    </button>
+    <div class="app__toggle" @click="toggleUi()">
+      <toggle-ui :toggle="showUi"></toggle-ui>
+    </div>
 
     <labs-ui ref="labsUi"></labs-ui>
     
@@ -15,21 +15,21 @@
         </transition>
       </div>
 
-    <footer>
-      <nuxt-link to="/">timblin.io</nuxt-link>
-    </footer>
+    <app-footer></app-footer>
 
   </div>
 </template>
 
 <script>
 import LabsUi from '~/components/labs/LabsUi.vue'
+import ToggleUi from '~/components/labs/ToggleUi.vue'
 import AppFooter from '~/components/AppFooter.vue';
 import { mapState } from 'vuex';
 
 export default {
   components: {
     LabsUi,
+    ToggleUi,
     AppFooter,
   },
   data() {

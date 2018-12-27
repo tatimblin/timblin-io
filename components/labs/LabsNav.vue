@@ -3,12 +3,12 @@
         <div class="labsnav__nav">
             <div @click="updateDirection('prev')">
                 <nuxt-link :to="`/labs/${nav.prev}`">
-                    <img src="~assets/ui/arrow.svg" alt="Previous Demo">
+                    <ui-arrow direction="left"></ui-arrow>
                 </nuxt-link>
             </div>
             <div @click="updateDirection('next')">
                 <nuxt-link :to="`/labs/${nav.next}`">
-                    <img src="~assets/ui/arrow.svg" alt="Next Demo">
+                    <ui-arrow></ui-arrow>
                 </nuxt-link>
             </div>
         </div>
@@ -19,15 +19,14 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations } from 'vuex';
+import UiArrow from '~/components/UiArrow.vue';
 
 export default {
-    props: ['title', 'nav'],
-    computed: {
-        arrow() {
-            return require('./ui/arrow.svg');
-        },
+    components: {
+        UiArrow,
     },
+    props: ['title', 'nav'],
     methods: {
         ...mapMutations(['updateDirection'])
     }

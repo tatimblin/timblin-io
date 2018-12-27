@@ -1,25 +1,34 @@
 <template>
     <section class="large-width">
         <div class="row">
-            <div class="footer content">
+            <footer class="content">
                 <div class="footer-item">
                     <p>One of many sites by Tristan Timblin</p>
                 </div>
                 <div class="footer-item">
-                    <p>© TATIMBLIN, 2018</p>
+                    <p>© TATIMBLIN LLC, 2018</p>
                 </div>
-            </div>
+            </footer>
         </div>
     </section>
 </template>
 
 <style lang="scss">
-.footer {
-    display: flex;
-    justify-content: space-between;
+@import '~assets/sass/utilities/_variables.scss';
 
-    &-item {
-        font-family: 'nimbus-sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;;
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include query ($medium-width) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-item p {
+        margin: 0;
+        font-family: 'nimbus-sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
     }
 }
 </style>
