@@ -1,11 +1,11 @@
 <template>
     <div class="labsmode">
-        <div class="labsmode__item">
+        <div class="labsmode__item" v-if="$route.name !== 'articles-slug'">
             <nuxt-link :to="`/articles/${url}`">
                 Article
             </nuxt-link>
         </div>
-        <div class="labsmode__item">
+        <div class="labsmode__item" v-if="$route.name == 'articles-slug'">
             <nuxt-link :to="`/labs/${url}`">
                 Lab
             </nuxt-link>
@@ -38,11 +38,18 @@ export default {
 
 .labsmode {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
 
     &__item {
         padding: 5px $spacing/2;
         font-family: $font-family;
+
+        &:last-child {
+            display: none;
+            @include query ($medium-width) {
+                display: block;
+            }
+        }
     }
 }
 </style>

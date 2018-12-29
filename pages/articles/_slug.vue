@@ -3,7 +3,7 @@
   <div class="post__content">
     <div class="post__content--title">
       <h1>{{title}}</h1>
-      <p>published {{date | moment}}</p>
+      <in-collab :name="collaboration.name" :url="collaboration.url" :pic="collaboration.avi" :date="date | moment"/>
     </div>
     <vue-markdown>{{body}}</vue-markdown>
   </div>
@@ -15,12 +15,14 @@
 import moment from 'moment';
 
 import VueMarkdown from 'vue-markdown'
+import InCollab from '~/components/labs/InCollab.vue'
 import NavBack from '~/components/temp/NavBack.vue'
 
 export default {
   layout: 'default',
   components: {
     VueMarkdown,
+    InCollab,
   },
   async asyncData({ params }) {
     // const postPromise = process.BROWSER_BUILD
@@ -69,6 +71,10 @@ export default {
       padding: $spacing 0 $spacing*2 0;
       font-family: $font-family;
       border-bottom: 1px solid $black;
+
+      p {
+        margin: 0;
+      }
     }
   }
 }

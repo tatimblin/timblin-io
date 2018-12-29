@@ -27,14 +27,11 @@ export default {
 @import '~assets/sass/utilities/_variables.scss';
 
 .labsui__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
     max-width: $large-width;
     margin: 0 auto;
     padding: $spacing/2 0;
-
-    @include query ($medium-width) {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-    }
 }
 </style>

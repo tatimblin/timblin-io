@@ -213,7 +213,7 @@ $ease: cubic-bezier(0.77, 0, 0.175, 1);
 
 // ARTICLE ANIMATIONS
 .to-article-enter-active {
-  animation: to-article 450ms 0s ease-in 1 reverse forwards;
+  animation: to-article 600ms 0s ease-in 1 reverse forwards;
 }
 .to-article-leave-active {
   animation: from-article 1.6s 0s $ease 1 forwards;
@@ -222,12 +222,15 @@ $ease: cubic-bezier(0.77, 0, 0.175, 1);
   animation: from-article 1.6s 0s $ease 1 reverse forwards;
 }
 .from-article-leave-active {
-  animation: to-article 450ms 0s ease-in 1 forwards;
+  animation: to-article 600ms 0s ease-in 1 forwards;
 }
 
 @keyframes to-article {
   0% {
     opacity: 1;
+  }
+  80% {
+    opacity: 0;
   }
   100% {
     transform: translateY(90px);
