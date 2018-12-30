@@ -20,16 +20,16 @@ export default {
     cursor: pointer;
    
     &__arm {
-      width: 24px; height: 4px;
+      width: 18px; height: 4px;
       background-color: #949494;
       transition: transform 750ms $ease, transform-origin 750ms $ease;
 
       &:first-child {
-        border-radius: 25% 0 0 25%;
+        border-radius: 4px 0 0 4px;
         transform-origin: 100% 100%;
       }
       &:last-child {
-        border-radius: 0 25% 25% 0;
+        border-radius: 0 4px 4px 0;
         transform-origin: 0% 100%;
       }
     }
