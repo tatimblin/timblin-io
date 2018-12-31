@@ -3,7 +3,7 @@
   <div class="post__content">
     <div class="post__content--title">
       <h1>{{title}}</h1>
-      <in-collab :name="collaboration.name" :url="collaboration.url" :pic="collaboration.avi" :date="date | moment"/>
+      <in-collab :collab="collaboration" :date="date | moment"/>
     </div>
     <vue-markdown>{{body}}</vue-markdown>
   </div>

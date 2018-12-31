@@ -1,11 +1,11 @@
 <template>
   <div class="in-collab">
     <p>{{ date }}</p>
-    <span v-if="name != ''">
+    <span v-if="collab">
       <p>• with</p>
-      <a :href="url" target="_blank">
-        <img :src="pic" alt="j">
-        <p>{{ name }}</p>
+      <a :href="collab.url" target="_blank">
+        <img :src="collab.avi" :alt="collab.name">
+        <p>{{ collab.name }}</p>
       </a>
     </span>
   </div>
@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  props: ['name', 'url', 'pic', 'date']
+  props: ['collab', 'date'],
 }
 </script>
 
