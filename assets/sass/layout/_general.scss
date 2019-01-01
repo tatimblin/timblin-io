@@ -6,14 +6,3 @@
  *****************************************************************************/
 
 
-.site {
-    .btn-wrap {
-        display: inline-block;
-        margin-right: $spacing;
-        transition: all 300ms $ease;
-        &.activeFolio {
-            opacity: 0.33;
-            cursor: alias;
-        }
-    }
-}

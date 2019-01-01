@@ -17,3 +17,10 @@ export default {
   },
 }
 </script>
+
+<style>
+.site {
+  margin-top: 120px;
+}
+</style>
+
