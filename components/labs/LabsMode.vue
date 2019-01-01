@@ -11,7 +11,7 @@
             </nuxt-link>
         </div>
         <div class="labsmode__item">
-            <a :href="`https://github.com/tatimblin/timblin-io/blob/master/pages/labs${slug}.vue`" target="_blank">
+            <a :href="`https://github.com/tatimblin/timblin-io/blob/master/pages/labs/${url}.vue`" target="_blank">
                 Github
             </a>
         </div>
@@ -21,14 +21,6 @@
 <script>
 export default {
     props: ['url'],
-    data () {
-        return {
-            slug: 'hi',
-        };
-    },
-    created () {
-        this.slug = this.$route.name.replace('-', '/').substring(4);
-    },
 }
 </script>
 
