@@ -7,11 +7,6 @@
  *
  *****************************************************************************/
 
-
-// 1. Sass frameworks/Codekit bundles
-@import 'bourbon/bourbon';
-@import 'neat/neat';
-
 // 2. Configuration and helpers
 @import
     'utilities/variables',
@@ -21,6 +16,7 @@
 // 3. Vendors
 @import
     'vendors/normalize',
+    'vendors/skeleton',
     'vendors/breakpoint',
     'vendors/rfs';
 

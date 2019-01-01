@@ -1,5 +1,5 @@
 <template>
-  <section class="demoList">
+  <section class="demoList container">
     <ul>
       <li v-for="lab in labs" :key="lab.date">
         <a :href="`labs/${lab._path}`">
