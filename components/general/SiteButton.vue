@@ -41,7 +41,7 @@ button {
     transition: opacity 300ms $ease;
   }
   // hide arrow 
-  a.nuxt-link-active + svg {
+  a.nuxt-link-exact-active + svg {
     opacity: 0;
   }
 }

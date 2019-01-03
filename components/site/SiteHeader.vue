@@ -13,7 +13,7 @@
         <nuxt-link to="/">labs</nuxt-link>
       </site-button>
       <site-button>
-        <nuxt-link to="process">projects</nuxt-link>
+        <nuxt-link to="projects">projects</nuxt-link>
       </site-button>
     </div>
     
@@ -34,7 +34,7 @@ export default {
 @import '~assets/sass/utilities/_variables.scss';
 
 .header {
-  margin: $spacing*2 0;
+  margin: $spacing*2 0 0 0;
 
   &__callout > div {
     margin-left: 0;

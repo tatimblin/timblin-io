@@ -1,15 +1,31 @@
 <template>
   <div class="list-item">
     <nuxt-link :to="`labs/${item._path}`">
-      <img :src="item.thumbnail" :alt="`a front-end experience called ${item.title}`">
-      <h5>{{ item.title }}</h5>
+      <div class="list-item__card">
+        <div class="list-item__card__img">
+          <img :src="item.thumbnail" :alt="`a front-end experience called ${item.title}`">
+        </div>
+        <div class="list-item__card__meta">
+          <p>Explore</p>
+          <ui-arrow/>
+        </div>
+      </div>
+      <div class="list-item__desc">
+        <h5>{{ item.title }}</h5>
+        <p :v-if="item.tagline">{{item.tagline}}</p>
+      </div>
     </nuxt-link>
   </div>
 </template>
 
 <script>
+import UiArrow from '~/components/UiArrow.vue';
+
 export default {
-  props: ['item']
+  components: {
+    UiArrow,
+  },
+  props: ['item'],
 }
 </script>
 
@@ -17,56 +33,99 @@ export default {
 @import '~assets/sass/utilities/_variables.scss';
 
   .list-item {
-    position: relative;
-    margin-top: $spacing;
-    border-radius: 7.5px;
-    overflow: hidden;
-    transition: all 600ms $ease;
-
-    &:before {
-      content: '';
-      position: absolute;
-      width: 100%; height: 100%;
-      background-color: $white;
-      border-radius: 7.5px;
-      transform: scale(1,0.5);
-      transition: all 300ms 525ms $ease;
-      z-index: -1;
-    }
+    margin-bottom: $spacing*3;
 
     &:hover {
-      box-shadow: rgba(0, 0, 0, 0.17) 0px 10px 60px 0px;
-      transition: all 900ms 150ms $ease;
+      a {
+        color: $black;
+      }
+      .list-item__card {
       
-      &:before {
-        transform: scale(1,1);
+        &:before {
+          border-radius: 7.5px;
+          background-color: white;
+          transform: scale(1, 1);
+          transition: all 600ms $ease;
+        }
+        img {
+          transform: scale(1.1);
+        }
+        &__meta {
+          opacity: 1;
+          transition: all 600ms 450ms $ease;
+        }
+      }
+      .list-item__desc {
+        transform: translateY(10px);
         transition: all 300ms $ease;
-      }
-      img {
-        transform: scale(1.07);
+        p {
+          opacity: 1;
+          transition: all 300ms 150ms $ease;
+        }
       }
     }
+    // End :hover
 
-    img {
-      min-width: 100%;
-      height: 400px;
-      object-fit: cover;
+    &__card {
+      position: relative;
       border-radius: 7.5px;
-      box-shadow: rgba(0, 0, 0, 0.075) 0px 10px 60px 0px;
-      transform-origin: center bottom;
-      transition: all 600ms $ease;
 
-      @include query ($medium-width) {
-        min-width: none;
-        height: 250px;
+      &:before {
+        content: '';
+        position: absolute;
+        width: calc(100% + 10px); height: calc(100% + 10px);
+        top: -5px; left: -5px;
+        border-radius: 50%;
+        z-index: -1;
+        transform: scale(0.75, 0.5);
+        transition: all 450ms 150ms $ease;
       }
-      @include query ($large-width) {
-        height: 400px;
+
+      &__img {
+        overflow:hidden;
+        border-radius: 7.5px;
+
+        img {
+          height: 350px;
+          min-width: 100%;
+          object-fit: cover;
+          border-radius: 7.5px;
+          transform: scale(1.25);
+          transform-origin: top center;
+          transition: all 4s $ease-out;
+        }
+      }
+      &__meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 5px 0;
+        opacity: 0;
+        transition: all 300ms $ease;
+
+        p {
+          margin: 0;
+        }
       }
     }
-    h5 {
-      padding: 5px 5px 10px;
-      color: $black;
+    &__desc {
+      transform: translateY(-$spacing/2);
+      transition: all 300ms 150ms $ease;
+      h5 {
+        display: inline;
+      }
+      p {
+        display: inline;
+        font-size: 0.75em;
+        letter-spacing: 0.05em;
+        color: lighten($black, 40%);
+        opacity: 0;
+        transition: all 300ms $ease;
+
+        &:before {
+          content: ' ';
+        }
+      }
     }
   }
 </style>
