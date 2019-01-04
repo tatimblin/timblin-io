@@ -20,8 +20,8 @@ export default {
 @import '~assets/sass/utilities/_variables.scss';
 
 button {
-  margin-top: $spacing;
-  margin-bottom: $spacing;
+  margin-top: $spacing/2;
+  margin-bottom: $spacing/2;
   
   &:first-of-type {
     margin-left: 0;

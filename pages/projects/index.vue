@@ -1,6 +1,8 @@
 <template>
   <div class="site">
-    proj
+    <project-list>
+
+    </project-list>
     <section class="headline container">
       <div class="column tweleve">
         <h1>Trusting the process</h1>
@@ -20,13 +22,28 @@
     <div class="container">
       <hr class="columns six">
     </div>
+    <div class="container">
+      <site-button>
+        <nuxt-link to="/process">process</nuxt-link>
+      </site-button>
+    </div>
+    <site-slider/>
   </div>
 </template>
 
 <script>
+import ProjectList from '~/components/site/ProjectList.vue';
+import SiteButton from '~/components/general/SiteButton.vue';
+import SiteSlider from '~/components/general/SiteSlider.vue';
 
 export default {
   layout: 'site',
+  transition: 'fade',
+  components: {
+    ProjectList,
+    SiteButton,
+    SiteSlider,
+  },
 }
 </script>
 
@@ -34,7 +51,7 @@ export default {
 @import '~assets/sass/utilities/_variables.scss';
 
 .site {
-  margin-top: 120px;
+  margin-top: $spacing*2;
 }
 
 .callout {

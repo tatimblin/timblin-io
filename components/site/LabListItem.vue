@@ -33,7 +33,7 @@ export default {
 @import '~assets/sass/utilities/_variables.scss';
 
   .list-item {
-    margin-bottom: $spacing*3;
+    margin-bottom: $spacing;
 
     &:hover {
       a {
@@ -45,14 +45,14 @@ export default {
           border-radius: 7.5px;
           background-color: white;
           transform: scale(1, 1);
-          transition: all 600ms $ease;
+          transition: all 450ms $ease;
         }
         img {
           transform: scale(1.1);
         }
         &__meta {
           opacity: 1;
-          transition: all 600ms 450ms $ease;
+          transition: all 450ms 300ms $ease;
         }
       }
       .list-item__desc {
@@ -75,10 +75,10 @@ export default {
         position: absolute;
         width: calc(100% + 10px); height: calc(100% + 10px);
         top: -5px; left: -5px;
-        border-radius: 50%;
+        border-radius: 75%;
         z-index: -1;
-        transform: scale(0.75, 0.5);
-        transition: all 450ms 150ms $ease;
+        transform: scale(0.75, 0.1);
+        transition: all 600ms 150ms $ease;
       }
 
       &__img {

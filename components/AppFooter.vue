@@ -1,10 +1,12 @@
 <template>
-    <footer class="container">
-        <div class="footer-item columns six">
-            <p>One of many sites by Tristan Timblin</p>
-        </div>
-        <div class="footer-item columns six">
-            <p>© TATIMBLIN LLC, 2018</p>
+    <footer>
+        <div class="container">
+            <div class="footer-item columns six">
+                <p>One of many sites by Tristan Timblin</p>
+            </div>
+            <div class="footer-item columns six">
+                <p>© TATIMBLIN LLC, 2018</p>
+            </div>
         </div>
     </footer>
 </template>
@@ -13,6 +15,7 @@
 @import '~assets/sass/utilities/_variables.scss';
 
 footer {
+    padding: $spacing 0;
 
     .footer-item {
         @include query ($medium-width) {

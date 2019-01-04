@@ -9,6 +9,7 @@ import LabList from '~/components/site/LabList.vue';
 
 export default {
   layout: 'site',
+  transition: 'fade',
   components: {
     LabList,
   },

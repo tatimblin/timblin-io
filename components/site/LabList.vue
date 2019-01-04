@@ -24,7 +24,6 @@ export default {
 
 .list {
   margin-top: $spacing*2;
-  margin-bottom: $spacing*2;
 }
 </style>
 

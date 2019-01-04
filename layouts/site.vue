@@ -15,6 +15,11 @@ export default {
     AppFooter,
     SiteHeader,
   },
+  mounted() {
+    if (process.client && window) {
+      window.history.scrollRestoration = 'auto';
+    }
+  },
 }
 </script>
 
