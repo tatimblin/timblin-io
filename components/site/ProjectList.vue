@@ -44,10 +44,11 @@
       content: '';
       position: absolute;
       width: $spacing/2; height: 100%;
-      top: 0; right: -$spacing/2;
+      top: 0; right: -$spacing;
+      //transform: translateX(-$spacing/2);
       z-index: -1;
 
-      @include query ($small-width) {
+      @include query ($medium-width) {
         background-color: darken($bg, 10%);
         border-radius: 15px 0 0 15px;
       }
@@ -56,7 +57,7 @@
     &__vert {
       position: relative;
       display: flex;
-      transform: rotate(-90deg) translateY(-100%);
+      transform: rotate(-90deg) translateY(calc(-100% + 15px));
       transform-origin: 100% 0%;
       z-index: 10;
 
@@ -75,7 +76,7 @@
       position: absolute;
       width: 100vw; height: 100%;
       top: 0; left: 0;
-      transform: translateX(calc(-100% + 14px));
+      transform: translateX(calc(-100% + 29px));
 
       @include query ($small-width) {
         background-color: $bg;
@@ -86,6 +87,7 @@
       position: relative;
       height: calc(50vh + 15px);
       min-height: 350px + $spacing;
+      max-height: 600px + $spacing;
       padding-top: $spacing;
       text-align: center;
       z-index: 10;
@@ -94,6 +96,7 @@
         position: absolute;
         height: 50vh;
         min-height: 350px;
+        max-height: 600px;
         bottom: 0;
         object-fit: cover;
         transform: translateX(-50%);

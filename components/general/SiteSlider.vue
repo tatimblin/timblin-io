@@ -2,15 +2,18 @@
   <section class="slider">
     <div class="container">
       <div class="slider__gal twelve">
-        <div  class="slider__gal__item"
-              v-for="(slide) in slides[selectedGroup]"
-              :key="slide">
-              {{ slide }}
+        <div  class="slider__gal__item">
+        </div>
+        <div  class="slider__gal__item">
+        </div>
+        <div  class="slider__gal__item">
+        </div>
+        <div  class="slider__gal__item">
         </div>
       </div>
       <div class="slider__ctrl twelve nested">
         <div class="slider__ctrl__prog six">
-          <div class="slider__ctrl__prog__bar" :style="{ width: timer + '%'}"></div>
+          <div class="slider__ctrl__prog__bar" ref="progBar"></div>
         </div>
         <div class="slider__ctrl__nav one">
           <div class="slider__ctrl__nav__prev" role="img" alt="previous" @click="currentSlide('prev')">
@@ -26,7 +29,7 @@
 </template>
 
 <script>
-import TweenMax from 'gsap';
+import { TimelineLite, Back } from 'gsap';
 import UiArrow from '~/components/UiArrow.vue';
 
 export default {
@@ -43,60 +46,19 @@ export default {
     }));
     return {
       items,
-      slides: [],
-      selected: 0,
-      timer: 0,
+      timeline: null,
     }
   },
-  created() {
-      // Group process items into groups of 4
-      const count = 4;
-      const titles = this.items.map(a => a.title);
-      var newArray = [];
-      while (titles.length > 0) {
-        newArray.push(titles.splice(0, count)); 
-      }
-      this.slides = newArray;
+  mounted() {
+    const progBar = document.querySelector('.slider__ctrl__prog__bar');
+    this.timeline = new TimelineLite({
+      onComplete: () => this.timeline.restart()
+    });
 
-      this.runTimer()
-  },
-  methods: {
-      currentSlide(dir) {
-          const l = this.slides.length - 1;
-          if (dir === 'next' && this.selected === l) {
-              this.selected = 0;
-          } else if (dir === 'next' ) {
-              ++this.selected;
-          } else if (dir === 'prev' && this.selected === 0) {
-              this.selected = l - 1;
-          } else if (dir === 'prev') {
-              --this.selected;
-          }
-
-          this.timer = 0;
-      },
-      runTimer() {
-          this.count = setInterval(() => {
-              this.timer++
-              if (this.timer === 100) {
-                  this.currentSlide('next')
-              }
-          }, 50)
-      }
-  },
-  computed: {
-      selectedGroup: function () {
-          return this.selected;
-      },
-  },
-  watch: {
-      duration: function(newValue, done) {
-          TweenMax.to(this.$data, 3, {timer: newValue}, {onComplete: this.slide});
-      },
-      delay: function(newValue, done) {
-          TweenMax.to(this.$data, 1, {timer: newValue}, {onComplete: this.slide});
-      },
-  },
+    this.timeline.to(progBar, 1, {
+      scale: 1.5,
+    });
+  }
 }
 </script>
 
