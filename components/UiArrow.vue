@@ -14,15 +14,10 @@ export default {
       },
     };
   },
-  methods: {
-    point () {
-      if (this.direction == 'left') {
-        this.svg.transform = 'rotate(180deg)';
-      }
-    },
-  },
-  mounted () {
-    this.point()
+  created() {
+    if (this.direction == 'left') {
+      this.svg.transform = 'rotate(180deg)';
+    }
   }
 }
 </script>
