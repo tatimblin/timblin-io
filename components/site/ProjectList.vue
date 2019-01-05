@@ -8,13 +8,13 @@
           <div>next</div>
         </div>
       </div>
-      <div class="project__view__slider">
+      <div class="project__view__slider twelve">
         <img src="/images/uploads/profilepic.png" alt="project">
       </div>
     </div>
   </div>
   <div class="desc container">
-    <div class="desc__title columns four offset-by-four">
+    <div class="desc__title columns twelve">
       <h4>Otto Brewerytown</h4>
       <p>Cohere • 2018</p>
     </div>
@@ -67,6 +67,8 @@
     }
   }
   &__view {
+    position: relative;
+    grid-row-gap: 0; // override grid, so image can be flush with container.
 
     &:before {
       content: '';
@@ -82,15 +84,18 @@
 
     &__slider {
       position: relative;
-      height: 350px + $spacing;
+      height: calc(50vh + 15px);
+      min-height: 350px + $spacing;
       padding-top: $spacing;
       text-align: center;
       z-index: 10;
 
       img {
         position: absolute;
-        height: 350px;
+        height: 50vh;
+        min-height: 350px;
         bottom: 0;
+        object-fit: cover;
         transform: translateX(-50%);
       }
     }

@@ -1,6 +1,6 @@
 <template>
   <section class="list container">
-    <lab-list-item class="columns four" v-for="lab in labs" :key="lab.date" :item="lab">
+    <lab-list-item class="four" v-for="lab in labs" :key="lab.date" :item="lab">
     </lab-list-item>
   </section>
 </template>
