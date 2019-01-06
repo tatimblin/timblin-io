@@ -2,13 +2,11 @@
   <section class="slider">
     <div class="container">
       <div class="slider__gal twelve">
-        <div  class="slider__gal__item">
-        </div>
-        <div  class="slider__gal__item">
-        </div>
-        <div  class="slider__gal__item">
-        </div>
-        <div  class="slider__gal__item">
+        <div  class="slider__gal__item"
+              v-for="(slide) in slides[selectedGroup]"
+              :key="slide"
+        >
+          {{ slide }}
         </div>
       </div>
       <div class="slider__ctrl twelve nested">
@@ -16,10 +14,10 @@
           <div class="slider__ctrl__prog__bar" ref="progBar"></div>
         </div>
         <div class="slider__ctrl__nav one">
-          <div class="slider__ctrl__nav__prev" role="img" alt="previous" @click="currentSlide('prev')">
+          <div class="slider__ctrl__nav__prev" role="img" alt="previous" @click="changeSlide('prev')">
             <ui-arrow direction="left"/>
           </div>
-          <div class="slider__ctrl__nav__next" role="img" alt="next" @click="currentSlide('next')">
+          <div class="slider__ctrl__nav__next" role="img" alt="next" @click="changeSlide('next')">
             <ui-arrow/>
           </div>
         </div>
@@ -29,7 +27,7 @@
 </template>
 
 <script>
-import { TimelineLite, Back } from 'gsap';
+import { TimelineLite } from 'gsap';
 import UiArrow from '~/components/UiArrow.vue';
 
 export default {
@@ -46,8 +44,21 @@ export default {
     }));
     return {
       items,
+      slides: [],
+      selected: 0,
       timeline: null,
+      delay: null,
     }
+  },
+  created() {
+    // Group process items into groups of 4
+    const count = 4;
+    const titles = this.items.map(a => a.title);
+    var newArray = [];
+    while (titles.length > 0) {
+      newArray.push(titles.splice(0, count)); 
+    }
+    this.slides = newArray;
   },
   mounted() {
     const progBar = document.querySelector('.slider__ctrl__prog__bar');
@@ -55,10 +66,39 @@ export default {
       onComplete: () => this.timeline.restart()
     });
 
-    this.timeline.to(progBar, 1, {
-      scale: 1.5,
+    this.timeline.from(progBar, 4, {
+      scaleX: 0,
+      transformOrigin: 'left',
+      ease: Expo.easeInOut,
     });
-  }
+    this.timeline.call(this.changeSlide, ['next'], this);
+    this.timeline.to(progBar, 1, {
+      scale: 0,
+      transformOrigin: 'right',
+      ease: Expo.easeInOut,
+    });
+
+  },
+  methods: {
+    changeSlide(dir) {
+      // For when buttons are pressed.
+      const l = this.slides.length - 1;
+      if (dir === 'prev' && this.selected === 0) {
+          this.selected = l;
+      } else if (dir === 'prev') {
+          --this.selected;
+      } else if (this.selected === l) {
+          this.selected = 0;
+      } else {
+          ++this.selected;
+      } 
+    }
+  },
+  computed: {
+    selectedGroup: function () {
+      return this.selected;
+    }
+  },
 }
 </script>
 
@@ -127,7 +167,8 @@ export default {
       &__bar {
         width: 100%; height: 1px;
         background-color: $black;
-        transition: width 50ms linear;
+        transform: scaleX(1);
+        //transform-origin: left ;
       }
     }
   }

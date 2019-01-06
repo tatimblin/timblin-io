@@ -21,8 +21,6 @@ export default {
 
 <style scoped lang="scss">
 .page {
-    height: 110vh;
     background-color: orange;
-    text-align: center;
 }
 </style>
