@@ -5,8 +5,9 @@
         <div  class="slider__gal__item"
               v-for="(slide) in slides[selectedGroup]"
               :key="slide"
+              :style="{ backgroundImage: 'url(' + slide + ')' }"
+              @click="updateProcess(item.title)"
         >
-          {{ slide }}
         </div>
       </div>
       <div class="slider__ctrl twelve nested">
@@ -27,6 +28,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 import { TimelineLite } from 'gsap';
 import UiArrow from '~/components/UiArrow.vue';
 
@@ -53,10 +55,10 @@ export default {
   created() {
     // Group process items into groups of 4
     const count = 4;
-    const titles = this.items.map(a => a.title);
+    const thumbnail = this.items.map(a => a.thumbnail);
     var newArray = [];
-    while (titles.length > 0) {
-      newArray.push(titles.splice(0, count)); 
+    while (thumbnail.length > 0) {
+      newArray.push(thumbnail.splice(0, count)); 
     }
     this.slides = newArray;
   },
@@ -71,7 +73,7 @@ export default {
       transformOrigin: 'left',
       ease: Expo.easeInOut,
     });
-    this.timeline.call(this.changeSlide, ['next'], this);
+    this.timeline.call(this.changeSlide, ['auto'], this);
     this.timeline.to(progBar, 1, {
       scale: 0,
       transformOrigin: 'right',
@@ -80,6 +82,7 @@ export default {
 
   },
   methods: {
+    ...mapMutations(['updateProcess']),
     changeSlide(dir) {
       // For when buttons are pressed.
       const l = this.slides.length - 1;
@@ -91,7 +94,10 @@ export default {
           this.selected = 0;
       } else {
           ++this.selected;
-      } 
+      }
+      if (dir != 'auto') {
+        this.timeline.restart()
+      }
     }
   },
   computed: {
@@ -132,7 +138,7 @@ export default {
     }
 
     &__item {
-      background-color: yellow;
+      background-size: cover;
     }
   }
   &__ctrl {

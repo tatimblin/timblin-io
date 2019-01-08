@@ -1,6 +1,7 @@
 {
   "index": "01",
   "title": "Requirements",
+  "thumbnail" : "/images/uploads/profilepic.png",
   "description": "A concise list of everything needed for the product to perform its function for all involved.",
   "body": "coming soon."
 }

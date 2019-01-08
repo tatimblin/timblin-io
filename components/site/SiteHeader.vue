@@ -2,7 +2,7 @@
   <section class="container">
     <div class="header twelve">
       <h1>Interactive Labs</h1>
-      <h2>a collection of front-end experiences using motion to engage audiences, by interaction designer Tristan Timblin.</h2>
+      <h2>a collection of front-end experiences using motion, by interaction designer Tristan Timblin.</h2>
       <div class="header__callout nested">
         <div class="columns six">
           <h4>developing at <a href="https://cohere.city/">Cohere.city</a></h4>

@@ -16,6 +16,7 @@ const createStore = () => {
         labs,
         indexedLab: 1,
         direction: 'prev',
+        selectedProcess: '',
       }
     },
     getters: {
@@ -44,6 +45,8 @@ const createStore = () => {
             next,
         }
       },
+
+      thisProcess: state => state.selectedProcess,
     },
     mutations: {
       updatePage(state, pageName) {
@@ -58,6 +61,9 @@ const createStore = () => {
         console.log('STORE: setting direction to ' + dir);
         state.direction = dir;
       },
+      updateProcess(state, select) {
+        state.selectedProcess = select;
+      }
     },
     actions: {
     },

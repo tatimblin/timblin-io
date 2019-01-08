@@ -49,6 +49,7 @@ export default {
         }
         img {
           transform: scale(1.1);
+          transition: all 9s 450ms $ease-out;
         }
         &__meta {
           opacity: 1;
@@ -92,7 +93,7 @@ export default {
           border-radius: 7.5px;
           transform: scale(1.25);
           transform-origin: top center;
-          transition: all 4s $ease-out;
+          transition: all 12s $ease-out;
         }
       }
       &__meta {

@@ -1,6 +1,7 @@
 {
   "index": "00",
   "title": "Discovery",
+  "thumbnail" : "/images/uploads/profilepic.png",
   "description": "An initial meeting, focusing on what the product aims to accomplish for potential users.",
   "body": "Text"
 }
