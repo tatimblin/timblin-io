@@ -12,6 +12,7 @@ collections:
     format: 'json'
     fields: # The fields for each document, usually in front matter
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Team", name: "team", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Featured Image", name: "thumbnail", widget: "image", required: false}
       - {label: "Body", name: "body", widget: "markdown"}
@@ -25,6 +26,13 @@ collections:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Featured Image", name: "thumbnail", widget: "image", required: false}
+      - label: "Collaboration"
+        name: "collaboration"
+        widget: "object"
+        fields:
+        - {label: "Name", name: "name", widget: "string"}
+        - {label: "Profile Picture", name: "avi", widget: "image"}
+        - {label: "Link", name: "url", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
   - name: "process"
     label: "Process"
@@ -34,12 +42,8 @@ collections:
     format: 'json'
     fields:
       - {label: "Index", name: "index", widget: "number"}
+      - {label: "Thumbnail", name: "thumbnail", widget: "image"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Description", name: "description", widget: "text"}
-      - label: "Gallery"
-        name: "galleryImages"
-        widget: "list"
-        fields: 
-        - {label: Image, name: image, widget: image}
-        - {label: Caption, name: caption, widget: text}
+      - {label: "Body", name: "body", widget: "markdown"}
 

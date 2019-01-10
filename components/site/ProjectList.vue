@@ -4,8 +4,8 @@
     <div class="project__view container">
       <div class="project__nav">
         <div class="project__nav__vert">
-          <div>previous</div>
-          <div>next</div>
+          <div @click="changeProject('prev')">previous</div>
+          <div @click="changeProject('next')">next</div>
         </div>
       </div>
       <div class="project__view__slider twelve">
@@ -15,12 +15,62 @@
   </div>
   <div class="desc container">
     <div class="desc__title columns twelve">
-      <h4>Otto Brewerytown</h4>
-      <p>Cohere • 2018</p>
+      <h4>{{ project.title }}</h4>
+      <p>{{ project.team }} • {{ project.date | year }}</p>
     </div>
   </div>
 </section>
 </template>
+
+<script>
+import moment from 'moment';
+
+export default {
+  data () {
+    // Using webpacks context to gather all files from a folder
+    const context = require.context('~/content/projects/posts/', false, /\.json$/);
+
+    const projects = context.keys().map(key => ({
+        ...context(key),
+        _path: `/projects/${key.replace('.json', '').replace('./', '')}`
+    }));
+    return {
+      projects,
+      index: 0,
+    };
+  },
+  methods: {
+    changeProject (dir) {
+      let p = this.projects
+      let i = this.index
+
+      if (dir == 'next' && p.length - 1 == i) {
+        i = 0
+      } else if (dir == 'next') {
+        i = i + 1
+      } else if (dir == 'prev' && i == 0) {
+        i = p.length - 1
+      } else {
+        i = i - 1
+      }
+
+      this.index = i
+      console.log(this.index);
+    },
+  },
+  computed: {
+    project: function () {
+      return this.projects[this.index]
+    }
+  },
+  filters: {
+    year: function (date) {
+      return moment(date).year();
+    }
+  }
+}
+</script>
+
 
 <style lang="scss" scoped>
 @import '~assets/sass/utilities/_variables.scss';

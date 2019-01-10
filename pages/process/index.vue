@@ -69,7 +69,12 @@ export default {
       transition: all 1200ms $ease;
 
       &.open {
-        max-height: 50vh;
+        max-height: 75vh;
+      }
+
+      &__content {
+        max-width: $xsmall-width;
+        margin: 0 auto;
       }
     }
   }
