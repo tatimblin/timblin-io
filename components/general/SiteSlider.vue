@@ -4,7 +4,7 @@
       <div class="slider__gal twelve">
         <div  class="slider__gal__item"
               v-for="(slide) in slides[selectedGroup]"
-              :key="slide"
+              :key="slide.title"
               :style="{ backgroundImage: 'url(' + slide + ')' }"
               @click="updateProcess(item.title)"
         >

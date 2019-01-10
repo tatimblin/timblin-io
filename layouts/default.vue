@@ -27,6 +27,7 @@ import AppFooter from '~/components/AppFooter.vue';
 import { mapState } from 'vuex';
 
 export default {
+  middleware: 'labs',
   components: {
     LabsUi,
     ToggleUi,
