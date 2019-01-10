@@ -1,7 +1,7 @@
 <template>
   <div class="process container">
 
-    <div class="process__item twelve nested" v-for="(item) in items" :key="item.index" @click="updateProcess(item.title)">
+    <div class="process__item twelve nested" v-for="(item) in items" :key="item.index" @click="updateProcess(item.title)" :id="`step-${item.index}`">
       <div class="process__item__title six nested">
         <h2 class="one">{{ item.index }}</h2>
         <h1 class="eleven">{{ item.title }}</h1>

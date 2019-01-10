@@ -3,10 +3,10 @@
     <div class="container">
       <div class="slider__gal twelve">
         <div  class="slider__gal__item"
-              v-for="(slide) in slides[selectedGroup]"
-              :key="slide.title"
-              :style="{ backgroundImage: 'url(' + slide + ')' }"
-              @click="updateProcess(item.title)"
+              v-for="(slide, index) in slides[selectedGroup]"
+              :key="index"
+              :style="{ backgroundImage: 'url(' + slide.thumbnail + ')' }"
+              @click="triggerUpdateProcess(slide)"
         >
         </div>
       </div>
@@ -55,7 +55,7 @@ export default {
   created() {
     // Group process items into groups of 4
     const count = 4;
-    const thumbnail = this.items.map(a => a.thumbnail);
+    const thumbnail = this.items.map(a => a);
     var newArray = [];
     while (thumbnail.length > 0) {
       newArray.push(thumbnail.splice(0, count)); 
@@ -79,7 +79,6 @@ export default {
       transformOrigin: 'right',
       ease: Expo.easeInOut,
     });
-
   },
   methods: {
     ...mapMutations(['updateProcess']),
@@ -98,6 +97,10 @@ export default {
       if (dir != 'auto') {
         this.timeline.restart()
       }
+    },
+    triggerUpdateProcess (slide) {
+      this.updateProcess(slide.title)
+      this.$router.push({ name: 'process', hash: `#step-${slide.index}`})
     }
   },
   computed: {
@@ -122,6 +125,10 @@ export default {
 
     @include query ($small-width) {
       grid-template-columns: repeat(auto-fill, minmax(calc(25% - 30px), 1fr));
+    }
+
+    a {
+      display: contents;
     }
 
     &:before {
