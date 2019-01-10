@@ -59,7 +59,15 @@ module.exports = {
   loading: { color: '#a1a1a1' },
   router: {
     base: '',
-    middleware: 'pages'
+    middleware: 'pages',
+    mode: 'history',
+    scrollBehavior: function(to, from, savedPosition) {
+      if (to.hash) {
+        return {selector: to.hash}
+      } else {
+        return { x: 0, y: 0}
+      }
+    }
   },
   /*
   ** Route config for pre-rendering
