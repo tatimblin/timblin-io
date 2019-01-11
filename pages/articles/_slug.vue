@@ -16,7 +16,6 @@ import moment from 'moment';
 
 import VueMarkdown from 'vue-markdown'
 import InCollab from '~/components/labs/InCollab.vue'
-import NavBack from '~/components/temp/NavBack.vue'
 
 export default {
   layout: 'default',

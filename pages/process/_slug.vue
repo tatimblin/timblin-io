@@ -24,7 +24,7 @@
 
 <script>
 import VueMarkdown from 'vue-markdown'
-import NavBack from '~/components/temp/NavBack.vue'
+import NavBack from '~/components/general/NavBack.vue'
 import ProcessList from '~/components/temp/ProcessList.vue'
 
 export default {

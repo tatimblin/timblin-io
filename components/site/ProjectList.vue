@@ -8,14 +8,21 @@
           <div @click="changeProject('next')">next</div>
         </div>
       </div>
-      <div class="project__view__slider twelve">
-        <img src="/images/uploads/profilepic.png" alt="project">
+      <div class="project__view__slider twelve" @click="removeImage()">
+        <transition-group name="images">
+          <img 
+            v-for="(image, index) in project.thumbnail"
+            :key="index"
+            :src="image"
+            :alt="project.title"
+          >
+        </transition-group>
       </div>
     </div>
   </div>
   <div class="desc container">
     <div class="desc__title columns twelve">
-      <h4>{{ project.title }}</h4>
+      <h4><nuxt-link :to="project._path">{{ project.title }}</nuxt-link></h4>
       <p>{{ project.team }} • {{ project.date | year }}</p>
     </div>
   </div>
@@ -56,6 +63,16 @@ export default {
 
       this.index = i
       console.log(this.index);
+    },
+    removeImage () {
+      let arr = this.project.thumbnail
+      console.log(arr.length)
+      if (arr.length == 0) {
+        this.changeProject('next')
+        console.log('HEY!')
+      } else {
+        arr.pop()
+      }
     },
   },
   computed: {

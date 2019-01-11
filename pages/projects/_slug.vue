@@ -1,42 +1,22 @@
 <template>
 <div class="post">
 
-  <nav-back/>
+  <nav-back destination="/projects"/>
   
-  <section class="container small-width">
-
-    <div class="row">
-
-      <div class="content">
-
-        <img :src="thumbnail">
-
-      </div>
-
+  <section class="post__title container">
+    <div class="column twelve">
+      <img :src="thumbnail" :alt="title">
+      <h3>{{ title }}</h3>
+      <p>{{ team }} • {{ date }}</p>
     </div>
-
-    <div class="row">
-
-      <div class="content text-center">
-
-        <h3>{{ title }}</h3>
-        <p>Cohere • 2018</p>
-
-      </div>
-
-    </div>
-
-    <div class="row">
-
-      <div class="post-body content">
-
-        <vue-markdown>{{ body }}</vue-markdown>
-
-      </div>
-
-    </div>
-
   </section>
+
+  <section class="post__content container xsmall-width">
+    <div class="column six">
+      <vue-markdown>{{ body }}</vue-markdown>
+    </div>
+  </section>
+
 </div>
 </template>
 
@@ -44,10 +24,10 @@
 import { TweenMax } from 'gsap'
 
 import VueMarkdown from 'vue-markdown'
-import NavBack from '~/components/temp/NavBack.vue'
+import NavBack from '~/components/general/NavBack.vue'
 
 export default {
-  layout: 'site',
+  layout: 'blank',
   transition: {
     mode: 'out-in',
     css: false,
@@ -93,17 +73,23 @@ export default {
 </script>
 
 <style lang="scss">
-.post-body {
-  h1 {
-    margin: 1.125rem 0;
+@import '~assets/sass/utilities/_variables.scss';
+
+.post {
+  &__title {
+    margin: $spacing*2 auto;
+    text-align: center;
+
+    img {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 15px;
+    }
   }
-  p {
-    margin-bottom: 1.125rem;
-  }
-  img {
-    width: calc(100% - 60px);
-    padding: 1.125rem 0;
-    transform: translateX(60px);
+  &__content {
+    margin: 0 auto;
   }
 }
 </style>

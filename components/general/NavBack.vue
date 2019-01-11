@@ -5,7 +5,7 @@
 
             <div class="nav-back">
 
-                <nuxt-link to="/">timblin.io</nuxt-link>
+                <nuxt-link :to="destination">timblin.io{{destination}}</nuxt-link>
 
             </div>
 
@@ -17,6 +17,7 @@
 <script>
 
 export default {
+    props: ['destination'],
 }
 </script>
 
