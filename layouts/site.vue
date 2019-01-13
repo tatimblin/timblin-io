@@ -24,4 +24,9 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~assets/sass/utilities/_variables.scss';
+
+.app {
+  background-color: $bg-site;
+}
 </style>

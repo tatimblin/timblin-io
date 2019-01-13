@@ -146,7 +146,7 @@ export default {
       transform: translateX(calc(-100% + 29px));
 
       @include query ($small-width) {
-        background-color: $bg;
+        background-color: $bg-site;
       }
     }
 
