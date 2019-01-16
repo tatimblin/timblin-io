@@ -27,6 +27,5 @@ export default {
 @import '~assets/sass/utilities/_variables.scss';
 
 .app {
-  background-color: $bg-site;
 }
 </style>

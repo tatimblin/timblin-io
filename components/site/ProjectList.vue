@@ -91,32 +91,32 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/sass/utilities/_variables.scss';
+$expanded-medium-width: calc(#{$medium-width} + 60px);
 
 .project {
   position: relative;
-  background-color: darken($bg, 10%);
+  background-color: $bg;
 
   &__nav {
     position: absolute;
-    top: 0; left: 0;
-    height: 100%;
-    padding-top: $spacing;
-    transform: translateX(calc(-100% + 30px));
+    top: -$spacing*1.5; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1001;
 
-    @include query ($small-width) {
-        transform: translateX(-100%);
-      }
+    @include query ($medium-width) {
+      top: 0;
+      padding-top: $spacing;
+      transform: translateX(-100%);
+    }
 
-    &:after {
+    &:after { // Project view rounded cap
       content: '';
       position: absolute;
       width: $spacing/2; height: 100%;
       top: 0; right: -$spacing;
-      //transform: translateX(-$spacing/2);
-      z-index: -1;
 
       @include query ($medium-width) {
-        background-color: darken($bg, 10%);
+        background-color: $bg;
         border-radius: 15px 0 0 15px;
       }
     }
@@ -124,9 +124,13 @@ export default {
     &__vert {
       position: relative;
       display: flex;
-      transform: rotate(-90deg) translateY(calc(-100% + 15px));
+      justify-content: center;
       transform-origin: 100% 0%;
-      z-index: 10;
+
+      @include query ($medium-width) {
+        justify-content: flex-end;
+        transform: rotate(-90deg) translateY(calc(-100% + 15px));
+      }
 
       div {
         margin: 0 7px;
@@ -138,14 +142,15 @@ export default {
     position: relative;
     grid-row-gap: 0; // override grid, so image can be flush with container.
 
-    &:before {
+    &:before { // Covers up project view background on the left side
       content: '';
       position: absolute;
       width: 100vw; height: 100%;
       top: 0; left: 0;
       transform: translateX(calc(-100% + 29px));
+      z-index: 1000;
 
-      @include query ($small-width) {
+      @include query ($medium-width) {
         background-color: $bg-site;
       }
     }
@@ -158,6 +163,7 @@ export default {
       padding-top: $spacing;
       text-align: center;
       z-index: 10;
+      overflow: hidden;
 
       img {
         position: absolute;
@@ -165,7 +171,8 @@ export default {
         min-height: 350px;
         max-height: 600px;
         bottom: 0;
-        object-fit: cover;
+        object-fit: contain;
+        object-position: bottom;
         transform: translateX(-50%);
       }
     }

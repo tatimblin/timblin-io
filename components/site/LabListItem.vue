@@ -33,14 +33,12 @@ export default {
 @import '~assets/sass/utilities/_variables.scss';
 
   .list-item {
-    margin-bottom: $spacing;
 
     &:hover {
       a {
         color: $black;
       }
       .list-item__card {
-      
         &:before {
           border-radius: 7.5px;
           background-color: white;
@@ -49,7 +47,7 @@ export default {
         }
         img {
           transform: scale(1.1);
-          transition: all 9s 450ms $ease-out;
+          transition: all 6s $ease-out;
         }
         &__meta {
           opacity: 1;
@@ -93,7 +91,7 @@ export default {
           border-radius: 7.5px;
           transform: scale(1.25);
           transform-origin: top center;
-          transition: all 12s $ease-out;
+          transition: all 15s $ease-out;
         }
       }
       &__meta {

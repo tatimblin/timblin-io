@@ -8,14 +8,21 @@
     <labs-ui ref="labsUi"></labs-ui>
     
       <div class="app__content" :class="{'app__content--article' : $route.name == 'articles-slug'}" >
-        <transition :name="dir" mode="out-in">
+        <transition 
+          :name="dir"
+          mode="out-in"
+          @before-leave="beforeLeave()"
+          @after-enter="afterEnter()"
+        >
           <div v-bind:key="page" :style="stylesUi">
             <nuxt/>
           </div>
         </transition>
       </div>
 
-    <app-footer></app-footer>
+    <transition name="fade">
+      <app-footer v-show="showFooter"></app-footer>
+    </transition>
 
   </div>
 </template>
@@ -43,6 +50,7 @@ export default {
       },
       dir: 'slide-right',
       page: '',
+      showFooter: true,
     };
   },
   watch: {
@@ -88,6 +96,12 @@ export default {
         this.stylesUi.marginTop = 0;
       }
     },
+    beforeLeave () {
+      this.showFooter = false;
+    },
+    afterEnter () {
+      this.showFooter = true;
+    },
   },
   computed: {
     ...mapState(['direction'])
@@ -100,7 +114,6 @@ export default {
 //$app-bg: #ededed;
 
 .app {
-  //background-color: $app-bg;
 
   &__toggle {
     position: fixed;
@@ -122,7 +135,7 @@ export default {
     max-width: 100%;
     margin: 0 auto;
     transition: all 900ms 50ms $ease;
-    perspective: 375px;
+    perspective: 30vw;
 
     &.app__content--article > div{ // Hide border styles for articles
       box-shadow: none !important;
@@ -179,6 +192,41 @@ $ease: cubic-bezier(0.77, 0, 0.175, 1);
   animation: slide-right $dur 0s $ease 1 forwards;
 }
 
+// MOBILE SLIDE ANIMATION
+@keyframes slide-right {
+  0% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(0%) scale(0.875);
+    opacity: 1;
+    transform-origin: 50% 240px;
+  }
+  100% {
+    transform: translateX(33%) scale(0.875) rotate3d(0, 0, 1, 2deg);
+    opacity: 0;
+    transform-origin: 0% 240px;
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(0%) scale(0.875);
+    opacity: 1;
+    transform-origin: 50% 240px;
+  }
+  100% {
+    transform: translateX(-33%) scale(0.875) rotate3d(0, 0, 1, -2deg);
+    opacity: 0;
+    transform-origin: 100% 240px;
+  }
+}
+
+// DESKTOP SLIDE ANIMATION
+@media screen and (min-width: $small-width) {
 @keyframes slide-right {
   0% {
     transform: translateX(0%);
@@ -209,6 +257,7 @@ $ease: cubic-bezier(0.77, 0, 0.175, 1);
     opacity: 0;
     transform-origin: 100% 240px;
   }
+}
 }
 
 

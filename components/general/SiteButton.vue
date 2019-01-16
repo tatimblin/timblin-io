@@ -22,6 +22,7 @@ export default {
 button {
   margin-top: $spacing/2;
   margin-bottom: $spacing/2;
+  background-color: red;
   
   &:first-of-type {
     margin-left: 0;

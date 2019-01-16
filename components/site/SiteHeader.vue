@@ -10,12 +10,12 @@
         </div>
       </div>
       <div class="nested">
-        <site-button>
+        <!-- <site-button>
           <nuxt-link to="/">labs</nuxt-link>
         </site-button>
         <site-button>
           <nuxt-link to="projects">projects</nuxt-link>
-        </site-button>
+        </site-button> -->
       </div>
     </div>
     

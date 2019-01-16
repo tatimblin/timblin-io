@@ -31,6 +31,9 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
       { rel: 'stylesheet', href: 'https://use.typekit.net/zor5ibn.css' }
+    ],
+    script: [
+      { src: '/SplitText.min.js'}
     ]
   },
   css: [
