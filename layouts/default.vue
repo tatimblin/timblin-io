@@ -13,6 +13,7 @@
           mode="out-in"
           @before-leave="beforeLeave()"
           @after-enter="afterEnter()"
+          appear
         >
           <div v-bind:key="page" :style="stylesUi">
             <nuxt/>
