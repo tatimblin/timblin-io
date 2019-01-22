@@ -66,7 +66,8 @@ export default {
 				y: 10,
                 rotationY: 45,
                 rotation: 15,
-				ease:Back.easeOut,
+                ease:Back.easeOut,
+                delay: 1.2,
 				onComplete: done
             }, 0.02);
         },

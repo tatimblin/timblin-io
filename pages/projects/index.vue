@@ -1,13 +1,15 @@
 <template>
   <div class="site">
+
+    <site-header headline="Interactive Labs">
+      <h2 id="header-subline">a collection of front-end experiences using motion, by interaction developer Tristan Timblin.</h2>
+    </site-header>
+
     <project-list>
 
     </project-list>
-    <section class="headline container">
-      <div class="twelve">
-        <h1>Trusting the process</h1>
-        <h2>Lorem ipsum dolor sit amit, consectetur adipiscing.</h2>
-      </div>
+
+    
       <div class="twelve">
         <div class="callout nested">
           <div class="three">
@@ -21,7 +23,6 @@
         </div>
       </div>
       <hr class="six">
-    </section>
 
     <div class="container">
       <site-button>
@@ -38,6 +39,7 @@
 import ProjectList from '~/components/site/ProjectList.vue';
 import SiteButton from '~/components/general/SiteButton.vue';
 import SiteSlider from '~/components/general/SiteSlider.vue';
+import SiteHeader from '~/components/site/SiteHeader.vue';
 
 export default {
   layout: 'site',
@@ -46,6 +48,7 @@ export default {
     ProjectList,
     SiteButton,
     SiteSlider,
+    SiteHeader
   },
 }
 </script>
@@ -53,8 +56,5 @@ export default {
 <style lang="scss">
 @import '~assets/sass/utilities/_variables.scss';
 
-.site {
-  margin-top: $spacing*2;
-}
 </style>
 

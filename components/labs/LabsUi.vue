@@ -20,6 +20,11 @@ export default {
     computed: {
         ...mapGetters(['nav', 'thisLab']),
     },
+    head () {
+        return {
+            title: this.thisLab.title,
+        }
+    }
 };
 </script>
 

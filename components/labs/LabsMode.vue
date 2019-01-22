@@ -15,6 +15,11 @@
                 Github
             </a>
         </div>
+        <div class="labsmode__item">
+            <nuxt-link to="/">
+                Home
+            </nuxt-link>
+        </div>
     </div>
 </template>
 

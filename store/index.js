@@ -54,8 +54,8 @@ const createStore = () => {
       },
       updateIndex (state, pageName) {
         // match the current route with array index to set 'indexedLab'
-        let url = pageName.substring(pageName.lastIndexOf("/") + 1);
-        state.indexedLab = state.labs.findIndex(x => x._path === url);
+          let url = pageName.substring(pageName.lastIndexOf("/") + 1);
+          state.indexedLab = state.labs.findIndex(x => x._path === url);
       },
       updateDirection(state, dir) {
         console.log('STORE: setting direction to ' + dir);

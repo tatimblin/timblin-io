@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import TweenMax from 'gsap';
 import LabsUi from '~/components/labs/LabsUi.vue'
 import ToggleUi from '~/components/labs/ToggleUi.vue'
 import AppFooter from '~/components/AppFooter.vue';
@@ -49,9 +50,9 @@ export default {
         boxShadow: 'rgba(0, 0, 0, 0.2) 0px 30px 60px 0px',
         borderRadius: '15px'
       },
-      dir: 'slide-right',
+      dir: 'default',
       page: '',
-      showFooter: true,
+      showFooter: false,
     };
   },
   watch: {
@@ -267,10 +268,10 @@ $ease: cubic-bezier(0.77, 0, 0.175, 1);
   animation: to-article 600ms 0s ease-in 1 reverse forwards;
 }
 .to-article-leave-active {
-  animation: from-article 1.6s 0s $ease 1 forwards;
+  animation: from-article 1.2s 0s $ease 1 forwards;
 }
 .from-article-enter-active {
-  animation: from-article 1.6s 0s $ease 1 reverse forwards;
+  animation: from-article 1.2s 0s $ease 1 reverse forwards;
 }
 .from-article-leave-active {
   animation: to-article 600ms 0s ease-in 1 forwards;
@@ -300,6 +301,22 @@ $ease: cubic-bezier(0.77, 0, 0.175, 1);
   100% {
     transform: scale(0.5) translateY(-320px) rotate3d(1, 0, 0, 5deg);
     opacity: 0;
+  }
+}
+
+.default-enter-active {
+  opacity: 0;
+  animation: default 0.75s 0ms cubic-bezier(0.165, 0.84, 0.44, 1) 1 forwards;
+}
+
+@keyframes default {
+  0% {
+    opacity: 0;
+    transform: scale(0.25) translateY(150vh) rotate3d(1, 0, 0, -5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) rotate3d(0, 0, 0, 5deg);
   }
 }
 </style>

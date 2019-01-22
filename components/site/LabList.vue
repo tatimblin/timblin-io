@@ -27,21 +27,21 @@ export default {
   },
   methods: {
     enter (el, done) {
-      let list = document.querySelectorAll('.list-item--wrap');
-      const tm = TweenMax.staggerfrom(list, 0.5, {
-				opacity: 0, 
-				ease:Back.easeOut,
+      TweenMax.staggerTo(".list-item--wrap", 0.6, {
+        opacity: 1,
+        ease: Sine.easeOut,
+        delay: 1.3,
 				onComplete: done
-			}, 0.04);
+      }, 0.3);
     },
     leave (el, done) {
-      let list = document.querySelectorAll('.list-item--wrap');
-      const tm = TweenMax.staggerto(list, 0.5, {
-				opacity: 0, 
-				ease:Back.easeOut,
+      TweenMax.staggerTo(".list-item--wrap", 0.6, {
+        opacity: 0,
+        ease: Sine.easeOut,
+        delay: 0.9,
 				onComplete: done
-			}, 0.04);
-    }
+      }, 0.3);
+    },
   }
 }
 </script>
@@ -51,6 +51,9 @@ export default {
 
 .list {
   margin-top: $spacing*2;
+}
+.list-item--wrap {
+  opacity: 0;
 }
 </style>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="list-item">
-    <nuxt-link :to="`labs/${item._path}`">
+    <nuxt-link :to="{ path: `labs/${item._path}`}">
       <div class="list-item__card">
         <div class="list-item__card__img">
           <img :src="item.thumbnail" :alt="`a front-end experience called ${item.title}`">

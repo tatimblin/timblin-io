@@ -1,33 +1,67 @@
 <template>
-  <section class="container">
+  <section class="container" :style="{visibility: visibility}">
     <div class="header twelve">
-      <h1>Interactive Labs</h1>
-      <h2>a collection of front-end experiences using motion, by interaction designer Tristan Timblin.</h2>
-      <div class="header__callout nested">
-        <div class="columns six">
-          <h4>developing at <a href="https://cohere.city/">Cohere.city</a></h4>
-          <h4>now on <a href="https://github.com/tatimblin" target="_blank">github</a> and <a href="https://codepen.io/tatimblin" target="_blank">codepen</a></h4>
-        </div>
-      </div>
-      <div class="nested">
-        <!-- <site-button>
-          <nuxt-link to="/">labs</nuxt-link>
-        </site-button>
-        <site-button>
-          <nuxt-link to="projects">projects</nuxt-link>
-        </site-button> -->
-      </div>
+      <transition
+        v-bind:css="false"
+        @enter="enterHeadline"
+        @after-enter="afterEnter"
+        appear
+      >
+        <h1 id="header-headline" class="header-headline">{{ headline }}</h1>
+      </transition>
+      <transition
+        v-bind:css="false"
+        @enter="enterSubline"
+        @after-enter="afterEnter"
+        appear
+      >
+        <slot></slot>
+      </transition>
     </div>
-    
   </section>
 </template>
 
 <script>
-import SiteButton from '~/components/general/SiteButton.vue';
+import TweenMax from 'gsap';
 
 export default {
-  components: {
-    SiteButton,
+  props: ['headline'],
+  data () {
+    return {
+      visibility: 'hidden',
+      splitHeadline: null,
+      splitSubline: null,
+    };
+  },
+  mounted () {
+    this.visibility = 'visible';
+  },
+  methods: {
+    enterHeadline: function (el, done) {
+      this.splitHeadline = new SplitText("#header-headline", {type: "words"});
+			TweenMax.staggerFrom(this.splitHeadline.words, 0.8, {
+        y: 110,
+        cycle: {
+          opacity: ['0', '1', '1']
+        },
+        delay: 0.3,
+        ease:Power3.easeOut,
+				onComplete: done
+      }, 0);
+    },
+    enterSubline: function (el, done) {
+      this.splitsubline = new SplitText("#header-subline", {type: "lines"});
+			TweenMax.staggerFrom(this.splitsubline.lines, 0.4, {
+        opacity: 0,
+        x: -12,
+        ease:Power3.easeOut,
+        delay: 0.6,
+				onComplete: done
+      }, 0.2);
+    },
+    afterEnter: function () {
+      this.splitHeadline.revert()
+    }
   }
 }
 </script>
@@ -37,6 +71,10 @@ export default {
 
 .header {
   margin: $spacing*2 0 0 0;
+
+  &-headline {
+    overflow: hidden;
+  }
 
   &__callout > div {
     margin-left: 0;
