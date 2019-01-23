@@ -89,7 +89,14 @@ export default {
         border-right: 1px solid $black;
 
         div {
-            padding: 5px $spacing/2;
+            padding: 3px;
+            a {
+                padding: 2px 5px;
+            }
+
+            @include query ($small-width) {
+                padding: 3px 10px;
+            }
         }
     }
     &__title {

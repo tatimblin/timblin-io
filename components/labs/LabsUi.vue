@@ -33,10 +33,15 @@ export default {
 
 .labsui__nav {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: baseline;
     max-width: $large-width;
     margin: 0 auto;
     padding: $spacing/2 0;
+
+    @include query ($small-width) {
+        flex-direction: row;
+    }
 }
 </style>
