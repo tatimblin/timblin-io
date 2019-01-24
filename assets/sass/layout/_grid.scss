@@ -10,7 +10,6 @@
   grid-template-columns: repeat(6, 1fr);
   margin: 0 auto;
   padding: 0 $spacing/2;
-  width: 100vw;
   max-width: $medium-width;
 
   @include query ($medium-width) {

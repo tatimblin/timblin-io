@@ -106,7 +106,6 @@ export default {
 
 <style scoped lang="scss">
 @import '~assets/sass/utilities/_variables.scss';
-@import '~assets/sass/layout/_grid.scss';
 
 $text-color: #6d6d6d;
 $font: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
