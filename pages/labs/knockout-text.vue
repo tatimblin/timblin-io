@@ -14,11 +14,9 @@
     <header class="header">
         <div class="background" v-bind:class="{ 'background-fade': this.scrolled}"></div>
         <div class="header-hero" v-bind:class="{ 'header-hero-fade': this.scrolled}">
-            <div class="header-hero_inner">
-                <transition v-bind:css="false" @enter="enter" appear>
-                    <h1 id="headline" v-if="loaded">Art Ignites Change</h1>
-                </transition>
-            </div>
+            <transition v-bind:css="false" @enter="enter" appear>
+                <h1 id="headline" v-if="loaded">Art Ignites Change</h1>
+            </transition>
         </div>
         <div class="container">
             <span class="caption twelve">Philadelphia Muses by Meg Saligman</span>
@@ -97,14 +95,19 @@ export default {
         handleScroll: function () {
             var height;
             height = document.documentElement.scrollTop;
-            if (height > 50) {
+            if (height > 30) {
                 this.scrolled = true;
             } else {
                 this.scrolled = false;
             }
         },
         enter: function (el, done) {
-			
+            TweenMax.from(el, 0.4, {
+                ease:Power3.easeOut,
+                delay: 0.6,
+                onComplete: done
+            });
+            console.log('hi');
         },
     },
     beforeMount () {
@@ -191,6 +194,9 @@ $bg: lighten(#DC483C, 40%);
     }
     &-hero {
         position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         width: 100%; height:550px;
         background-image: url('~assets/labs/knockout-text/philadelphia-mural-hero.jpg');
         background-position: 20%;
@@ -198,17 +204,11 @@ $bg: lighten(#DC483C, 40%);
         border-bottom: 1px solid $alt-light;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        filter: brightness(5%) grayscale(0%);
+        filter: brightness(0%) grayscale(0%);
         transition: all 400ms $ease;
-
-        &_inner {
-            max-width:90%;
-            margin: 100px auto;
-            text-align:center;
-            h1 {
-                //position: fixed;
-                font-size: 8em;
-            }
+        h1 {
+            text-align: center;
+            font-size: 8em;
         }
         &-fade {
             filter: brightness(90%) grayscale(0%);
@@ -223,7 +223,7 @@ $bg: lighten(#DC483C, 40%);
     background-position: 20% center;
 	background-size:cover;
 	opacity:1;
-    filter: blur(0px) brightness(110%) contrast(80%);
+    filter: blur(0px) brightness(135%) contrast(80%);
     transition: all 400ms 100ms $ease;
     
     &-fade {

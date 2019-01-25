@@ -299,7 +299,7 @@ $ease: cubic-bezier(0.77, 0, 0.175, 1);
     opacity: 1;
   }
   100% {
-    transform: scale(0.5) translateY(-320px) rotate3d(1, 0, 0, 5deg);
+    transform: scale(0.35) translateY(-320px) rotate3d(1, 0, 0, 3deg);
     opacity: 0;
   }
 }
@@ -312,7 +312,7 @@ $ease: cubic-bezier(0.77, 0, 0.175, 1);
 @keyframes default {
   0% {
     opacity: 0;
-    transform: scale(0.25) translateY(150vh) rotate3d(1, 0, 0, -5deg);
+    transform: scale(0.35) translateY(150vh) rotate3d(1, 0, 0, -3deg);
   }
   100% {
     opacity: 1;
