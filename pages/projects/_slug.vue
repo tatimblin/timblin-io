@@ -13,7 +13,7 @@
 
   <section class="post__content container xsmall-width">
     <div class="column six">
-      <vue-markdown>{{ body }}</vue-markdown>
+      <div>{{ body }}</div>
     </div>
   </section>
 
@@ -23,7 +23,6 @@
 <script>
 import { TweenMax } from 'gsap'
 
-import VueMarkdown from 'vue-markdown'
 import NavBack from '~/components/general/NavBack.vue'
 
 export default {
@@ -56,8 +55,7 @@ export default {
     }
   },
   components: {
-    VueMarkdown,
-    NavBack
+    NavBack,
   },
   async asyncData({ params }) {
     // const postPromise = process.BROWSER_BUILD

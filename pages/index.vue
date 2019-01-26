@@ -15,7 +15,6 @@
 <script>
 import TweenMax from 'gsap';
 import LabList from '~/components/site/LabList.vue';
-import SiteHeader from '~/components/site/SiteHeader.vue';
 
 export default {
   head () {
@@ -31,7 +30,6 @@ export default {
   name: 'home',
   components: {
     LabList,
-    SiteHeader
   },
   updated: function () {
     this.$nextTick(function () {

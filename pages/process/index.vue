@@ -11,7 +11,7 @@
       </div>
       <div class="process__item__full twelve" :class="{open: item.title == thisProcess}">
         <div class="process__item__full__content">
-          <vue-markdown>{{ item.body }}</vue-markdown>
+          <div>{{ item.body }}</div>
         </div>
       </div>
     </div>
@@ -20,14 +20,12 @@
 </template>
 
 <script>
-import VueMarkdown from 'vue-markdown'
 import { mapMutations, mapGetters } from 'vuex';
 
 export default {
   layout: 'blank',
   transition: 'fade',
   components: {
-    VueMarkdown,
   },
   data () {
     // Using webpacks context to gather all files from a folder

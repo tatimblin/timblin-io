@@ -44,13 +44,10 @@
 <script>
 import { TweenMax } from 'gsap'
 
-import AppLogo from '~/components/AppLogo.vue'
-import SiteHeader from '~/components/temp/SiteHeader.vue'
 import SiteProjectView from '~/components/temp/SiteProjectView.vue'
 import SiteProcess from '~/components/temp/SiteProcess.vue'
 import SiteSlider from '~/components/temp/SiteSlider.vue'
 import SiteTitle from '~/components/temp/SiteTitle.vue'
-import SiteButton from '~/components/temp/SiteButton.vue'
 import SiteDivider from '~/components/temp/SiteDivider.vue'
 import AboutContent from '~/components/temp/AboutContent.vue'
 
@@ -84,13 +81,10 @@ export default {
     }
   },
   components: {
-    AppLogo,
-    SiteHeader,
     SiteProjectView,
     SiteProcess,
     SiteSlider,
     SiteTitle,
-    SiteButton,
     SiteDivider,
     AboutContent
   },

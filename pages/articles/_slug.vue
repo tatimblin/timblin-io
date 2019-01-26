@@ -5,22 +5,21 @@
       <h1>{{title}}</h1>
       <in-collab :collab="collaboration" :date="date | moment"/>
     </div>
-    <vue-markdown>{{body}}</vue-markdown>
+    <div v-html="compiledMarkdown">{{body}}</div>
   </div>
 </div>
 </template>
 
 <script>
 //import { TweenMax, Back } from 'gsap';
+import marked from 'marked';
 import moment from 'moment';
 
-import VueMarkdown from 'vue-markdown'
 import InCollab from '~/components/labs/InCollab.vue'
 
 export default {
   layout: 'default',
   components: {
-    VueMarkdown,
     InCollab,
   },
   async asyncData({ params }) {
@@ -37,6 +36,11 @@ export default {
     return {
       timeAgo:'',
     };
+  },
+  computed: {
+    compiledMarkdown: function () {
+      return marked(this.body, { sanitize: true })
+    },
   },
   filters: {
     moment: function (date) {

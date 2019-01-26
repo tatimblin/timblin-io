@@ -11,8 +11,8 @@
       <div class="project__view__slider twelve" @click="removeImage()">
         <transition-group name="images">
           <img 
-            v-for="(image, index) in project.thumbnail"
-            :key="index"
+            v-for="image in project.thumbnail"
+            :key="image"
             :src="image"
             :alt="project.title"
           >
