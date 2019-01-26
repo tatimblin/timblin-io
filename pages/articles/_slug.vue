@@ -38,6 +38,11 @@ export default {
       timeAgo:'',
     };
   },
+  created () {
+    if(!this.collaboration) {
+      this.collaboration = false
+    }
+  },
   filters: {
     moment: function (date) {
       return moment(date).startOf('day').fromNow();

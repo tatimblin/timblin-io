@@ -1,7 +1,7 @@
 <template>
   <div class="in-collab">
     <p>{{ date }}</p>
-    <span v-if="collab">
+    <span v-if="collab != false">
       <p>• with</p>
       <a :href="collab.url" target="_blank">
         <img :src="collab.avi" :alt="collab.name">
