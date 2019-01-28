@@ -182,7 +182,6 @@ $bg: lighten(#DC483C, 40%);
         }
     }
 }
-
 .header {
     position: relative;
     height: 550px + $spacing*2;
@@ -204,14 +203,14 @@ $bg: lighten(#DC483C, 40%);
         border-bottom: 1px solid $alt-light;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        filter: brightness(0%) grayscale(0%);
-        transition: all 400ms $ease;
+        filter: brightness(0%) contrast(100%) grayscale(0%);
+        transition: all 600ms $ease;
         h1 {
             text-align: center;
             font-size: 8em;
         }
         &-fade {
-            filter: brightness(90%) grayscale(0%);
+            filter: brightness(135%) contrast(80%) grayscale(0%);
         }
     }
 }
@@ -224,7 +223,7 @@ $bg: lighten(#DC483C, 40%);
 	background-size:cover;
 	opacity:1;
     filter: blur(0px) brightness(135%) contrast(80%);
-    transition: all 400ms 100ms $ease;
+    transition: all 1.5s 200ms $ease;
     
     &-fade {
         filter: blur(4px);
