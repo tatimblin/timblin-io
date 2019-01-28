@@ -1,9 +1,11 @@
 <template>
   <div id="site" class="site">
     <div class="container">
-      <div class="site-header__intro six">
-        <h4>developing at <a href="">Cohere.city</a></h4>
-        <h4>now on <a href="">Github</a> and <a href="">Codepen</a>.</h4>
+      <div class="content medium-width content--block">
+        <div class="site-header__intro">
+          <h4>developing at <a href="">Cohere.city</a></h4>
+          <h4>now on <a href="">Github</a> and <a href="">Codepen</a>.</h4>
+        </div>
       </div>
     </div>
 
@@ -43,6 +45,7 @@ export default {
 @import '~assets/sass/utilities/_variables.scss';
 
 .site-header__intro {
+  max-width: $medium-width / 2;
   padding-bottom: $spacing;
   border-bottom: 1px solid black;
 }

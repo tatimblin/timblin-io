@@ -1,22 +1,24 @@
 <template>
   <section class="container" :style="{visibility: visibility}">
-    <div class="header twelve">
-      <transition
-        v-bind:css="false"
-        @enter="enterHeadline"
-        @after-enter="afterEnter"
-        appear
-      >
-        <h1 id="header-headline" class="header-headline">{{ headline }}</h1>
-      </transition>
-      <transition
-        v-bind:css="false"
-        @enter="enterSubline"
-        @after-enter="afterEnter"
-        appear
-      >
-        <slot></slot>
-      </transition>
+    <div class="content medium-width">
+      <div class="header">
+        <transition
+          v-bind:css="false"
+          @enter="enterHeadline"
+          @after-enter="afterEnter"
+          appear
+        >
+          <h1 id="header-headline" class="header-headline">{{ headline }}</h1>
+        </transition>
+        <transition
+          v-bind:css="false"
+          @enter="enterSubline"
+          @after-enter="afterEnterSubline"
+          appear
+        >
+          <slot></slot>
+        </transition>
+      </div>
     </div>
   </section>
 </template>
@@ -50,8 +52,8 @@ export default {
       }, 0);
     },
     enterSubline: function (el, done) {
-      this.splitsubline = new SplitText("#header-subline", {type: "lines"});
-			TweenMax.staggerFrom(this.splitsubline.lines, 0.4, {
+      this.splitSubline = new SplitText("#header-subline", {type: "lines"});
+			TweenMax.staggerFrom(this.splitSubline.lines, 0.4, {
         opacity: 0,
         x: -12,
         ease:Power3.easeOut,
@@ -61,7 +63,10 @@ export default {
     },
     afterEnter: function () {
       this.splitHeadline.revert()
-    }
+    },
+    afterEnterSubline: function () {
+      this.splitSubline.revert()
+    },
   }
 }
 </script>

@@ -5,81 +5,40 @@
  *****************************************************************************/
 
  .container {
-  display: grid;
-  grid-gap: $spacing;
-  grid-template-columns: repeat(6, 1fr);
-  margin: 0 auto;
-  padding: 0 $spacing/2;
-  max-width: $medium-width;
 
-  @include query ($medium-width) {
-    grid-template-columns: repeat(12, 1fr);
+  .large-width, .medium-width, .small-width {
+    margin: 0 auto;
+    padding: 0 $spacing/2;
+  }
+  .large-width {
+    max-width: $large-width;
+  }
+  .medium-width {
+    max-width: $medium-width;
+  }
+  .small-width {
+    max-width: $small-width;
+  }
+  .content--block {
+    margin: 2.5rem auto;
   }
 }
 
-.one, .two, .three, .four, .five, .six,
-.seven, .eight, .nine, .ten, .eleven, .twelve {
-  grid-column-end: span 6;
-
-  @include query ($medium-width) {
-    grid-column-end: span 12;
+footer, nav {
+  &.large-width, &.medium-width, &.small-width {
+    margin: 0 auto;
+    padding: 0 $spacing/2;
   }
-}
-
-.nested {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(6, 1fr);
-
-  @include query ($medium-width) {
-    grid-template-columns: repeat(12, 1fr);
+  &.large-width {
+    max-width: $large-width;
   }
-}
-
-.merge-two-rows { grid-row-end: span 2 }
-.merge-three-rows { grid-row-end: span 3 }
-.merge-four-rows { grid-row-end: span 4 }
-.merge-five-rows { grid-row-end: span 5 }
-.merge-six-rows { grid-row-end: span 6 }
-
-@media only screen and (min-width: $xsmall-width) {
-  .one { grid-column-end: span 3 }
-  .two { grid-column-end: span 3 }
-  .three { grid-column-end: span 3 }
-  .four { grid-column-end: span 6 }
-  .five { grid-column-end: span 6 }
-  .six { grid-column-end: span 6 }
-  .seven { grid-column-end: span 6 }
-  .eight { grid-column-end: span 6 }
-  .nine { grid-column-end: span 6 }
-  .ten { grid-column-end: span 6 }
-  .eleven { grid-column-end: span 6 }
-}
-
-@media only screen and (min-width: $small-width) {
-  .one { grid-column-end: span 1 }
-  .two { grid-column-end: span 2 }
-  .three { grid-column-end: span 3 }
-  .four { grid-column-end: span 3 }
-  .five { grid-column-end: span 5 }
-  .six { grid-column-end: span 6 }
-  .seven { grid-column-end: span 7 }
-  .eight { grid-column-end: span 8 }
-  .nine { grid-column-end: span 9 }
-  .ten { grid-column-end: span 10 }
-  .eleven { grid-column-end: span 11 }
-}
-
-@media only screen and (min-width: $medium-width) {
-  .one { grid-column-end: span 1 }
-  .two { grid-column-end: span 2 }
-  .three { grid-column-end: span 3 }
-  .four { grid-column-end: span 4 }
-  .five { grid-column-end: span 5 }
-  .six { grid-column-end: span 6 }
-  .seven { grid-column-end: span 7 }
-  .eight { grid-column-end: span 8 }
-  .nine { grid-column-end: span 9 }
-  .ten { grid-column-end: span 10 }
-  .eleven { grid-column-end: span 11 }
+  &.medium-width {
+    max-width: $medium-width;
+  }
+  &.small-width {
+    max-width: $small-width;
+  }
+  &.content--block {
+    margin: 2.5rem auto;
+  }
 }

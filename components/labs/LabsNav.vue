@@ -18,6 +18,7 @@
                 @leave="leave"
                 @after-leave="afterLeave"
                 @enter="enter"
+                appear
             >
                 <h4 id="lab-title" v-if="show">{{ title }}</h4>
             </transition>

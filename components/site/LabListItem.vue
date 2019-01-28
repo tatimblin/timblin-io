@@ -47,7 +47,7 @@ export default {
         }
         img {
           transform: scale(1.1);
-          transition: all 6s $ease-out;
+          transition: transform 6s $ease-out;
         }
         &__meta {
           opacity: 1;
@@ -85,13 +85,17 @@ export default {
         border-radius: 7.5px;
 
         img {
-          height: 350px;
+          height: 450px;
           min-width: 100%;
           object-fit: cover;
           border-radius: 7.5px;
           transform: scale(1.25);
           transform-origin: top center;
-          transition: all 15s $ease-out;
+          transition: transform 15s $ease-out;
+
+          @include query ($small-width) {
+            height: 350px;
+          }
         }
       }
       &__meta {

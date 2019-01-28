@@ -1,16 +1,18 @@
 <template>
-    <transition-group
-      tag="section"
-      class="list container"
-      v-bind:css="false"
-      @enter="enter"
-      @leave="leave"
-      appear
-    >
-      <div class="list-item--wrap four" v-for="lab in labs" :key="lab.date">
-        <lab-list-item :item="lab"></lab-list-item>
-      </div>
-    </transition-group>
+  <div class="container">
+      <transition-group
+        tag="section"
+        class="list content medium-width content--block"
+        v-bind:css="false"
+        @enter="enter"
+        @leave="leave"
+        appear
+      >
+        <div class="list-item-wrap" v-for="lab in labs" :key="lab.date">
+          <lab-list-item :item="lab"></lab-list-item>
+        </div>
+      </transition-group>
+    </div>
 </template>
 
 <script>
@@ -27,7 +29,7 @@ export default {
   },
   methods: {
     enter (el, done) {
-      TweenMax.staggerTo(".list-item--wrap", 0.6, {
+      TweenMax.staggerTo(".list-item-wrap", 0.6, {
         opacity: 1,
         ease: Sine.easeOut,
         delay: 1.3,
@@ -35,7 +37,7 @@ export default {
       }, 0.3);
     },
     leave (el, done) {
-      TweenMax.staggerTo(".list-item--wrap", 0.6, {
+      TweenMax.staggerTo(".list-item-wrap", 0.6, {
         opacity: 0,
         ease: Sine.easeOut,
         delay: 0.9,
@@ -52,8 +54,21 @@ export default {
 .list {
   margin-top: $spacing*2;
 }
-.list-item--wrap {
-  opacity: 0;
+.list {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: $spacing*2 $spacing;
+
+  @include query ($xsmall-width) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include query ($small-width) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  &-item-wrap {
+    opacity: 0;
+  }
 }
 </style>
 

@@ -1,16 +1,16 @@
 <template>
   <section class="page">
-    <div class="container">
-        <nav class="nav">
-            <h2 class="six">zine</h2>
-            <ul class="nav__list six">
-                <li class="nav__list-item">art</li>
-                <li class="nav__list-item">culture</li>
-                <li class="nav__list-item">living</li>
-                <li class="nav__list-item">style</li>
-            </ul>
-        </nav>
-    </div>
+
+    <nav class="nav content medium-width content--block">
+        <h2 class="">zine</h2>
+        <ul class="nav__list ">
+            <li class="nav__list-item">art</li>
+            <li class="nav__list-item">culture</li>
+            <li class="nav__list-item">living</li>
+            <li class="nav__list-item">style</li>
+        </ul>
+    </nav>
+
     <header class="header">
         <div class="background" v-bind:class="{ 'background-fade': this.scrolled}"></div>
         <div class="header-hero" v-bind:class="{ 'header-hero-fade': this.scrolled}">
@@ -19,15 +19,21 @@
             </transition>
         </div>
         <div class="container">
-            <span class="caption twelve">Philadelphia Muses by Meg Saligman</span>
+            <div class="content medium-width">
+                <span class="caption">Philadelphia Muses by Meg Saligman</span>
+            </div>
         </div>
     </header>
-    <article class="body container">
-        <div class="quote twelve">
+
+    <div class="container">
+        <div class="quote content medium-width content--block">
             <img src="~assets/labs/knockout-text/mural-arts-logo.jpg" alt="">
             <h3>"creating public art to transform places, individuals, and communities."</h3>
         </div>
-        <div class="content eight">
+    </div>
+
+    <article class="body container">
+        <div class="content small-width">
             <p>Mural Arts Philadelphia is the nation’s largest public art program, dedicated to the belief that art ignites change.</p>
             <p>For over 30 years, Mural Arts has united artists and communities through a collaborative process, rooted in the traditions of mural-making, to create art that transforms public spaces and individual lives. Mural Arts engages communities in 60–100 public art projects each year, and maintains its growing collection through a restoration initiative. Our core program areas—Art Education, Restorative Justice, and Porch Light—yield unique, project-based learning opportunities for thousands of youth and adults.</p>
             <img src="~assets/labs/knockout-text/painting-mural.jpg" alt="Painting a mural in Philadelphia">
@@ -40,12 +46,12 @@
             <p>Our work is created in service of a larger movement that values equity, fairness and progress across all of society.</p>
         </div>
 
-        <div class="callout twelve">
+        <div class="callout content medium-width content--block">
             <h3>invest in mural arts</h3>
             <a href="#" class="callout-form">signup</a>
         </div>
 
-        <div class="content eight">
+        <div class="content small-width">
             <p>We listen with empathetic ears to understand the aspirations of our partners and participants. And through beautiful collaborative art, we provide people with the inspiration and tools to seize their own future.</p>
             <img src="~assets/labs/knockout-text/philadelphia-mural-history.jpg" alt="Philadelphias first mural">
             <span>Dr. J by Kent Twitchell • Photo by Jack Ramsdale</span>
@@ -54,15 +60,16 @@
             <p>Artist Jane Golden reaches out to graffiti writers in order to redirect their energies into constructive public art projects. Mural Arts’ collective mural-making process proves to be a powerful tool for generating dialogue, building relationships, empowering communities, and sparking economic revitalization.</p>
         </div>
     </article>
-    <footer class="footer container">
-        <div class="six">
+    
+    <footer class="footer content medium-width">
+        <div>
             <h3>art ignites change.</h3>
             <br/>
             <span>Lincoln Financial Mural Arts Center</span><br/>
             <span>info(at)muralarts.org</span><br/>
             <span><a href="muralarts.org/" target="_blank">muralarts.org/</a></span>
         </div>
-        <div class="six">
+        <div>
             <ul>
                 <li>Facebook</li>
                 <li>Twitter</li>
@@ -70,6 +77,7 @@
             </ul>
         </div>
     </footer>
+
   </section>
 </template>
 
@@ -156,14 +164,18 @@ $bg: lighten(#DC483C, 40%);
 }
 
 .nav {
-    display: contents;
-    align-items: end;
+    display: grid;
+
+    @include query ($small-width) {
+        grid-template-columns: 1fr 1fr;
+    }
 
     &__list {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 0;
+        padding-left: 0;
         list-style-type: none;
         &-item {
             margin: 0;
@@ -207,7 +219,11 @@ $bg: lighten(#DC483C, 40%);
         transition: all 600ms $ease;
         h1 {
             text-align: center;
-            font-size: 8em;
+            font-size: 4em;
+
+            @include query ($small-width) {
+                font-size: 8em;
+            }
         }
         &-fade {
             filter: brightness(135%) contrast(80%) grayscale(0%);
@@ -231,30 +247,30 @@ $bg: lighten(#DC483C, 40%);
     }
 }
 
-.body {
-    .quote {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+.quote {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+
+    @include query ($small-width) {
+        grid-template-columns: 1fr 3fr;
         align-items: center;
+    }
+    h3 {
+        padding: $spacing 0;
 
         @include query ($small-width) {
-            flex-direction: row;
-        }
-        h3 {
-            padding: $spacing 0;
-            text-align: center;
-
-            @include query ($small-width) {
-                padding: 0 0 0 $spacing;
-                text-align: left;
-            }
-        }
-        img {
-            border: 4px solid $bg;
-            box-shadow: 1px 1px 0px 2px $alt-dark;
+            padding: 0 0 0 $spacing;
+            text-align: left;
         }
     }
+    img {
+        border: 4px solid $bg;
+        box-shadow: 1px 1px 0px 2px $alt-dark;
+    }
+}
+
+.body {
     .content {
         grid-column-start: 3;
         h3 {
@@ -267,12 +283,23 @@ $bg: lighten(#DC483C, 40%);
     }
     .callout {
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         align-items: center;
         padding: $spacing;
+        text-align: center;
         border: 1px solid $alt-dark;
         border-bottom: 3px solid $alt-dark;
         border-right: 2px solid $alt-dark;
+
+        @include query ($small-width) {
+            flex-direction: row;
+            text-align: left;
+        }
+
+        h3 {
+            margin: 0;
+        }
         a{
             padding: 2px $spacing;
             color: $alt-dark;

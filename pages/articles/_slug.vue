@@ -1,12 +1,15 @@
 <template>
-<div class="post">
-  <div class="post__content">
-    <div class="post__content--title">
-      <h1>{{title}}</h1>
-      <in-collab :collab="collaboration" :date="date | moment"/>
-    </div>
-    <div v-html="compiledMarkdown">{{body}}</div>
+<div class="article container">
+
+  <div class="article__title content medium-width">
+    <h1>{{title}}</h1>
+    <in-collab :collab="collaboration" :date="date | moment"/>
   </div>
+  
+  <article class="article__body content small-width" v-html="compiledMarkdown">
+    {{body}}
+  </article>
+
 </div>
 </template>
 
@@ -50,34 +53,31 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '~assets/sass/utilities/_variables.scss';
 
-.post {
-  padding: 0 $spacing/2;
-  border-radius: 0 !important;
-  box-shadow: none !important;
+.article {
+  &__title {
+    margin-bottom: 2.5rem !important;
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
+    border-bottom: 1px solid $black;
 
-  &__content {
-    max-width: $small-width;
-    margin: $spacing auto 0 auto;
+    h1 {
+      margin-bottom: $spacing/2;
+    }
+  }
+  &__body {
 
-    h1, h2, h3 {
-      margin: $spacing 0 $spacing/2 0;
+    #heading-two {
+      color: $text-color;
+      font-size: 2.125em;
+    }
+    #heading-three {
+      font-size: 1.25em;
     }
     img {
-      width: 100%;
       padding: $spacing 0;
-    }
-    &--title {
-      margin-bottom: $spacing*1;
-      padding: $spacing 0 $spacing*2 0;
-      font-family: $font-family;
-      border-bottom: 1px solid $black;
-
-      p {
-        margin: 0;
-      }
     }
   }
 }

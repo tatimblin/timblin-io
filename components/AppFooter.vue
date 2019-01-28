@@ -1,12 +1,10 @@
 <template>
-    <footer>
-        <div class="container">
-            <div class="footer-item columns six">
-                <p>One of many sites by Tristan Timblin</p>
-            </div>
-            <div class="footer-item columns six">
-                <p>© TATIMBLIN LLC, 2018</p>
-            </div>
+    <footer class="medium-width">
+        <div class="footer-item">
+            <p>One of many sites by Tristan Timblin</p>
+        </div>
+        <div class="footer-item">
+            <p>© TATIMBLIN LLC, 2018</p>
         </div>
     </footer>
 </template>
@@ -15,17 +13,18 @@
 @import '~assets/sass/utilities/_variables.scss';
 
 footer {
-    padding: $spacing 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing;
+
+    @include query ($small-width) {
+        flex-direction: row;
+    }
 
     .footer-item {
-        @include query ($medium-width) {
-            text-align: left;
-            &:last-child {text-align: right;}
-        }
-        p {
-            margin: 0;
-            font-family: 'nimbus-sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-        }
+        font-family: $font-family;
     }
 }
 </style>
