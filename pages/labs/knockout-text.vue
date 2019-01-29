@@ -139,6 +139,7 @@ $text: #2b2b2b;
 $alt-dark: #3F41A6;
 $alt-light: #F34B2F;
 $bg: lighten(#DC483C, 40%);
+$hero-height: 650px;
 
 .page {
     padding: $spacing 0;
@@ -196,7 +197,7 @@ $bg: lighten(#DC483C, 40%);
 }
 .header {
     position: relative;
-    height: 550px + $spacing*2;
+    height: $hero-height + $spacing*2;
     margin: 0 0 $spacing*2 0;
 
     span {
@@ -208,7 +209,7 @@ $bg: lighten(#DC483C, 40%);
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: 100%; height:550px;
+        width: 100%; height:$hero-height;
         background-image: url('~assets/labs/knockout-text/philadelphia-mural-hero.jpg');
         background-position: 20%;
         background-size:cover;
@@ -233,13 +234,13 @@ $bg: lighten(#DC483C, 40%);
 
 .background {
     position:absolute;
-    width:100%; height:550px;
+    width:100%; height:$hero-height;
 	background: url('~assets/labs/knockout-text/philadelphia-mural-hero.jpg');
     background-position: 20% center;
 	background-size:cover;
 	opacity:1;
     filter: blur(0px) brightness(135%) contrast(80%);
-    transition: all 1.5s 200ms $ease;
+    transition: all 1.1s 200ms $ease;
     
     &-fade {
         filter: blur(4px);

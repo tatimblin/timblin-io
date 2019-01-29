@@ -69,11 +69,13 @@ export default {
   }
   &__body {
 
-    #heading-two {
+    h2 {
+      margin: $spacing/2 0;
       color: $text-color;
       font-size: 2.125em;
+      line-height: 1.25em;
     }
-    #heading-three {
+    h3 {
       font-size: 1.25em;
     }
     img {
