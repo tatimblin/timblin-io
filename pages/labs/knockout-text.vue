@@ -115,7 +115,6 @@ export default {
                 delay: 0.6,
                 onComplete: done
             });
-            console.log('hi');
         },
     },
     beforeMount () {

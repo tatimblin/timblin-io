@@ -33,8 +33,10 @@ h1 {
 
 h2 {
     @include responsive-font-size(type-scale(size3));
+    margin-bottom: $spacing/2;
     font-family: $font-family;
-    color: $light-gray;
+    color: $mid-gray;
+    line-height: $line-height-sm;
 }
 
 h3 {

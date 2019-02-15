@@ -6,10 +6,9 @@
     </div>
 
     <labs-ui ref="labsUi"></labs-ui>
-    
       <div class="app__content" :class="{'app__content--article' : $route.name == 'articles-slug'}" >
         <transition 
-          :name="dir"
+          :name="direction"
           mode="out-in"
           @before-leave="beforeLeave()"
           @after-enter="afterEnter()"
@@ -24,7 +23,7 @@
     <transition name="fade">
       <app-footer v-show="showFooter"></app-footer>
     </transition>
-
+    <p>hi {{ direction }}</p>
   </div>
 </template>
 
@@ -50,29 +49,36 @@ export default {
         boxShadow: 'rgba(0, 0, 0, 0.2) 0px 30px 60px 0px',
         borderRadius: '15px'
       },
-      dir: 'default',
+      newDir: '',
       page: '',
       showFooter: false,
     };
   },
   watch: {
     $route (to, from) {
-      let dir = this.direction;
-      console.log(to.name + ', ' + from.name);
       this.page = to.name;
+
       if (from.name == 'articles-slug') {
-        this.dir = 'from-article';
+
+        this.direction = 'from-article'
+
       } else if (to.name == 'articles-slug') {
-        this.dir = 'to-article';
-      } else if (dir == 'next') {
-        this.dir = 'slide-left';
+
+        this.direction = 'to-article'
+
+      } else if (this.direction == 'next') {
+
+        this.direction = 'slide-left'
+
       } else {
-        this.dir = 'slide-right';
+
+        this.direction = 'slide-right'
+
       }
     }
   },
   mounted() {
-    this.$nextTick(this.setUiHeight());
+    this.$nextTick(this.setUiHeight())
   },
   methods: {
     toggleUi() {
@@ -136,19 +142,20 @@ export default {
   &__content { // Generic stying to always be present on labs wrapper
     max-width: 100%;
     margin: 0 auto;
-    transition: all 900ms 50ms $ease;
-    perspective: 30vw;
+    //transition: all 900ms 50ms $ease;
+    perspective: 100vw;
+    transform-style: preserve-3d;
 
     &.app__content--article > div{ // Hide border styles for articles
       box-shadow: none !important;
-      transition: all 900ms 50ms $ease, box-shadow 300ms $ease;
+      //transition: all 900ms 50ms $ease, box-shadow 300ms $ease;
     }
 
     > div {
       margin: 0 $spacing/2;
       overflow: hidden !important;
-      transition: all 950ms 50ms $ease;
-      transform-origin: 50% 240px;
+      transform-origin: top center;
+      //transition: all 950ms 50ms $ease;
     }
   }
 
@@ -175,23 +182,24 @@ export default {
 }
 
 // NEXT LAB ANIMATIONS
-$dur: 1.6s;
-$ease: cubic-bezier(0.77, 0, 0.175, 1);
+$dur: 1.5s;
+$ease-in: cubic-bezier(0.47, 0, 0.745, 0.715);
+$ease-out: cubic-bezier(0.39, 0.575, 0.565, 1);
 
 .slide-left-enter-active {
-  animation: slide-right $dur 0s $ease 1 reverse forwards;
+  animation: slide-right $dur 0s $ease-out 1 reverse forwards;
 }
 
 .slide-left-leave-active {
-  animation: slide-left $dur 0s $ease 1 forwards;
+  animation: slide-left $dur 0s $ease-in 1 forwards;
 }
 
 .slide-right-enter-active {
-  animation: slide-left $dur 0s $ease 1 reverse forwards;
+  animation: slide-left $dur 0s $ease-out 1 reverse forwards;
 }
 
 .slide-right-leave-active {
-  animation: slide-right $dur 0s $ease 1 forwards;
+  animation: slide-right $dur 0s $ease-in 1 forwards;
 }
 
 // MOBILE SLIDE ANIMATION
@@ -200,14 +208,12 @@ $ease: cubic-bezier(0.77, 0, 0.175, 1);
     transform: translateX(0%);
   }
   50% {
-    transform: translateX(0%) scale(0.875);
+    transform: translateX(0%) scale(0.75);
     opacity: 1;
-    transform-origin: 50% 240px;
   }
   100% {
-    transform: translateX(33%) scale(0.875) rotate3d(0, 0, 1, 2deg);
+    transform: translateX(20%) scale(0.75);
     opacity: 0;
-    transform-origin: 0% 240px;
   }
 }
 
@@ -216,14 +222,12 @@ $ease: cubic-bezier(0.77, 0, 0.175, 1);
     transform: translateX(0%);
   }
   50% {
-    transform: translateX(0%) scale(0.875);
+    transform: translateX(0%) scale(0.75);
     opacity: 1;
-    transform-origin: 50% 240px;
   }
   100% {
-    transform: translateX(-33%) scale(0.875) rotate3d(0, 0, 1, -2deg);
+    transform: translateX(-20%) scale(0.75);
     opacity: 0;
-    transform-origin: 100% 240px;
   }
 }
 
@@ -231,33 +235,29 @@ $ease: cubic-bezier(0.77, 0, 0.175, 1);
 @media screen and (min-width: $small-width) {
 @keyframes slide-right {
   0% {
-    transform: translateX(0%);
+    transform: translate(0%, 0);
   }
   50% {
-    transform: translateX(0%) scale(0.625);
+    transform: translate(0%, 120px) scale(0.6);
     opacity: 1;
-    transform-origin: 50% 240px;
   }
   100% {
-    transform: translateX(50%) scale(0.55) rotate3d(0, 1, 0, 3deg);
+    transform: translate(50%, 120px) scale(0.6) rotateY(5deg);
     opacity: 0;
-    transform-origin: 0% 240px;
   }
 }
 
 @keyframes slide-left {
   0% {
-    transform: translateX(0%);
+    transform: translate(0%, 0);
   }
   50% {
-    transform: translateX(0%) scale(0.625);
+    transform: translate(0%, 120px) scale(0.6);
     opacity: 1;
-    transform-origin: 50% 240px;
   }
   100% {
-    transform: translateX(-50%) scale(0.55) rotate3d(0, 1, 0, -3deg);
+    transform: translate(-50%, 120px) scale(0.6) rotateY(-5deg);
     opacity: 0;
-    transform-origin: 100% 240px;
   }
 }
 }
@@ -265,24 +265,21 @@ $ease: cubic-bezier(0.77, 0, 0.175, 1);
 
 // ARTICLE ANIMATIONS
 .to-article-enter-active {
-  animation: to-article 600ms 0s ease-in 1 reverse forwards;
+  animation: to-article 0.5s 0s $ease-in 1 reverse forwards;
 }
 .to-article-leave-active {
-  animation: from-article 1.2s 0s $ease 1 forwards;
+  animation: from-article 0.5s 0s $ease-in 1 forwards;
 }
 .from-article-enter-active {
-  animation: from-article 1.2s 0s $ease 1 reverse forwards;
+  animation: from-article 1.6s 0s $ease-in 1 reverse forwards;
 }
 .from-article-leave-active {
-  animation: to-article 600ms 0s ease-in 1 forwards;
+  animation: to-article 500ms 0s $ease-in 1 forwards;
 }
 
 @keyframes to-article {
   0% {
     opacity: 1;
-  }
-  80% {
-    opacity: 0;
   }
   100% {
     transform: translateY(90px);
@@ -294,12 +291,11 @@ $ease: cubic-bezier(0.77, 0, 0.175, 1);
   0% {
     opacity: 1;
   }
-  55% {
-    transform: scale(0.625);
+  50% {
     opacity: 1;
   }
   100% {
-    transform: scale(0.35) translateY(-320px) rotate3d(1, 0, 0, 3deg);
+    transform: scale(0.3) translateY(-320px) rotate3d(1, 0, 0, 2deg);
     opacity: 0;
   }
 }

@@ -38,15 +38,14 @@ export default {
     data() {
         return {
             show: true,
-            dir: 'next',
         };
     },
     props: ['title', 'nav'],
     methods: {
         newSlide (dir) {
-            this.show = false;
-            this.dir = dir
-            console.log('newSlider')
+            this.show = false
+            this.updateDirection(dir)
+            console.log(`update direction to: ${dir}`)
         },
         leave: function (el, done) {
             let mySplitText = new SplitText("#lab-title", {type: "words, chars"});
@@ -57,7 +56,6 @@ export default {
 			}, 0.04);
         },
         afterLeave (el) {
-            this.updateDirection(this.dir)
             this.show = true;
         },
         enter: function (el, done) {
