@@ -4,8 +4,8 @@
       <img src="~/assets/labs/netflix-profile/logo.png" alt="Netflix Logo">
     </div>
     <h1>{{ title }}</h1>
-    <div class="profile container">
-      <div class="profile__item three">
+    <div class="profile">
+      <div class="profile__item">
         <div class="profile__item__icon profile1">
 
           <svg width="150" height="150" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="background:#0d7e80">
@@ -25,7 +25,7 @@
         <p>Account Holder</p>
       </div>
 
-      <div class="profile__item three">
+      <div class="profile__item">
         <div class="profile__item__icon profile2">
           <svg width="150" height="150" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="background:#d15219">
             <g id="Page-1" fill="none" fill-rule="evenodd">
@@ -48,7 +48,7 @@
         <p>Milennial Son</p>
       </div>
 
-      <div class="profile__item three">
+      <div class="profile__item">
         <div class="profile__item__icon profile3">
           <svg id="profile3" width="150" height="150" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="background:#86a546">
             <g fill="none" fill-rule="evenodd">
@@ -67,7 +67,7 @@
         <p>Hotel You Visited 3 Years Ago</p>
       </div>
 
-      <div class="profile__item three">
+      <div class="profile__item">
         <div class="profile__item__icon">
           <img src="~/assets/labs/netflix-profile/kids.png" alt="Netflix for kids">
         </div>
@@ -132,7 +132,21 @@ h1 {
 }
 
 .profile {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	max-width: $medium-width;
+	margin: $spacing*2 auto;
+
   &__item {
+		width: 50%;
+		padding: 0 $spacing/2;
+		box-sizing: border-box;
+
+		@include query ($small-width) {
+			width: 25%;
+		}
+
     &__icon {
       padding: 4px;
       background-color: #2D2D2D;
