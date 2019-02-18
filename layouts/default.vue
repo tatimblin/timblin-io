@@ -23,7 +23,6 @@
     <transition name="fade">
       <app-footer v-show="showFooter"></app-footer>
     </transition>
-    <p>hi {{ direction }}</p>
   </div>
 </template>
 
@@ -49,7 +48,6 @@ export default {
         boxShadow: 'rgba(0, 0, 0, 0.2) 0px 30px 60px 0px',
         borderRadius: '15px'
       },
-      newDir: '',
       page: '',
       showFooter: false,
     };
@@ -57,24 +55,6 @@ export default {
   watch: {
     $route (to, from) {
       this.page = to.name;
-
-      if (from.name == 'articles-slug') {
-
-        this.direction = 'from-article'
-
-      } else if (to.name == 'articles-slug') {
-
-        this.direction = 'to-article'
-
-      } else if (this.direction == 'next') {
-
-        this.direction = 'slide-left'
-
-      } else {
-
-        this.direction = 'slide-right'
-
-      }
     }
   },
   mounted() {
@@ -142,20 +122,20 @@ export default {
   &__content { // Generic stying to always be present on labs wrapper
     max-width: 100%;
     margin: 0 auto;
-    //transition: all 900ms 50ms $ease;
-    perspective: 100vw;
+    transition: all 900ms 50ms $ease;
+    perspective: 200vw;
     transform-style: preserve-3d;
 
     &.app__content--article > div{ // Hide border styles for articles
       box-shadow: none !important;
-      //transition: all 900ms 50ms $ease, box-shadow 300ms $ease;
+      transition: all 900ms 50ms $ease, box-shadow 300ms $ease;
     }
 
     > div {
       margin: 0 $spacing/2;
       overflow: hidden !important;
       transform-origin: top center;
-      //transition: all 950ms 50ms $ease;
+      transition: all 950ms 50ms $ease;
     }
   }
 
@@ -182,7 +162,7 @@ export default {
 }
 
 // NEXT LAB ANIMATIONS
-$dur: 1.5s;
+$dur: 1.25s;
 $ease-in: cubic-bezier(0.47, 0, 0.745, 0.715);
 $ease-out: cubic-bezier(0.39, 0.575, 0.565, 1);
 
@@ -242,7 +222,7 @@ $ease-out: cubic-bezier(0.39, 0.575, 0.565, 1);
     opacity: 1;
   }
   100% {
-    transform: translate(50%, 120px) scale(0.6) rotateY(5deg);
+    transform: translate(50%, 120px) scale(0.6) rotateY(8deg);
     opacity: 0;
   }
 }
@@ -256,7 +236,7 @@ $ease-out: cubic-bezier(0.39, 0.575, 0.565, 1);
     opacity: 1;
   }
   100% {
-    transform: translate(-50%, 120px) scale(0.6) rotateY(-5deg);
+    transform: translate(-50%, 120px) scale(0.6) rotateY(-8deg);
     opacity: 0;
   }
 }
@@ -264,38 +244,19 @@ $ease-out: cubic-bezier(0.39, 0.575, 0.565, 1);
 
 
 // ARTICLE ANIMATIONS
-.to-article-enter-active {
-  animation: to-article 0.5s 0s $ease-in 1 reverse forwards;
+.article-enter-active {
+  animation: article 0.5s 0s $ease-in 1 reverse forwards;
 }
-.to-article-leave-active {
-  animation: from-article 0.5s 0s $ease-in 1 forwards;
-}
-.from-article-enter-active {
-  animation: from-article 1.6s 0s $ease-in 1 reverse forwards;
-}
-.from-article-leave-active {
-  animation: to-article 500ms 0s $ease-in 1 forwards;
+.article-leave-active {
+  animation: article 0.5s 0s $ease-in 1 forwards;
 }
 
-@keyframes to-article {
+@keyframes article {
   0% {
     opacity: 1;
   }
   100% {
     transform: translateY(90px);
-    opacity: 0;
-  }
-}
-
-@keyframes from-article {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: scale(0.3) translateY(-320px) rotate3d(1, 0, 0, 2deg);
     opacity: 0;
   }
 }

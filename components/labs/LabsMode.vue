@@ -1,12 +1,12 @@
 <template>
     <div class="labsmode">
         <div class="labsmode__item" v-if="$route.name !== 'articles-slug'">
-            <nuxt-link :to="`/articles/${url}`">
+            <nuxt-link :to="`/articles/${url}`" @click.native="updateDirection('article')">
                 Article
             </nuxt-link>
         </div>
         <div class="labsmode__item" v-if="$route.name == 'articles-slug'">
-            <nuxt-link :to="`/labs/${url}`">
+            <nuxt-link :to="`/labs/${url}`" @click.native="updateDirection('article')">
                 Lab
             </nuxt-link>
         </div>
@@ -24,8 +24,13 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
     props: ['url'],
+    methods: {
+        ...mapMutations(['updateDirection']),
+    },
 }
 </script>
 

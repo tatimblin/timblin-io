@@ -15,7 +15,8 @@ const createStore = () => {
         page: 'index',
         labs,
         indexedLab: 1,
-        direction: 'prev',
+        direction: 'slide-left',
+        labTransition: 'slide-left',
         selectedProcess: '',
       }
     },
@@ -58,8 +59,7 @@ const createStore = () => {
           state.indexedLab = state.labs.findIndex(x => x._path === url);
       },
       updateDirection(state, dir) {
-        console.log('STORE: setting direction to ' + dir);
-        state.direction = dir;
+        state.direction = dir
       },
       updateProcess(state, select) {
         state.selectedProcess = select;

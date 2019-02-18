@@ -1,12 +1,12 @@
 <template>
     <div class="labsnav">
         <div class="labsnav__nav">
-            <div @click="newSlide('prev')">
+            <div @click="updateDirection('slide-left')">
                 <nuxt-link :to="`/labs/${nav.prev}`">
                     <ui-arrow direction="left"></ui-arrow>
                 </nuxt-link>
             </div>
-            <div @click="newSlide('next')">
+            <div @click="updateDirection('slide-right')">
                 <nuxt-link :to="`/labs/${nav.next}`">
                     <ui-arrow></ui-arrow>
                 </nuxt-link>
@@ -42,11 +42,6 @@ export default {
     },
     props: ['title', 'nav'],
     methods: {
-        newSlide (dir) {
-            this.show = false
-            this.updateDirection(dir)
-            console.log(`update direction to: ${dir}`)
-        },
         leave: function (el, done) {
             let mySplitText = new SplitText("#lab-title", {type: "words, chars"});
 			TweenMax.staggerTo(mySplitText.chars, 0.5, {
