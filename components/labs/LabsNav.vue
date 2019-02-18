@@ -53,7 +53,7 @@ export default {
 				opacity: 0, 
 				ease:Back.easeOut,
 				onComplete: done
-			}, 0.04);
+			}, 0.02);
         },
         afterLeave (el) {
             this.show = true;
@@ -62,9 +62,9 @@ export default {
             let mySplitText = new SplitText("#lab-title", {type: "words, chars"});
 			TweenMax.staggerFrom(mySplitText.chars, 0.6, {
 				opacity: 0,
-				y: 10,
-                rotationY: 45,
-                rotation: 15,
+				y: 3,
+                rotationY: 15,
+                rotation: 5,
                 ease:Back.easeOut,
                 delay: 1.2,
 				onComplete: done
