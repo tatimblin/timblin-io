@@ -1,12 +1,11 @@
 {
   "title": "Demo",
   "date": "2016-02-13T19:32:44.767Z",
-  "thumbnail": "/images/uploads/profilepic.png",
-  "tagline": "A super generic demo.",
+  "thumbnail": "/images/uploads/charcoal.jpg",
   "collaboration": {
     "name": "Tristan Timblin",
-    "url": "https://github.com/tatimblin",
-    "avi": "/images/uploads/profilepic.png"
+    "avi": "/images/uploads/profilepic.png",
+    "url": "https://github.com/tatimblin"
   },
   "body": "# TWO! Lorem ipsum \n\ndolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea **takimata sanctus** est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\n\n![An image in the body text](/images/uploads/profilepic.png)"
 }
