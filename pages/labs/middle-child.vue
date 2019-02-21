@@ -11,7 +11,7 @@
             parental advisory
         </div>
     </div>
-    <canvas ref="static" id="canvas" width="100%" height="100%"></canvas>
+    <canvas ref="static" id="canvas" width="600px" height="600px"></canvas>
   </section>
 </template>
 
@@ -20,32 +20,31 @@
 export default {
     data() {
         return {
-            toggle: true,
+            
         }
     },
     mounted() {
         this.noise(this.$refs.static)
 
-        function loop() {
-            this.toggle = !this.toggle
-            if (this.toggle) {
+        let toggle = true;
+        const loop = () => {
+            toggle = !toggle
+            if (toggle) {
                 setTimeout( function()  {
                     requestAnimationFrame(loop)
-                }, 20)
+                }, 40)
                 return
             }
             this.noise(this.$refs.static)
             requestAnimationFrame(loop)
         };
+
+        loop()
     },
     methods: {
-        noise(canvasElement) {
-            console.log(canvasElement);
-            const ctx = canvasElement.getContext('2d');
+        noise(e) {
+            const ctx = e.getContext('2d');
             ctx.clearRect(0, 0, 300, 150);
-            ctx.fillStyle = 'red';
-            ctx.font = '20px Georgia';
-            ctx.fillText('hello', 10, 50);
             let w = ctx.canvas.width,
                 h = ctx.canvas.height,
                 imageData = ctx.createImageData(w, h),
@@ -63,6 +62,18 @@ export default {
 
 <style scoped lang="scss">
 .page {
-    background-color: green;
+    background-color: #c6c6c6;
+}
+#canvas {
+    width: 100%;
+}
+.overlay {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
 }
 </style>
