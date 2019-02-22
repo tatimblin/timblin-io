@@ -26,6 +26,7 @@ export default {
     mounted() {
         this.noise(this.$refs.static)
 
+        // animate static
         let toggle = true;
         const loop = () => {
             toggle = !toggle
@@ -40,6 +41,18 @@ export default {
         };
 
         loop()
+
+        const headline = new SplitText('.overlay__headline', {
+            type: 'chars',
+        });
+        headline.chars.forEach( (e) => {
+            const letter = e.innerHTML
+            e.dataset.headline = letter
+        })
+
+        function getRandomInt(max, min) {
+            return Math.floor(Math.random() * Math.floor(max - min) + min)
+        }
     },
     methods: {
         noise(e) {
@@ -61,10 +74,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '~assets/sass/utilities/_variables.scss';
+$blue: #1AC5FD;
+$red: #FE0000;
+
 .page {
-    background-color: #c6c6c6;
+    color: white;
+    background-color: #d8d8d8;
 }
 #canvas {
+    display: block;
     width: 100%;
 }
 .overlay {
@@ -73,7 +92,51 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 100%;
     width: 100%;
+    height: 100%;
+    padding: $spacing;
+
+    &__name {
+        h2 {
+            color: white;
+            font-size: 1.375em;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+        }
+    }
+    &__title {
+		position: relative;
+		z-index: 100;
+	}
+    &__headline {
+        font-size: 4.5rem;
+        text-transform: uppercase;
+        color: white;
+        div:before {
+            content: attr(data-headline);
+            position: absolute;
+            background: repeating-linear-gradient($red, $red 4px, transparent 0.75px, transparent 4.75px);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: blur(0.625px);
+            opacity: 0.33;
+            transform: translateX(-4px);
+            z-index: 10;
+        }
+        div:after {
+            content: attr(data-headline);
+            position: absolute;
+            left: 0;
+            background: repeating-linear-gradient($blue, $blue 4px, transparent 0.75px, transparent 4.75px);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: blur(0.875px);
+            opacity: 0.25;
+            transform: translateX(4px);
+            z-index: 10;
+        }
+    }
 }
 </style>
