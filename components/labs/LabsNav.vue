@@ -1,12 +1,12 @@
 <template>
     <div class="labsnav">
         <div class="labsnav__nav">
-            <div @click="updateDirection('slide-left')">
+            <div @click="updateDirection('slide-left')" @mouseover="updateDirection('slide-left')">
                 <nuxt-link :to="`/labs/${nav.prev}`" @click.native="triggerTitle()">
                     <ui-arrow direction="left"></ui-arrow>
                 </nuxt-link>
             </div>
-            <div @click="updateDirection('slide-right')">
+            <div @click="updateDirection('slide-right')" @mouseover="updateDirection('slide-right')">
                 <nuxt-link :to="`/labs/${nav.next}`" @click.native="triggerTitle()">
                     <ui-arrow></ui-arrow>
                 </nuxt-link>
