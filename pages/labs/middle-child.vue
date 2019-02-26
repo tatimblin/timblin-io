@@ -1,16 +1,27 @@
 <template>
   <section class="page" ref="page">
-    <div class="overlay">
+    <transition name="fade">
+    <div class="question" v-if="ask" key="question">
+        <h1 class="question__text">Are you a Middle Child?</h1>
+        <ul class="question__list">
+            <li class="question__item" @click="setAlbum($event)">Eldest Child</li>
+            <li class="question__item" @click="setAlbum($event)">Middle Child</li>
+            <li class="question__item" @click="setAlbum($event)">Youngest Child</li>
+            <li class="question__item" @click="setAlbum($event)">Only Child</li>
+        </ul>
+    </div>
+    <div class="overlay" v-else key="answer">
         <div class="overlay__name">
             <h2>J.Cole</h2>
         </div>
         <div class="overlay__title">
-            <h1 class="overlay__headline">Middle Child</h1>
+            <h1 class="overlay__headline">{{ childOrder }}</h1>
         </div>
         <div class="overlay__rating">
             <img src="~assets/labs/middle-child/parental-advisory.svg" class="logo">
         </div>
     </div>
+    </transition>
     <canvas ref="static" id="canvas" width="600px" height="600px"></canvas>
   </section>
 </template>
@@ -20,7 +31,8 @@
 export default {
     data() {
         return {
-            
+            ask: true,
+            childOrder: 'Middle Child',
         }
     },
     mounted() {
@@ -41,29 +53,36 @@ export default {
         };
 
         loop()
-
-        // separate letters
-        const headline = new SplitText('.overlay__headline', {
-            type: 'chars',
-        });
-        // allow data to be passed to pseudos
-        headline.chars.forEach( (e) => {
-            const letter = e.innerHTML
-            e.dataset.headline = letter
-            e.classList.add('overlay__letter')
-        })
-        // letter flickering
-        setInterval( () => {
-            const l = headline.chars.length
-            const rand = Math.floor(Math.random() * l)
-            const e = headline.chars[rand]
-            e.style.opacity = Math.random()
-            setTimeout( function() {
-                e.style.opacity = 1
-            }, this.getRandomInt(800, 400))
-        }, this.getRandomInt(1200, 300))
     },
     methods: {
+        setAlbum(answer) {
+            this.ask = false
+            console.log(answer.target.innerHTML)
+            this.childOrder = answer.target.innerHTML
+
+            this.$nextTick(() => {
+                // separate letters
+                const headline = new SplitText('.overlay__headline', {
+                    type: 'chars',
+                });
+                // allow data to be passed to pseudos
+                headline.chars.forEach( (e) => {
+                    const letter = e.innerHTML
+                    e.dataset.headline = letter
+                    e.classList.add('overlay__letter')
+                })
+                // letter flickering
+                setInterval( () => {
+                    const l = headline.chars.length
+                    const rand = Math.floor(Math.random() * l)
+                    const e = headline.chars[rand]
+                    e.style.opacity = Math.random()
+                    setTimeout( function() {
+                        e.style.opacity = 1
+                    }, this.getRandomInt(800, 400))
+                }, this.getRandomInt(1200, 300))
+            });
+        },
         noise(e) {
             const ctx = e.getContext('2d');
             ctx.clearRect(0, 0, 300, 150);
@@ -155,6 +174,38 @@ $red: #FE0000;
     }
     &__rating {
         max-width: 85px;
+    }
+}
+
+.question {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: rgba(40, 40, 70, 0.6);
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 650px;
+        margin: $spacing auto;
+    }
+    &__item {
+        width: calc(50% - 30px);
+        margin: $spacing/2;
+        padding: $spacing/4;
+        border: 1px solid white;
+        list-style-type: none;
+        cursor: pointer;
+        transition: all 200ms $ease;
+        &:hover {
+            background-color: white;
+            color: #686868;
+        }
     }
 }
 </style>

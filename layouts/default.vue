@@ -132,6 +132,7 @@ export default {
     }
 
     > div {
+      position: relative;
       margin: 0 $spacing/2;
       overflow: hidden !important;
       transform-origin: top center;
