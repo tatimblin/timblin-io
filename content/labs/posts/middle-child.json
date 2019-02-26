@@ -1,6 +1,9 @@
 {
   "title": "Middle Child Album Art",
   "date": "2019-02-13T19:32:44.767Z",
-  "thumbnail": "/images/uploads/profilepic.png",
-  "body": "# ONE! Lorem ipsum \n\ndolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea **takimata sanctus** est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\n\n![An image in the body text](/images/uploads/profilepic.png)"
+  "thumbnail": "/images/uploads/middlechild.jpg",
+  "collaboration": {
+    "name": "null"
+  },
+  "body": "![alt text](https://lh3.googleusercontent.com/cW9wh2KwK_q-tNlm_6U84FbssnZlwb-sHmLb2YeBvLnVTREUrmplnO9tt1qTjtUscy_Ivcoxmxo=s180-c-e100-rwu-v1 \"Middle Child JCole Album Art\")\n\nA recreation of the album cover for J.Cole's recent single 'Middle Child'. This lab will hopefully be the first of a series of interactive experiences I make for the music I'm listening to."
 }
