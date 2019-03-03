@@ -29,9 +29,10 @@ collections:
       - label: "Collaboration"
         name: "collaboration"
         widget: "object"
+        optional: true
         fields:
         - {label: "Name", name: "name", widget: "string"}
-        - {label: "Profile Picture", name: "avi", widget: "image"}
+        - {label: "Profile Picture", name: "avi", widget: "image", optional: true}
         - {label: "Link", name: "url", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
   - name: "process"

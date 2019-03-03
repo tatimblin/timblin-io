@@ -90,7 +90,7 @@ export default {
           object-fit: cover;
           border-radius: 7.5px;
           transform: scale(1.25);
-          transform-origin: top center;
+          transform-origin: center 33%;
           transition: transform 15s $ease-out;
 
           @include query ($small-width) {
